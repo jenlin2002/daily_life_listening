@@ -8,21 +8,23 @@
 <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg-dark: #1B3A2F;
-    --bg-darker: #142820;
-    --card-border: #3d5a48;
+    --bg-dark: #142820;
+    --bg-darker: #0D1C16;
+    --bg-card: #1A352B;
+    --bg-card-inner: #162E25;
+    --bg-input: #0F1D17;
+    --card-border: #2D5343;
     --yellow: #E8B94A;
-    --green-accent: #7FB69A;
-    --paper: #FAF6EC;
-    --paper-border: #E3DCC8;
-    --ink: #26332B;
-    --ink-soft: #5B6B5F;
-    --line: #2A4A3C;
+    --yellow-hover: #F5C869;
+    --text-white: #FFFFFF;
+    --text-cream: #CFE0D1;
+    --text-muted: #A6C4AA;
+    --line: #2D5343;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     background: var(--bg-dark);
-    color: var(--ink);
+    color: var(--text-white);
     font-family: 'Noto Sans TC', sans-serif;
     min-height: 100vh;
     display: flex;
@@ -48,7 +50,7 @@
     gap: 10px;
     padding-bottom: 14px;
     margin-bottom: 14px;
-    border-bottom: 1px solid rgba(61, 90, 72, 0.7);
+    border-bottom: 1px solid rgba(45, 83, 67, 0.8);
   }
   .brand-badge {
     display: inline-flex;
@@ -64,11 +66,11 @@
   }
   .brand-sub {
     font-size: 12px;
-    color: #A6C4AA;
+    color: var(--text-muted);
     margin-left: 8px;
   }
   .back-home-link {
-    color: #CFE0D1;
+    color: var(--text-cream);
     text-decoration: none;
     font-size: 13px;
     display: inline-flex;
@@ -77,37 +79,37 @@
     transition: color 0.15s;
   }
   .back-home-link:hover {
-    color: #FFFFFF;
+    color: var(--yellow);
     text-decoration: underline;
   }
   .unit-main-title {
     font-family: 'Kalam', cursive;
-    font-size: 30px;
+    font-size: 32px;
     font-weight: 700;
     margin: 6px 0;
     display: flex;
     align-items: baseline;
-    gap: 10px;
+    gap: 12px;
     flex-wrap: wrap;
     color: #FFFFFF;
   }
   .unit-en-title {
     font-size: 20px;
     font-weight: normal;
-    color: #A6C4AA;
+    color: var(--yellow);
   }
   .situation-box {
     margin-top: 6px;
     font-size: 13.5px;
-    color: #CFE0D1;
+    color: var(--text-cream);
     line-height: 1.6;
   }
   .situation-title {
-    color: #FFFFFF;
+    color: var(--yellow);
     font-weight: 600;
   }
   .situation-desc {
-    color: #A6C4AA;
+    color: var(--text-muted);
     font-size: 12.5px;
     margin-top: 2px;
   }
@@ -115,8 +117,8 @@
   /* 進度條 */
   .progress-wrap {
     margin-top: 16px;
-    background: rgba(27, 43, 33, 0.8);
-    border: 1px solid rgba(61, 90, 72, 0.6);
+    background: rgba(13, 28, 22, 0.85);
+    border: 1px solid var(--card-border);
     border-radius: 10px;
     padding: 10px 14px;
     display: flex;
@@ -132,18 +134,19 @@
   .progress-bar-bg {
     flex: 1;
     height: 10px;
-    background: #2F4538;
+    background: #142820;
     border-radius: 9999px;
     overflow: hidden;
+    border: 1px solid #234636;
   }
   .progress-bar-fill {
     height: 100%;
-    background: #B5842A;
+    background: var(--yellow);
     border-radius: 9999px;
     transition: width 0.3s ease;
   }
 
-  /* 主體白色/淺色卡片區 */
+  /* 主體深綠色卡片區 */
   main.main-content {
     max-width: 960px;
     margin: 0 auto;
@@ -156,10 +159,10 @@
   }
 
   .card-block {
-    background: #FFFFFF;
-    border: 1px solid var(--paper-border);
+    background: var(--bg-card);
+    border: 1px solid var(--card-border);
     border-radius: 14px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     overflow: hidden;
   }
 
@@ -173,7 +176,7 @@
     justify-content: space-between;
     font-size: 11px;
     font-weight: 700;
-    color: var(--ink-soft);
+    color: var(--text-muted);
     margin-bottom: 10px;
     letter-spacing: 0.5px;
   }
@@ -193,23 +196,24 @@
     font-size: 12px;
     font-weight: 500;
     flex-shrink: 0;
-    border: 1px solid var(--paper-border);
-    background: var(--paper);
-    color: var(--ink);
+    border: 1px solid var(--card-border);
+    background: var(--bg-card-inner);
+    color: var(--text-cream);
     cursor: pointer;
     transition: all 0.15s;
   }
   .unit-chip-btn:hover {
-    background: #EEF3EA;
+    background: #204033;
+    color: #FFFFFF;
   }
   .unit-chip-btn.active {
-    background: #2F4538;
-    color: #FFFFFF;
-    border-color: #2F4538;
+    background: var(--yellow);
+    color: #142820;
+    border-color: var(--yellow);
     font-weight: 700;
   }
   .unit-done-pill {
-    background: #B5842A;
+    background: #2D664D;
     color: #fff;
     font-size: 9px;
     font-weight: 700;
@@ -232,10 +236,10 @@
   }
   .tabs-group {
     display: flex;
-    background: var(--paper);
+    background: var(--bg-card-inner);
     padding: 4px;
     border-radius: 10px;
-    border: 1px solid var(--paper-border);
+    border: 1px solid var(--card-border);
     gap: 4px;
   }
   .tab-btn {
@@ -245,17 +249,20 @@
     border-radius: 7px;
     font-size: 12px;
     font-weight: 700;
-    color: var(--ink-soft);
+    color: var(--text-cream);
     cursor: pointer;
     display: inline-flex;
     align-items: center;
     gap: 6px;
     transition: all 0.15s;
   }
-  .tab-btn.active {
-    background: #2F4538;
+  .tab-btn:hover {
     color: #FFFFFF;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  .tab-btn.active {
+    background: var(--yellow);
+    color: #142820;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
   }
   .aux-controls {
     display: flex;
@@ -269,26 +276,27 @@
     gap: 5px;
     padding: 6px 11px;
     border-radius: 8px;
-    border: 1px solid var(--paper-border);
-    background: var(--paper);
-    color: #2F4538;
+    border: 1px solid var(--card-border);
+    background: var(--bg-card-inner);
+    color: var(--text-cream);
     font-size: 12px;
     font-weight: 600;
     cursor: pointer;
     transition: all 0.15s;
   }
   .aux-btn:hover {
-    background: #EEF3EA;
+    background: #204033;
+    color: #FFFFFF;
   }
   .aux-btn.active {
-    background: #2F4538;
-    color: #FFFFFF;
-    border-color: #2F4538;
+    background: var(--yellow);
+    color: #142820;
+    border-color: var(--yellow);
   }
 
-  /* 核心句型表格 */
+  /* 核心句型表格 (綠底白字/黃字) */
   .table-header {
-    background: #23372C;
+    background: #11221A;
     color: #FFFFFF;
     padding: 12px 18px;
     display: flex;
@@ -296,6 +304,7 @@
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--card-border);
   }
   .th-num { width: 50px; }
   .th-en { flex: 1; min-width: 200px; }
@@ -306,12 +315,13 @@
     display: flex;
     align-items: center;
     padding: 14px 18px;
-    border-bottom: 1px solid #ECE7D8;
+    border-bottom: 1px solid #234636;
     transition: background 0.15s;
+    background: var(--bg-card);
   }
   .sentence-row:last-child { border-bottom: none; }
-  .sentence-row:hover { background: #FAF7F0; }
-  .sentence-row.done { background: rgba(181, 132, 42, 0.04); }
+  .sentence-row:hover { background: #1F3F32; }
+  .sentence-row.done { background: rgba(232, 185, 74, 0.08); }
 
   .col-num {
     width: 50px;
@@ -322,9 +332,9 @@
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    border: 1px solid var(--paper-border);
-    background: var(--paper);
-    color: #2F4538;
+    border: 1px solid var(--card-border);
+    background: var(--bg-card-inner);
+    color: var(--yellow);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -333,16 +343,16 @@
     transition: all 0.15s;
   }
   .speaker-round-btn:hover {
-    background: #2F4538;
-    color: #FFFFFF;
+    background: var(--yellow);
+    color: #142820;
     transform: scale(1.08);
   }
   .col-en {
     flex: 1;
     font-family: 'Kalam', cursive;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 600;
-    color: #1E2F24;
+    color: #FFFFFF;
     padding: 0 14px;
     line-height: 1.4;
   }
@@ -350,8 +360,8 @@
     width: 260px;
     text-align: right;
     padding-right: 20px;
-    font-size: 13px;
-    color: var(--ink-soft);
+    font-size: 13.5px;
+    color: var(--text-cream);
   }
   .col-check {
     width: 70px;
@@ -361,11 +371,11 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
-    accent-color: #2F4538;
+    accent-color: var(--yellow);
   }
 
   .blur-text {
-    filter: blur(4px);
+    filter: blur(5px);
     transition: filter 0.2s;
     user-select: none;
   }
@@ -386,19 +396,20 @@
     gap: 12px;
     padding-bottom: 14px;
     margin-bottom: 16px;
-    border-bottom: 1px solid var(--paper-border);
+    border-bottom: 1px solid var(--card-border);
   }
   .dialogue-turn {
-    background: var(--paper);
-    border: 1px solid var(--paper-border);
+    background: var(--bg-card-inner);
+    border: 1px solid var(--card-border);
     border-radius: 12px;
     padding: 14px 16px;
     margin-bottom: 12px;
-    transition: border-color 0.15s;
+    transition: all 0.15s;
   }
   .dialogue-turn.active-line {
-    border-color: #B5842A;
-    background: #FFF8E7;
+    border-color: var(--yellow);
+    background: #1F4234;
+    box-shadow: 0 0 10px rgba(232, 185, 74, 0.25);
   }
   .turn-header {
     display: flex;
@@ -407,7 +418,7 @@
     margin-bottom: 6px;
   }
   .turn-badge {
-    background: #2F4538;
+    background: #2D664D;
     color: #FFFFFF;
     font-size: 11px;
     font-weight: 700;
@@ -416,13 +427,13 @@
   }
   .turn-en {
     font-family: 'Kalam', cursive;
-    font-size: 16px;
-    color: #1E2F24;
+    font-size: 17px;
+    color: #FFFFFF;
     font-weight: 600;
   }
   .turn-zh {
-    font-size: 12.5px;
-    color: var(--ink-soft);
+    font-size: 13px;
+    color: var(--text-cream);
     margin-top: 4px;
   }
 
@@ -436,11 +447,11 @@
     justify-content: space-between;
     padding-bottom: 14px;
     margin-bottom: 16px;
-    border-bottom: 1px solid var(--paper-border);
+    border-bottom: 1px solid var(--card-border);
   }
   .practice-box {
-    background: var(--paper);
-    border: 1px solid var(--paper-border);
+    background: var(--bg-card-inner);
+    border: 1px solid var(--card-border);
     border-radius: 14px;
     padding: 18px;
     margin-bottom: 16px;
@@ -454,37 +465,40 @@
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: #2F4538;
-    color: #FFFFFF;
+    background: var(--yellow);
+    color: #142820;
     border: none;
     font-size: 22px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
     transition: transform 0.15s;
   }
   .practice-audio-btn:hover {
     transform: scale(1.08);
+    background: var(--yellow-hover);
   }
   .practice-textarea {
     width: 100%;
     border-radius: 10px;
-    border: 1px solid var(--paper-border);
+    border: 2px solid var(--card-border);
+    background: var(--bg-input);
+    color: #FFFFFF;
     padding: 12px 14px;
     font-size: 15px;
-    font-family: inherit;
+    font-family: 'Kalam', cursive, sans-serif;
     resize: vertical;
     outline: none;
     margin-bottom: 14px;
   }
   .practice-textarea:focus {
-    border-color: #2F4538;
+    border-color: var(--yellow);
   }
   .submit-ans-btn {
-    background: #2F4538;
-    color: #FFFFFF;
+    background: var(--yellow);
+    color: #142820;
     border: none;
     border-radius: 8px;
     padding: 10px 20px;
@@ -494,7 +508,7 @@
     transition: background 0.15s;
   }
   .submit-ans-btn:hover {
-    background: #3D5A48;
+    background: var(--yellow-hover);
   }
   .diff-word {
     display: inline-block;
@@ -504,13 +518,13 @@
     font-size: 14px;
   }
   .diff-correct {
-    background: #ECF5EE;
-    color: #2F4538;
+    background: #244E3B;
+    color: #EEF2EA;
     font-weight: 600;
   }
   .diff-wrong {
-    background: #FEE2E2;
-    color: #D9534F;
+    background: #4D1C1B;
+    color: #FF9D99;
     font-weight: 700;
     text-decoration: underline;
   }
@@ -615,7 +629,7 @@
   <!-- 分頁 2: 真實情境課文 -->
   <div class="card-block dialogue-container" id="tabContentDialogue" style="display:none;">
     <div class="dialogue-toolbar">
-      <div style="font-size:13px; font-weight:700; color:#2F4538;">
+      <div style="font-size:13px; font-weight:700; color:var(--yellow);">
         雙人生活日常情境對話（支援單句發音與整段自動連播）：
       </div>
       <div style="display:flex; gap:8px;">
@@ -631,10 +645,10 @@
   <div class="card-block practice-container" id="tabContentPractice" style="display:none;">
     <div class="practice-head">
       <div>
-        <h3 style="font-size:16px; font-weight:700; color:#2F4538;">聽力盲聽默寫訓練 (Dictation Challenge)</h3>
-        <p style="font-size:12px; color:var(--ink-soft); margin-top:2px;">按下喇叭聆聽句子，在輸入框中打出聽到的英文句子，檢驗耳朵敏銳度！</p>
+        <h3 style="font-size:16px; font-weight:700; color:#FFFFFF;">聽力盲聽默寫訓練 (Dictation Challenge)</h3>
+        <p style="font-size:12px; color:var(--text-cream); margin-top:2px;">按下喇叭聆聽句子，在輸入框中打出聽到的英文句子，檢驗耳朵敏銳度！</p>
       </div>
-      <div style="font-size:13px; font-weight:700; color:#B5842A; font-family:'Space Mono', monospace;" id="practiceCounter">
+      <div style="font-size:13px; font-weight:700; color:var(--yellow); font-family:'Space Mono', monospace;" id="practiceCounter">
         第 1 / 28 題
       </div>
     </div>
@@ -645,8 +659,8 @@
           🔊
         </button>
         <div>
-          <div style="font-size:12px; font-weight:700; color:#B5842A;">請仔細聆聽音檔並打出英文：</div>
-          <div style="font-size:13.5px; color:var(--ink-soft); margin-top:3px;" id="practiceZhHint">中文提示：...</div>
+          <div style="font-size:12px; font-weight:700; color:var(--yellow);">請仔細聆聽音檔並打出英文：</div>
+          <div style="font-size:13.5px; color:var(--text-cream); margin-top:3px;" id="practiceZhHint">中文提示：...</div>
         </div>
       </div>
     </div>
@@ -677,11 +691,13 @@
 <script>
   const UNITS = [{"id":1,"title":"Unit 1 認識新朋友","titleEn":"Meeting New Friends","icon":"👋","category":"社交生活","situationTitle":"去室友的朋友跨年派對","situationDescription":"跨年派對前在宿舍化妝準備，隨後到派對認識新朋友聊家鄉、科系與音樂愛好。","sentences":[{"id":1,"en":"You're coming to the party later tonight, right?","zh":"今晚你會來派對吧？"},{"id":2,"en":"Start getting ready.","zh":"開始準備（出門）。"},{"id":3,"en":"I literally just landed and got no fancy outfit.","zh":"我剛下飛機，根本沒有帶正式的衣服。"},{"id":4,"en":"No worries. / No biggies. / Don't worry about it. / It's okay.","zh":"別擔心。"},{"id":5,"en":"Nice meeting you. / Nice to meet you.","zh":"很高興認識你。"},{"id":6,"en":"My family lives 2 hours away.","zh":"我家人住在離這裡兩小時的地方。"},{"id":7,"en":"We moved here 10 years ago from Virginia.","zh":"我們十年前從維吉尼亞州搬到這裡。"},{"id":8,"en":"I've never been there.","zh":"我從沒去過那裡。"},{"id":9,"en":"I would like to visit one day.","zh":"我希望有一天能去那裡。"},{"id":10,"en":"There are a lot of museums and historical sites to visit.","zh":"那裡有很多博物館和歷史景點可以參觀。"},{"id":11,"en":"I'd imagine.","zh":"我想也是。"},{"id":12,"en":"Considering it's one of the oldest cities.","zh":"畢竟那是最古老的城市之一。"},{"id":13,"en":"What's your major?","zh":"你的主修是什麼？"},{"id":14,"en":"I am in Beasley School of Law.","zh":"我就讀於 Beasley 法學院。"},{"id":15,"en":"But I'm actually more interested in making music or playing pickleball.","zh":"但我其實更喜歡製作音樂或玩匹克球。"},{"id":16,"en":"I've always wanted to try pickleball.","zh":"我一直想打打看匹克球。"},{"id":17,"en":"It varies. / It depends.","zh":"看情況 / 不一定。"},{"id":18,"en":"I make mostly country and jazz music.","zh":"我主要是做鄉村音樂和爵士樂。"},{"id":19,"en":"What brought you back to business school?","zh":"你怎麼會想回商學院？"},{"id":20,"en":"Mostly I want to be an independent musician.","zh":"主要是因為我想當獨立音樂人。"},{"id":21,"en":"My father encouraged me to come back to school.","zh":"我父親鼓勵我回到學校。"},{"id":22,"en":"You have a wise dad.","zh":"妳有一位很有智慧的爸爸。"},{"id":23,"en":"I assume / suppose you are gonna practice law?","zh":"我猜你將來會當執業律師吧？"},{"id":24,"en":"I don't think that's gonna / going to happen.","zh":"我覺得應該不會。"},{"id":25,"en":"You should pursue / go after it.","zh":"你應該追求那個目標。"},{"id":26,"en":"Whatever it is that is true to your heart!","zh":"做妳真正熱愛的事情！"},{"id":27,"en":"Go grab some sliders and alcohol.","zh":"去拿點小漢堡和酒。"},{"id":28,"en":"I'll see you on the rooftop for the countdown later.","zh":"等會倒數時屋頂見喔！"}],"dialogue":[{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"Hey! You’re coming to the party later tonight, right?","zh":"嘿！今晚你會來派對吧？"},{"speaker":"Me","speakerZh":"我","en":"Oh yeah! What time does it start?","zh":"哦，當然！派對什麼時候開始？"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"At eight!","zh":"八點！"},{"speaker":"Me","speakerZh":"我","en":"Sweet. I’ll start getting ready.","zh":"太棒了！那我開始準備。"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"You can borrow my pink dress. I have two dresses and I think you will look great in the pink one!","zh":"你可以借我的粉色洋裝。我有兩件洋裝，我覺得你穿粉色那件會很好看！"},{"speaker":"Me","speakerZh":"我","en":"Awww that would be great since I literally just landed and got no fancy outfit.","zh":"哇，那太好了！因為我剛下飛機，根本沒有帶正式的衣服。"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"No worries! I got you, girl. Let’s start getting ready!","zh":"不用擔心！我幫你搞定，女孩～我們一起開始準備吧！"},{"speaker":"Jessica","speakerZh":"新朋友 Jessica","en":"So you’re Daisy’s new roomie, right?","zh":"所以妳是 Daisy 的新室友，對吧？"},{"speaker":"Me","speakerZh":"我","en":"Yeah, hi! Nice meeting you.","zh":"對啊，嗨！很高興認識妳。"},{"speaker":"Jessica","speakerZh":"新朋友 Jessica","en":"Hi, I’m Jessica. So… where are you from?","zh":"嗨，我是 Jessica。妳來自哪裡？"},{"speaker":"Me","speakerZh":"我","en":"I’m from Taiwan!","zh":"我來自台灣！"},{"speaker":"Jessica","speakerZh":"新朋友 Jessica","en":"Wow, that’s nice. I have a friend who’s also from Taiwan! Well, I’m from Philly, but my family lives 2 hours away and we moved here 10 years ago from Virginia.","zh":"哇，真棒！我有一個朋友也來自台灣！我來自費城，但我家人住在離這裡兩小時的地方，我們十年前從維吉尼亞搬到這裡。"},{"speaker":"Me","speakerZh":"我","en":"Sweet! I’ve never been there but I would like to visit one day!","zh":"太酷了！我從沒去過那裡，但我希望有一天能去看看！"},{"speaker":"Jessica","speakerZh":"新朋友 Jessica","en":"Yeah, for sure you should! There are a lot of museums and historical sites to visit.","zh":"妳一定要去！那裡有很多博物館和歷史景點可以參觀。"},{"speaker":"Me","speakerZh":"我","en":"I’d imagine, considering it’s one of the oldest cities. What’s your major?","zh":"我可以想像，畢竟那是最古老的城市之一。妳主修什麼？"},{"speaker":"Jessica","speakerZh":"新朋友 Jessica","en":"Nice! I’m in Fox Business School. But I’m actually more interested in making music or playing pickleball.","zh":"很棒！我在 Fox 商學院。但我其實更喜歡製作音樂或玩匹克球。"},{"speaker":"Me","speakerZh":"我","en":"I’ve always wanted to try pickleball! What kind of music do you make?","zh":"我一直想試試匹克球！妳做什麼類型的音樂？"},{"speaker":"Jessica","speakerZh":"新朋友 Jessica","en":"It varies. Mostly country and jazz. That’s a good thing! I’m gonna go grab some sliders and alcohol.","zh":"各種都有，主要是鄉村和爵士樂。我要去拿點迷你漢堡和酒。"},{"speaker":"Me","speakerZh":"我","en":"Aight. I’ll see you on the rooftop for the countdown later!","zh":"好啊。等會倒數時屋頂見！"}]},{"id":2,"title":"Unit 2 家庭對話","titleEn":"Family & Roommates","icon":"🏠","category":"家庭生活","situationTitle":"下課後跟室友聊天煮晚餐","situationDescription":"下課回家討論做家事分工（洗碗、倒垃圾）、煮晚餐、水電工報修與成年後的壓力。","sentences":[{"id":1,"en":"How's your day been? / How are you today?","zh":"你今天過得怎麼樣？"},{"id":2,"en":"I'm a bit under the weather / unwell. / I'm not feeling well / too great.","zh":"我身體有點不太舒服。"},{"id":3,"en":"I'm just gonna / going to take some Theraflu.","zh":"我打算服用一些感冒藥水。"},{"id":4,"en":"I have some Theraflu left in the kitchen cabinets.","zh":"我廚房櫃子裡還有一些感冒藥水。"},{"id":5,"en":"I went to the (running) track with Mia earlier.","zh":"我剛剛跟Mia去操場跑步。"},{"id":6,"en":"One second / One moment / Hold on / Hold up / Wait.","zh":"等一下。"},{"id":7,"en":"I met up with Charles at the lab.","zh":"我在實驗室跟 Charles碰面。"},{"id":8,"en":"We studied for the final (exam).","zh":"我們有一起讀書準備期末考。"},{"id":9,"en":"It's been a long day.","zh":"今天真是漫長的一天。（發生好多事很疲憊）"},{"id":10,"en":"I'll help with the dirty dishes while you make dinner!","zh":"我來幫忙洗碗，妳來做飯！"},{"id":11,"en":"Who is on trash duty?","zh":"今天是誰負責倒垃圾？"},{"id":12,"en":"Let's just divide up the chores.","zh":"我們可以分配一下家務。"},{"id":13,"en":"Take out the trash.","zh":"倒垃圾。"},{"id":14,"en":"I'll make us some spinach omelette.","zh":"我來做菠菜歐姆蛋。"},{"id":15,"en":"We'll have a pregame in the living room.","zh":"我們星期五出去前可以在客廳來場小酌。"},{"id":16,"en":"I was planning to switch up my room.","zh":"我打算那時候重新佈置房間。"},{"id":17,"en":"No biggies / No worries.","zh":"沒什麼大不了的。"},{"id":18,"en":"You do you.","zh":"做自己。"},{"id":19,"en":"The faucet's been acting up lately.","zh":"那水龍頭最近又出狀況了。"},{"id":20,"en":"Is it leaking again?","zh":"又漏水了嗎？"},{"id":21,"en":"Call the plumber.","zh":"打電話叫水電工。"},{"id":22,"en":"Adulting is hard.","zh":"長大了真的不容易。"},{"id":23,"en":"I feel you / I get you.","zh":"我懂你。"},{"id":24,"en":"On the bright side.","zh":"往好的方面想。"},{"id":25,"en":"Have a blast!","zh":"玩得開心！"}],"dialogue":[{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"Hey! How’s your day been?","zh":"嘿！今天過得怎麼樣？"},{"speaker":"Me","speakerZh":"我","en":"Just got back from my last class. What about you?","zh":"剛從最後一堂課回來。妳呢？"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"Ugh… I think I’m a bit under the weather. Nothing too serious though. I’m just gonna take some Theraflu.","zh":"唉……我身體有點不太舒服，但應該沒什麼大礙。我打算服用一些感冒藥水。"},{"speaker":"Me","speakerZh":"我","en":"Oh no, get well soon! I have some Theraflu left in the kitchen cabinets.","zh":"喔不，快點好起來！我廚房櫃子裡還有一些感冒藥水。"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"Yup, it’s been a long day. Let’s get cooking!","zh":"是啊，今天真是個漫長的一天。來一起做晚飯吧！"},{"speaker":"Me","speakerZh":"我","en":"Aight. I’ll help with the dirty dishes while you make dinner! Who’s on trash duty today?","zh":"好啊。我來幫忙洗碗，妳來做飯！今天是誰負責倒垃圾？"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"Not sure but let’s just divide up the chores. You’ll do the dishes and take out the trash, and I’ll make us some spinach omelette and baked chicken.","zh":"不確定，但我們可以分配一下家務。妳洗碗和倒垃圾，我來做菠菜歐姆蛋和烤雞。"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"Also, the faucet’s been acting up lately.","zh":"還有，那水龍頭最近又出狀況了。"},{"speaker":"Me","speakerZh":"我","en":"The faucet? Is it leaking again?","zh":"水龍頭？又漏水了嗎？"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"Yeah, we should call that plumber we used last time and ask him to fix it up.","zh":"對啊，我們應該打電話叫上次那個水管工來修一下。"},{"speaker":"Me","speakerZh":"我","en":"Adulting is hard, Daisy!","zh":"長大了真的不容易，Daisy！"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"I feel you. On the bright side, we will have a blast at the party on Friday.","zh":"我懂你。往好的方面想，我們星期五派對會玩得很開心。"},{"speaker":"Me","speakerZh":"我","en":"Can’t wait!","zh":"等不及了！"}]},{"id":3,"title":"Unit 3 餐廳點餐","titleEn":"Ordering Food","icon":"🌯","category":"餐飲飲食","situationTitle":"去Chipotle點晚餐＋去Insomnia Cookies買點心","situationDescription":"點選墨西哥捲餅碗（選飯、豆子、肉類配料、加酪梨醬）、刷卡結帳、以及烘焙店買一盒熱餅乾。","sentences":[{"id":1,"en":"What can I get started for you today?","zh":"今天想要吃什麼？"},{"id":2,"en":"Can I get a bowl?","zh":"我要一份碗裝的餐點。"},{"id":3,"en":"You got it.","zh":"好的馬上做。"},{"id":4,"en":"What kind of rice / beans / protein?","zh":"你要什麼飯 / 豆子 / 蛋白質？"},{"id":5,"en":"There's chicken, steak, carnitas, sofritas, and grilled veggies.","zh":"我們有雞肉、牛排、燉豬肉、素肉和烤蔬菜。"},{"id":6,"en":"Can you do chicken and veggies, half and half?","zh":"可以雞肉和烤蔬菜各一半嗎？"},{"id":7,"en":"Any salsa? Mild, medium, or hot?","zh":"要哪種莎莎醬？溫和、中辣還是辣？"},{"id":8,"en":"Guac is extra.","zh":"酪梨醬需要額外收費。"},{"id":9,"en":"Any chips and guac?","zh":"要加玉米片和酪梨醬嗎？"},{"id":10,"en":"Cash or card?","zh":"付現金還是刷卡？"},{"id":11,"en":"You're all set.","zh":"完成囉！"},{"id":12,"en":"Have a good one / day!","zh":"祝你今天愉快！"},{"id":13,"en":"You as well!","zh":"你也是！"},{"id":14,"en":"Which flavor is the most popular?","zh":"哪一個口味最受歡迎？"},{"id":15,"en":"Chocolate peanut butter cup and triple chocolate.","zh":"巧克力花生醬杯和三重巧克力。"},{"id":16,"en":"Can I get a box of six?","zh":"我可以要六個裝一盒的嗎？"},{"id":17,"en":"Let me get those packed for you.","zh":"我幫你打包。"},{"id":18,"en":"Alrighty / Alright.","zh":"好的。"},{"id":19,"en":"Did you need the receipt printed?","zh":"需要列印收據嗎？"},{"id":20,"en":"Be out in just a second.","zh":"馬上為你送上！"}],"dialogue":[{"speaker":"Chipotle Staff","speakerZh":"店員","en":"What can I get started for you today?","zh":"今天想點什麼呢？"},{"speaker":"Me","speakerZh":"我","en":"Can I get a bowl? Brown rice and black beans.","zh":"我要一份碗裝的餐點，糙米飯和黑豆。"},{"speaker":"Chipotle Staff","speakerZh":"店員","en":"And what kind of protein? There’s chicken, steak, carnitas, sofritas, grilled veggies…","zh":"那蛋白質呢？有雞肉、牛排、卡尼塔豬肉、素食豆腐和烤蔬菜。"},{"speaker":"Me","speakerZh":"我","en":"Can you do chicken and veggies, half and half?","zh":"可以雞肉和蔬菜各一半嗎？"},{"speaker":"Chipotle Staff","speakerZh":"店員","en":"I think so, yes of course! Any salsa? Mild, medium, or hot?","zh":"可以的，當然！要哪種莎莎醬？溫和、中辣還是辣？"},{"speaker":"Me","speakerZh":"我","en":"The green one looks good to me. Corn, cheese, and guac.","zh":"我覺得綠色的不錯。玉米、起司和酪梨醬。"},{"speaker":"Chipotle Staff","speakerZh":"店員","en":"Guac is extra. Is that okay? Your total is $18.50 today. Cash or card?","zh":"酪梨醬要額外加錢，可以嗎？今天總共是 $18.50，付現還是刷卡？"},{"speaker":"Me","speakerZh":"我","en":"Card. You’re all set? You as well!","zh":"刷卡。祝你今天愉快！你也是！"}]},{"id":4,"title":"Unit 4 購物與結帳","titleEn":"Shopping & Retail","icon":"👗","category":"休閒購物","situationTitle":"去Forever21買衣服","situationDescription":"進店閒逛、找試衣間試穿洋裝、詢問米色款式、無袖/長裙版型與櫃台刷卡結帳。","sentences":[{"id":1,"en":"Are you looking for anything specific / particular today?","zh":"你今天有特別想找什麼嗎？"},{"id":2,"en":"Just browsing / looking.","zh":"只是隨便看看。"},{"id":3,"en":"Let me know if you need help with anything.","zh":"如果需要幫忙隨時告訴我。"},{"id":4,"en":"Where is the fitting room?","zh":"請問試衣間在哪裡？"},{"id":5,"en":"Straight down the hallway to the right.","zh":"沿著走廊直走，在右邊。"},{"id":6,"en":"I'll go try it on.","zh":"我去試穿看看。"},{"id":7,"en":"I was hoping it comes in beige.","zh":"我真希望有米色的款式。"},{"id":8,"en":"Do you have this dress in a different color?","zh":"這件洋裝有其他顏色嗎？"},{"id":9,"en":"I can help you with that.","zh":"我可以幫你看看。"},{"id":10,"en":"It is available online and in store.","zh":"這款線上和門市都可以買到。"},{"id":11,"en":"It comes in these colors.","zh":"有這些顏色。"},{"id":12,"en":"Are you looking for a going out dress or a (more) casual dress?","zh":"妳是想找正式外出穿的洋裝還是比較休閒的洋裝？"},{"id":13,"en":"Do you want a maxi dress like this one or midi or mini?","zh":"你想要像這樣的長裙，還是中長裙或短裙？"},{"id":14,"en":"Sleeveless, shortsleeves, longsleeves, strapless, or no preference?","zh":"（袖子要）無袖、短袖、長袖、平肩還是沒特別偏好？"},{"id":15,"en":"One is a sleeveless denim maxi with the buttons.","zh":"第一件是無袖牛仔長裙，帶有鈕扣設計。"},{"id":16,"en":"Where is the register? / Where do I check out / pay?","zh":"收銀台在哪裡？"},{"id":17,"en":"Are you a member with us?","zh":"您是我們的會員嗎？"},{"id":18,"en":"Your total's gonna be $87.63 today.","zh":"今天的總金額是87.63美金。"},{"id":19,"en":"Cash or card?","zh":"你要支付現金還是刷卡？"},{"id":20,"en":"When you're ready, it'll ask you a question on the screen.","zh":"等您準備好後，螢幕上會有問題讓您回答。"},{"id":21,"en":"Did you need a bag?","zh":"需要袋子嗎？"},{"id":22,"en":"Do you want a copy of your receipt? / Would you like a receipt?","zh":"需要收據嗎？"}],"dialogue":[{"speaker":"Forever staff","speakerZh":"店員","en":"Hi, welcome! Are you looking for anything specific today?","zh":"嗨，歡迎光臨！今天有特別想找的東西嗎？"},{"speaker":"Me","speakerZh":"我","en":"No, I’m just browsing. Excuse me, where is the fitting room?","zh":"沒有，我只是隨便看看。不好意思，請問試衣間在哪裡？"},{"speaker":"Forever staff","speakerZh":"店員","en":"Straight down the hall way to the right.","zh":"一直走過走廊，然後右轉。"},{"speaker":"Me","speakerZh":"我","en":"Excuse me, do you have this dress in a different color? I was hoping it comes in beige.","zh":"不好意思，這件有其他顏色嗎？我真希望有米色的。"},{"speaker":"Forever staff","speakerZh":"店員","en":"We’re looking at a beige strapless midi dress with a satin texture. I’ll bring it to the fitting room for you.","zh":"我們看這款米色中長平肩緞面洋裝，我幫您送去試衣間。"},{"speaker":"Me","speakerZh":"我","en":"I’ll take this one. Where is the register… Ah found it.","zh":"我要這件。收銀台在哪裡……啊找到了。"},{"speaker":"Forever staff","speakerZh":"店員","en":"Your total’s gonna be $87.63 today. Cash or card? Did you need a bag?","zh":"今天的總金額是87.63美元。你要付現還是刷卡？需要袋子嗎？"},{"speaker":"Me","speakerZh":"我","en":"Card, and yes please. Thanks, you as well!","zh":"刷卡，要袋子，謝謝，祝您也有美好一天！"}]},{"id":5,"title":"Unit 5 住家維修","titleEn":"Home Repairs & AC","icon":"🔧","category":"居家生活","situationTitle":"家裡冷氣壞掉叫修","situationDescription":"夏天冷氣壓縮機故障、冷媒不足、技工開出分項估價單與考慮長遠換新冷氣。","sentences":[{"id":1,"en":"I'm calling because my AC is not working.","zh":"我打電話來是因為我的冷氣壞了。"},{"id":2,"en":"I was wondering when you guys can come out and check it.","zh":"我想詢問你們什麼時候能來檢查一下？"},{"id":3,"en":"It hasn't turned on since yesterday.","zh":"它從昨天開始就沒有再啟動。"},{"id":4,"en":"We'll send him in / out on Monday.","zh":"我們會安排他週一過去。"},{"id":5,"en":"The (AC) unit is out here in the backyard.","zh":"（冷氣）設備在後院這邊。"},{"id":6,"en":"The compressor blew out and you are also low on refrigerant.","zh":"壓縮機壞掉了，而且你的冷媒也快不足了。"},{"id":7,"en":"The total before taxes is gonna be $5,325.25.","zh":"稅前價格總共是5,325.25美金。"},{"id":8,"en":"I listed all these problems out on an itemized estimate / statement.","zh":"我把所有問題都列在一份有細項的估價單上了。"},{"id":9,"en":"Holy moly!","zh":"天啊！"},{"id":10,"en":"It's gonna run into a lot of problems.","zh":"未來可能會有很多問題。"},{"id":11,"en":"I would recommend possibly looking at replacing your (AC) unit.","zh":"我建議你考慮更換（冷氣）設備。"},{"id":12,"en":"In the long run.","zh":"從長遠來看。"},{"id":13,"en":"I will send you this estimate for repairing your current (AC) unit.","zh":"我會把修理目前（冷氣）設備的估價單傳給你。"},{"id":14,"en":"I also noticed the thermostat seems off.","zh":"我也發現恆溫器好像不正常。"},{"id":15,"en":"It's not reading the temperature correctly.","zh":"因為它沒有顯示正確的溫度。"},{"id":16,"en":"Thanks for stopping by!","zh":"謝謝你過來一趟！"},{"id":17,"en":"Anytime / You're welcome!","zh":"不客氣！隨時為您服務！"}],"dialogue":[{"speaker":"AC Staff","speakerZh":"客服","en":"Hello this is air conditioning USA. How can I help you?","zh":"哈囉，這裡是美國冷氣公司。請問我可以如何協助你？"},{"speaker":"Me","speakerZh":"我","en":"Hi! I’m calling because my AC is not working. It hasn’t turned on since yesterday.","zh":"嗨！我打電話來是因為我的冷氣壞了，從昨天開始就沒再啟動。"},{"speaker":"Technician","speakerZh":"技師","en":"The unit is out here. Looks like the compressor blew out and you are low on refrigerant.","zh":"設備在後院。看起來壓縮機壞了，而且冷媒不足。"},{"speaker":"Technician","speakerZh":"技師","en":"The total before taxes is gonna be $5,325.25. Honestly, replacing it is better in the long run.","zh":"稅前估價是 5,325.25 美元。老實說長遠來看換新機更好。"},{"speaker":"Me","speakerZh":"我","en":"Holy moly… that’s expensive! I also noticed the thermostat seems off.","zh":"天啊太貴了！我也注意到恆溫器怪怪的。"},{"speaker":"Technician","speakerZh":"技師","en":"I will send you an itemized estimate with options. Thanks for stopping by! Anytime!","zh":"我會把分項估價單寄給妳。謝謝妳！不客氣！"}]},{"id":6,"title":"Unit 6 旅行與住宿","titleEn":"Travel & Accommodation","icon":"✈️","category":"出國旅遊","situationTitle":"第一次到洛杉磯機場＋旅館 check in","situationDescription":"入境海關問答（目的、天數、住處地址、現金）、飯店櫃台辦理入住、海景套房升級與房卡。","sentences":[{"id":1,"en":"What are you here for?","zh":"你來這裡的目的是什麼？"},{"id":2,"en":"I'm here for a vacation.","zh":"我來這裡渡假。"},{"id":3,"en":"Where are you staying?","zh":"你要住在哪裡？"},{"id":4,"en":"I'm staying at a hotel for two nights then staying with my old coworker.","zh":"我會先住兩晚飯店，然後住在我的老同事家。"},{"id":5,"en":"The address of the hotel is 216 Los Angeles Blvd.","zh":"飯店的地址是洛杉磯大道216號。"},{"id":6,"en":"How long do you plan to stay here?","zh":"你預計在這裡待多久？"},{"id":7,"en":"In total 32 days.","zh":"總共32天。"},{"id":8,"en":"How much money are you bringing in cash?","zh":"你帶了多少現金？"},{"id":9,"en":"A little under $2,000.","zh":"不到 2,000 美金。"},{"id":10,"en":"No need to declare it.","zh":"不需要申報。"},{"id":11,"en":"What is your profession?","zh":"你的職業是什麼？"},{"id":12,"en":"I am a marketing manager for a tech company.","zh":"我是科技公司的行銷主管。"},{"id":13,"en":"You're all set!","zh":"都好了！"},{"id":14,"en":"Can I see the credit card that you used for your reservation?","zh":"我可以看一下您用來預訂的信用卡嗎？"},{"id":15,"en":"I was wondering if you have any suite upgrades available today?","zh":"我想問一下今天有套房升級的選項嗎？"},{"id":16,"en":"I upgraded you to an ocean view suite on the 33rd floor with a Jacuzzi.","zh":"我已經幫您升級到33樓有按摩浴缸的海景套房。"},{"id":17,"en":"Did you need one or two key cards?","zh":"你需要一張還是兩張房卡？"},{"id":18,"en":"What time does it open and close?","zh":"它幾點開放和關閉？（營業時間）"},{"id":19,"en":"There is a $20 per day resort fee.","zh":"每天有20美金的度假村費用。"},{"id":20,"en":"Enjoy your vacation!","zh":"祝您旅途愉快！"}],"dialogue":[{"speaker":"Custom","speakerZh":"海關官員","en":"What are you here for? Where are you staying?","zh":"你來這裡的目的是什麼？你要住在哪裡？"},{"speaker":"Me","speakerZh":"我","en":"I’m here for a vacation. I’m staying at a hotel for two nights then staying with my old coworker.","zh":"我來這裡度假，我會先住兩晚酒店，然後住老同事家。"},{"speaker":"Custom","speakerZh":"海關官員","en":"How much money are you bringing in cash? And what is your profession?","zh":"你帶了多少現金？您的職業是什麼？"},{"speaker":"Me","speakerZh":"我","en":"A little under $2,000. I am a marketing manager for a tech company.","zh":"不到2000美元。我是科技公司的行銷主管。"},{"speaker":"Hotel front desk","speakerZh":"櫃台經理","en":"Hi, checking in? So I upgraded you to an ocean view suite on the 33rd floor with a Jacuzzi!","zh":"您好，辦理入住嗎？我幫您升級到33樓帶按摩浴缸的海景套房！"},{"speaker":"Me","speakerZh":"我","en":"Oh, awesome! Two key cards please, and what time does the gym close?","zh":"太棒了！請給我兩張房卡，還有健身房幾點關閉？"},{"speaker":"Hotel front desk","speakerZh":"櫃台經理","en":"It opens daily from 6 in the morning til midnight. Enjoy your vacation!","zh":"每天早上6點到午夜12點開放。祝您旅途愉快！"}]},{"id":7,"title":"Unit 7 健康與醫療","titleEn":"Health & Medical Care","icon":"🏥","category":"健康醫療","situationTitle":"發燒拉肚子掛病求診","situationDescription":"前往急診 Urgent Care 掛號填表、向醫生描述發燒脫水與疑似腸胃炎症狀、給予用藥建議。","sentences":[{"id":1,"en":"What brings you here today?","zh":"今天哪裡不舒服？"},{"id":2,"en":"I think I have a fever.","zh":"我覺得我發燒了。"},{"id":3,"en":"I will need your (picture) id.","zh":"我需要您的身份證件。"},{"id":4,"en":"Date of birth?","zh":"出生日期？"},{"id":5,"en":"I also need the insurance card.","zh":"我也需要你的醫療保險卡。"},{"id":6,"en":"Fill out this top portion of the form, sign, and put down the date.","zh":"請填寫表格上半部，簽名並填上日期。"},{"id":7,"en":"Take a seat there and the doctor will call you.","zh":"請在那邊坐一下，醫生會叫您。"},{"id":8,"en":"I've been having a fever since yesterday, diarrhea too.","zh":"我從昨天開始發燒，還有拉肚子。"},{"id":9,"en":"At that point, I hadn't eaten anything for 30 hours.","zh":"當時我已經大概30個小時沒吃東西了。"},{"id":10,"en":"I started getting chills.","zh":"我開始發冷。"},{"id":11,"en":"Any exposure to someone with a flu?","zh":"你是否有接觸有流感的人？"},{"id":12,"en":"You're negative for covid, and also negative for the flu.","zh":"你的 COVID 和流感檢測結果都是陰性的。"},{"id":13,"en":"Is it associated with anything that you ate?","zh":"會不會是跟你吃的東西有關？"},{"id":14,"en":"I just had some leftover pasta from a restaurant.","zh":"我只是吃了餐廳的義大利麵剩菜。"},{"id":15,"en":"Are you allergic to any medications?","zh":"你有對任何藥物過敏嗎？"},{"id":16,"en":"Your heart rate is a bit elevated.","zh":"你的心率有點偏高。"},{"id":17,"en":"Give them a stool sample.","zh":"給他們送糞便樣本。"},{"id":18,"en":"Chills and headaches are primarily caused by dehydration.","zh":"發冷和頭痛主要是因為脫水造成的。"},{"id":19,"en":"Try to stay away from spicy food, greasy food, and dairy.","zh":"盡量避免辛辣食物、油膩食物和乳製品。"},{"id":20,"en":"Electrolyte drinks will help you a lot. Feel better!","zh":"電解質飲料對你會有很大的幫助。希望你早日康復！"}],"dialogue":[{"speaker":"Receptionist","speakerZh":"櫃台","en":"Hi, what brings you here today? I will need your photo ID and insurance card.","zh":"您好今天哪裡不舒服？我需要看您的證件和保險卡。"},{"speaker":"Me","speakerZh":"我","en":"I think I have a fever and diarrhea since last night. I started getting chills.","zh":"我好像發燒拉肚子了，昨天開始發冷。"},{"speaker":"Doctor","speakerZh":"醫生","en":"Good news: you're negative for COVID and flu. Did you eat any leftover food?","zh":"好消息：流感與新冠都是陰性。妳最近有吃隔夜剩菜嗎？"},{"speaker":"Me","speakerZh":"我","en":"Yes, some leftover pasta. Not allergic to any medications.","zh":"有，吃了些剩義大利麵。我對藥物沒有過敏。"},{"speaker":"Doctor","speakerZh":"醫生","en":"Headaches and chills are from dehydration. Drink electrolyte drinks and avoid dairy. Feel better!","zh":"頭痛發冷主要來自脫水。多喝電解質水、別吃乳製品。祝早日康復！"}]},{"id":8,"title":"Unit 8 客訴與抱怨","titleEn":"Complaints & Support","icon":"🚗","category":"生活應急","situationTitle":"租車結果輪胎壞掉","situationDescription":"高速公路匝道前胎壓燈亮起，緊急致電租車客服尋求拖車救援、趕航班焦慮與賠償爭取。","sentences":[{"id":1,"en":"Hello. How can I help you?","zh":"喂，請問有什麼可以協助您的？"},{"id":2,"en":"I'm calling because the tire pressure light has been on.","zh":"我打電話是因為輪胎氣壓燈亮了。"},{"id":3,"en":"I did try to put air in the tires.","zh":"我有嘗試幫輪胎打氣。"},{"id":4,"en":"I didn't want to risk it on a 2-hour freeway drive.","zh":"我不想冒險開兩小時的高速公路。"},{"id":5,"en":"Who am I speaking to?","zh":"請問怎麼稱呼您？"},{"id":6,"en":"I apologize for the inconvenience.","zh":"很抱歉造成您的不便。"},{"id":7,"en":"We will send someone to tow your car away.","zh":"我們會派人去拖您的車。"},{"id":8,"en":"Where are you located? We are right down the ramp of a freeway.","zh":"您的位置在哪裡？我們就在高速公路出口匝道下方。"},{"id":9,"en":"I see a McDonald's across the street.","zh":"我看到對街有一家麥當勞。"},{"id":10,"en":"The tow truck is on the way.","zh":"拖車已經派遣過去了。"},{"id":11,"en":"Our flight is taking off in 4 hours.","zh":"我們的航班四個小時後就要起飛了。"},{"id":12,"en":"We were cutting it close.","zh":"我們時間已經很緊迫了。"},{"id":13,"en":"Will the cost be compensated?","zh":"你們會補償費用嗎？"},{"id":14,"en":"What would you suggest?","zh":"你建議怎麼做？"},{"id":15,"en":"I might have to miss my flight.","zh":"我可能會錯過我的航班。"},{"id":16,"en":"You can talk to the branch manager.","zh":"你可以和門市經理聯絡。"}],"dialogue":[{"speaker":"Customer Service","speakerZh":"租車客服","en":"Elephant Car Rental support. How can I help you?","zh":"這裡是租車客服，請問有什麼可以協助您的？"},{"speaker":"Me","speakerZh":"我","en":"The tire pressure light is on. I tried putting air but it's not working, and our flight leaves in 4 hours!","zh":"胎壓燈亮了，打氣也沒用，而且我們4小時後班機要起飛！"},{"speaker":"Customer Service","speakerZh":"租車客服","en":"The tow truck is on the way, arriving in 20 minutes. Where are you located?","zh":"拖車已出發約20分鐘抵達。請問您的確切位置？"},{"speaker":"Me","speakerZh":"我","en":"Down the freeway ramp across from McDonald's. Can you compensate for our Uber or hotel?","zh":"在高速匝道下麥當勞對面。你們可以補償我們叫Uber或住宿費嗎？"},{"speaker":"Customer Service","speakerZh":"租車客服","en":"Unfortunately we cannot authorize that from support, but you can speak to the branch manager.","zh":"很遺憾線上客服無法授權，但您可以向門市經理洽談。"}]},{"id":9,"title":"Unit 9 交朋友閒聊","titleEn":"Small Talk & Making Friends","icon":"🚇","category":"社交生活","situationTitle":"在地鐵上認識新朋友","situationDescription":"舊金山地鐵售票機前問路、聊素食茶葉進出口生意、邀約攀岩與交換 IG 帳號。","sentences":[{"id":1,"en":"Do you know how to use this ticket machine?","zh":"你知道怎麼用這個售票機嗎？"},{"id":2,"en":"So it's your first time here in SF?","zh":"所以這是你第一次來舊金山吧？"},{"id":3,"en":"I'm just in town for a conference tomorrow.","zh":"我來這裡參加一個明天的研討會。"},{"id":4,"en":"What do you do? / What got you into that?","zh":"你是做什麼工作的？是什麼讓你開始做這個的？"},{"id":5,"en":"I am vegan so I enjoy cooking a lot.","zh":"我吃素，所以我很喜歡煮飯。"},{"id":6,"en":"I got so hooked on this tea.","zh":"我迷上了這種茶。"},{"id":7,"en":"It just went from there.","zh":"事情就這樣發展起來了。"},{"id":8,"en":"My stop is next. What a story!","zh":"我下一站就到了。真是個精彩的故事呀！"},{"id":9,"en":"I'm gonna meet up with my friends to go rock climbing later.","zh":"我待會要和朋友一起去攀岩。"},{"id":10,"en":"Do you wanna join us? I'll text you.","zh":"你要不要加入我們？我可以等下傳訊息給你。"},{"id":11,"en":"You can take my Instagram.","zh":"你可以加我的 Instagram。"},{"id":12,"en":"Cool beans! Take care and nice meeting you!","zh":"好喔好喔！保重，很高興認識你！"}],"dialogue":[{"speaker":"Me","speakerZh":"我","en":"Excuse me, do you know how to use this ticket machine?","zh":"不好意思，你知道怎麼用這個售票機嗎？"},{"speaker":"Sam","speakerZh":"新朋友 Sam","en":"Yeah, just tap your card here. First time in San Francisco?","zh":"沒問題，刷這裡即可。第一次來舊金山嗎？"},{"speaker":"Me","speakerZh":"我","en":"Yup, in town for a conference. I'm a teacher. What do you do?","zh":"對，來參加研討會。我是老師，你呢？"},{"speaker":"Sam","speakerZh":"新朋友 Sam","en":"I import African tea! I got hooked on it because I'm vegan. Hey, wanna go rock climbing later?","zh":"我做非洲茶葉進出口！因為吃素愛上它。對了待會要一起攀岩嗎？"},{"speaker":"Me","speakerZh":"我","en":"Sounds fun! You can take my Instagram. My stop is next!","zh":"聽起來很酷！你可以加我 IG，我下一站到了！"}]},{"id":10,"title":"Unit 10 心靈對話","titleEn":"Heart-to-Heart Talk","icon":"☕","category":"情感陪伴","situationTitle":"室友說想跟男友分手","situationDescription":"客廳深夜心靈傾訴、失戀療傷安慰、價值觀不合與「天涯何處無芳草」鼓勵。","sentences":[{"id":1,"en":"Is everything alright?","zh":"一切都還好嗎？"},{"id":2,"en":"My boyfriend and I just broke up.","zh":"我和我男朋友剛分手了。"},{"id":3,"en":"I'm still processing everything too.","zh":"我也還在沉澱這一切。"},{"id":4,"en":"I'm sorry to hear that. / Take all the time you need.","zh":"我很遺憾聽到這個消息 / 給自己足夠的時間修復。"},{"id":5,"en":"We were not on the same page.","zh":"我們在很多事情上都沒有共同的想法。"},{"id":6,"en":"If you think it was the right thing to do, it's for the better.","zh":"如果你認為這是正確的決定，這樣對未來比較好。"},{"id":7,"en":"There are plenty of fish in the sea.","zh":"天涯何處無芳草。（機會還很多）"},{"id":8,"en":"Get out and mingle!","zh":"出去和人交際吧！"},{"id":9,"en":"The silver lining is that it gives you time to focus on yourself.","zh":"好處是這讓你有時間專注在自己身上。"},{"id":10,"en":"Sometimes endings are blessings in disguise.","zh":"有時候結束其實是化妝的祝福。"},{"id":11,"en":"She'll come out of it.","zh":"她會走出來的。（從悲傷中恢復）"},{"id":12,"en":"Is there anything I can do for you? Maybe movie night tonight?","zh":"有什麼我可以幫忙的嗎？要不要今晚來個電影之夜？"}],"dialogue":[{"speaker":"Me","speakerZh":"我","en":"Hey Daisy! Why are you so quiet today? Is everything alright?","zh":"嘿 Daisy！今天怎麼這麼安靜？還好嗎？"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"My boyfriend and I broke up. We were just not on the same page anymore.","zh":"我和男友分手了。我們很多想法已經不在同一個頻率上了。"},{"speaker":"Me","speakerZh":"我","en":"Take your time to heal. Plus, there are plenty of fish in the sea! It's a blessing in disguise.","zh":"慢慢療傷，天涯何處無芳草！有時候結束是化妝的祝福。"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"Thanks, girl! Maybe movie night tonight with popcorn?","zh":"謝謝妳！今晚要不要吃爆米花看電影？"},{"speaker":"Me","speakerZh":"我","en":"I'll get the popcorn ready! You're the best!","zh":"我來準備爆米花！妳最棒了！"}]},{"id":11,"title":"Unit 11 開玩笑幽默","titleEn":"Humor & Blind Date","icon":"🍕","category":"社交娛樂","situationTitle":"嘗試網路約會","situationDescription":"初次相親約會聊天、彼此自嘲破冰、聊養貓（燕尾服貓）、神經科學與 AA 制分帳。","sentences":[{"id":1,"en":"You are taller than I imagined.","zh":"你比我想像的還要高。"},{"id":2,"en":"I'll take that as a compliment!","zh":"我就當這是一個讚美了！"},{"id":3,"en":"Excuse me. We're ready to order!","zh":"不好意思，我們可以點餐了！"},{"id":4,"en":"I hope I'm not too nerdy.","zh":"我希望我不會讓你覺得我太書呆子。"},{"id":5,"en":"Does that make you an expert mind reader?","zh":"那表示你會讀心術嗎？"},{"id":6,"en":"What's your favorite karaoke song? This is how I judge people.","zh":"你最愛的KTV歌曲是什麼？這是我判斷人的方式。"},{"id":7,"en":"My cat really seemed to need emotional support.","zh":"我家貓真的看起來很需要我陪。"},{"id":8,"en":"He's a tuxedo. Shut up! They are majestic!","zh":"他是燕尾服貓。別鬧了！牠們好漂亮啊！"},{"id":9,"en":"I just want to put it out there. I am very open-minded.","zh":"我只是想先說清楚，我是心態很開放的人。"},{"id":10,"en":"I had fun! We'll split the check.","zh":"我玩得很開心！我們帳單分開付（各付各的）。"}],"dialogue":[{"speaker":"Anthony","speakerZh":"約會對象 Anthony","en":"Hey! You are taller than I imagined. Ready for some Chinese food?","zh":"嗨！妳比我想像的還高。準備吃中餐了嗎？"},{"speaker":"Me","speakerZh":"我","en":"I'll take that as a compliment! Let's get chicken potstickers and spring rolls.","zh":"我就當成讚美囉！先來點鍋貼和春捲吧。"},{"speaker":"Anthony","speakerZh":"約會對象 Anthony","en":"I study neuroscience. Does that make me too nerdy? What's your karaoke song?","zh":"我讀神經科學，會太書呆子嗎？妳最愛的KTV歌曲是什麼？"},{"speaker":"Me","speakerZh":"我","en":"Haha, I got two cats at home. Look, I have to meet my friends in 30 mins, we'll split the check?","zh":"我家有兩隻貓。對了我等會有朋友聚會，我們帳單各自付吧？"},{"speaker":"Anthony","speakerZh":"約會對象 Anthony","en":"Sure thing! Enjoy your night!","zh":"沒問題！祝妳今晚愉快！"}]},{"id":12,"title":"Unit 12 生活分享與邀約","titleEn":"Life Updates & Invites","icon":"🗓️","category":"日常生活","situationTitle":"跟室友的週五閒聊與邀約","situationDescription":"聊論文進度、下班搭車塞車買外帶、朋友邀約週末去海灘爬山、禮貌委婉拒絕邀約（Take a rain check）。","sentences":[{"id":1,"en":"How was work? / How was school?","zh":"工作如何？ / 學校怎麼樣？"},{"id":2,"en":"I had lunch late because I was in a meeting.","zh":"我午餐吃得比較晚，因為在開會。"},{"id":3,"en":"The train ran late so it took me extra long to get back.","zh":"火車延誤了，所以我花了更長的時間才回來。"},{"id":4,"en":"I finally handed in my essays.","zh":"我終於交了論文報告。"},{"id":5,"en":"What is your plan for this weekend?","zh":"你週末有什麼計劃嗎？"},{"id":6,"en":"We're going on a hike tomorrow. Would you like to come?","zh":"我們明天要去爬山。你想一起來嗎？"},{"id":7,"en":"If you're free, you should come hang with us!","zh":"如果你有空，你應該一起加入我們！"},{"id":8,"en":"Thanks for inviting me but I'm going to have to take a rain check this time.","zh":"感謝你的邀請，但這次我得改天再跟你約（婉拒）。"},{"id":9,"en":"I would love to but I have to get this essay turned in tomorrow.","zh":"我很想去，但我明天得交這篇論文。"},{"id":10,"en":"I'm so sorry but I won't be able to make it this time. Have fun!","zh":"非常抱歉，但這次我沒辦法參加。祝你們玩得開心！"}],"dialogue":[{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"How was school? Did you hand in the paper?","zh":"今天上課如何？論文交了嗎？"},{"speaker":"Me","speakerZh":"我","en":"Finally handed it in! But train ran late so it took forever.","zh":"終於交了！但火車大誤點花了好久才回家。"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"We are going to the beach tomorrow. Wanna join us?","zh":"我們明天要去海邊，要一起來嗎？"},{"speaker":"Me","speakerZh":"我","en":"I'd love to, but I have another deadline tomorrow so I'll take a rain check!","zh":"超想去，但我明天還有另一個報告要交，這次先改天囉！"}]},{"id":13,"title":"Unit 13 工作與面試","titleEn":"Job Interview & Career","icon":"💼","category":"職場專業","situationTitle":"去外商應徵行銷主管","situationDescription":"外商行銷經理面試（自我介紹、Amazon 廣告活動經驗、換跑道動機、薪資期待與 401k 福利）。","sentences":[{"id":1,"en":"You must be Susan!","zh":"你就是蘇珊吧！"},{"id":2,"en":"We'll learn more about your professional experience.","zh":"我們會更深入了解你的專業經驗。"},{"id":3,"en":"Can you briefly tell me more about yourself?","zh":"可以簡單介紹一下你自己嗎？"},{"id":4,"en":"My main responsibilities include monitoring paid ad campaigns on Amazon.","zh":"我的主要工作包括監控亞馬遜上的付費廣告活動。"},{"id":5,"en":"Can you share an example of a marketing campaign you worked on?","zh":"能分享一個你曾做的行銷活動案例嗎？"},{"id":6,"en":"A Black Friday sales campaign. We hit that target.","zh":"一個黑色星期五促銷活動，我們達成了那個目標。"},{"id":7,"en":"How will you add value to our company in the first 90 days if you are hired?","zh":"如果你被錄取，在前90天內如何為我們公司帶來價值？"},{"id":8,"en":"What are your salary expectations?","zh":"你的期待薪資是多少？"},{"id":9,"en":"Based on my last job, I am looking at a salary of $85,000.","zh":"根據我上一份工作的薪資，我希望薪資能在 85,000 美元左右。"},{"id":10,"en":"Our benefits include 3 insurances: Medical, dental, and eye care.","zh":"我們的福利包括三種保險：醫療、牙科和眼部保健。"},{"id":11,"en":"We also include 401k and match up employee contributions up to 3%.","zh":"我們有 401k 福利，並提供至多 3% 的員工自付對等撥提。"},{"id":12,"en":"Every Tuesday, we have Lunch and Learn. We will be in touch through email.","zh":"每週二我們有「午餐與學習」活動。我們會透過 Email 與您保持聯繫。"}],"dialogue":[{"speaker":"Interviewer Susan","speakerZh":"面試官 Susan","en":"Hi! Can you briefly tell me more about yourself?","zh":"嗨！可以簡單介紹一下你自己嗎？"},{"speaker":"Me","speakerZh":"我","en":"For sure. In the past 3 years, I worked as a marketing manager monitoring ad campaigns on Amazon and Google.","zh":"當然，過去三年我擔任行銷經理，負責監控亞馬遜與Google的廣告活動。"},{"speaker":"Interviewer Susan","speakerZh":"面試官 Susan","en":"What are your salary expectations?","zh":"最後，你的期待薪資是多少？"},{"speaker":"Me","speakerZh":"我","en":"Based on my last job, I am looking at a salary of $85,000. I'm open to discussion.","zh":"根據我上一份工作的職責，我期待在 85,000 美元左右，抱持開放討論態度。"},{"speaker":"Interviewer Susan","speakerZh":"面試官 Susan","en":"Everything sounds good. We will be in touch through email!","zh":"聽起來都很不錯，我們後續會通過 Email 與您聯繫！"}]},{"id":14,"title":"Unit 14 工作閒聊","titleEn":"Water Cooler Chit-Chat","icon":"☕","category":"職場日常","situationTitle":"跟同事在洗手間與茶水間閒聊","situationDescription":"聊週末帶小孩去南瓜園、看道奇隊棒球比賽、養寵物與養育孩子的甜蜜混亂。","sentences":[{"id":1,"en":"Good to see you! How's your weekend?","zh":"很高興見到你！你的週末過得怎麼樣？"},{"id":2,"en":"Can you believe how cold / hot it is outside today?","zh":"你敢相信今天外面有多冷 / 多熱嗎？"},{"id":3,"en":"I took my kids to a pumpkin patch.","zh":"我帶我的孩子們去南瓜園玩。"},{"id":4,"en":"They were not behaving well. You're doing your best.","zh":"他們不太聽話。你已經盡力了。"},{"id":5,"en":"Did you catch the Dodgers game last night?","zh":"你昨晚有看道奇隊的比賽嗎？"},{"id":6,"en":"I'm not a big baseball fan.","zh":"我不算是棒球迷。"},{"id":7,"en":"Parenting is a blessing even if at times it's chaotic.","zh":"養育孩子是一個祝福，即使有時候會很混亂。"},{"id":8,"en":"I should've just gotten another dog.","zh":"當初早知道我應該再養一隻狗的。"},{"id":9,"en":"Before you know it, they'll be all grown up and out of the house.","zh":"轉眼之間，他們就長大然後搬出家裡了。"},{"id":10,"en":"No kids, no stress. Enjoy it while you can!","zh":"沒有小孩就沒有壓力，趁還能享受的時候好好享受吧！"}],"dialogue":[{"speaker":"Coworker Karen","speakerZh":"同事 Karen","en":"Hey! Can you believe how freezing it is outside today?","zh":"嗨！妳敢相信今天外面有多冰冷嗎？"},{"speaker":"Me","speakerZh":"我","en":"I know! Did you do anything fun with your kids over the weekend?","zh":"真的！妳週末有帶孩子們去哪裡玩嗎？"},{"speaker":"Coworker Karen","speakerZh":"同事 Karen","en":"Took them to a pumpkin patch, but they were acting crazy. Sometimes I think I should have gotten a dog!","zh":"帶去南瓜園，但吵翻天了。有時候真覺得當初養狗就好！"},{"speaker":"Me","speakerZh":"我","en":"Haha! Parenting is a blessing even if it's chaotic. Enjoy it while you can!","zh":"哈哈！養孩子雖然混亂但也是祝福，好好享受吧！"}]},{"id":15,"title":"Unit 15 新聞時事探討","titleEn":"News & Current Affairs","icon":"📰","category":"社會議題","situationTitle":"跟室友看電視聊新聞與通膨","situationDescription":"聊物價通膨飆升（汽油加滿變貴）、選舉民調、媒體聳動報導與華爾街房市飆漲。","sentences":[{"id":1,"en":"Just a little down in the dumps.","zh":"只是有點情緒低落 / 心情沮喪。"},{"id":2,"en":"Prices have been skyrocketing.","zh":"物價一直飆升。"},{"id":3,"en":"It used to cost 20 dollars to fill up.","zh":"以前加滿油箱只要 20 美元。"},{"id":4,"en":"I was looking at the polls.","zh":"我剛剛在看民調 / 調查問卷。"},{"id":5,"en":"It will have a negative impact on the economy.","zh":"這會對經濟產生負面影響。"},{"id":6,"en":"Most of it is not even objective news reporting, it's just sensationalism.","zh":"大多數根本不是客觀新聞報導，只是聳動煽情。"},{"id":7,"en":"You are only bringing yourself down by reading up on this stuff.","zh":"你光是讀這些東西，只是讓自己心情更低落。"},{"id":8,"en":"Look at the housing market. Prices have gone up three times.","zh":"看看房地產市場，房價都漲了三倍。"},{"id":9,"en":"Caught red-handed.","zh":"當場被抓包（做壞事或尷尬時）。"},{"id":10,"en":"How about we head out and grab a coffee? My treat!","zh":"我們出去喝杯咖啡怎麼樣？我請客！"}],"dialogue":[{"speaker":"Roommate Marry","speakerZh":"室友 Marry","en":"I'm just so down in the dumps looking at the news and gas prices.","zh":"看新聞和油價飆漲，心情真的好沮喪。"},{"speaker":"Me","speakerZh":"我","en":"Watching too much news will only make you depressed. Most of it is pure sensationalism.","zh":"看太多新聞只會讓妳憂鬱，大部分都是聳動報導。"},{"speaker":"Roommate Marry","speakerZh":"室友 Marry","en":"True. You seem to know a lot about housing prices though!","zh":"也是。不過妳好像對房價也很了解嘛！"},{"speaker":"Me","speakerZh":"我","en":"Oops... caught red-handed! Tell you what, let's grab coffee. My treat!","zh":"哎呀被抓包了！這樣吧，我們去買杯咖啡，我請客！"}]},{"id":16,"title":"Unit 16 價值觀傳遞","titleEn":"Values & Opinions","icon":"🎬","category":"深度思辨","situationTitle":"跟室友聊童年老卡通與文化敏感性","situationDescription":"聊童年懷舊卡通電影前的免責警告標語、政治正確（Politically Correct）與人際待人禮貌。","sentences":[{"id":1,"en":"What has brought this on?","zh":"怎麼突然這麼說？"},{"id":2,"en":"I am feeling gloomy so I just lay back.","zh":"我心情很低落，所以我就放鬆躺著休息。"},{"id":3,"en":"When I was a young girl, those movies were my world.","zh":"當我還是小女孩時，那些電影曾經是我的全世界。"},{"id":4,"en":"This program contains disrespectful depictions of culture.","zh":"本節目包含對文化不尊重的描繪（警告標語）。"},{"id":5,"en":"Isn't that a little bit over the top?","zh":"這是不是有點太誇張了？"},{"id":6,"en":"It takes me away from everything.","zh":"它讓我暫時逃離所有現實與壓力。"},{"id":7,"en":"The very term 'being politically correct' started in America.","zh":"「政治正確」這個詞本來就是從美國開始的。"},{"id":8,"en":"In the rest of the world, it is merely known as being nice and polite.","zh":"在世界其他地方，它就只是待人親切有禮貌而已。"},{"id":9,"en":"Manners are everything!","zh":"禮貌就是一切！"},{"id":10,"en":"The world is hiding its head in the sand.","zh":"世界卻選擇把頭埋在沙子裡（鴕鳥心態，視而不見）。"}],"dialogue":[{"speaker":"Joanna","speakerZh":"室友 Joanna","en":"I put on an old cartoon movie, but there was a warning about cultural sensitivity!","zh":"我放了一部童年老卡通，前面竟然有文化敏感度警告標語！"},{"speaker":"Me","speakerZh":"我","en":"Isn't that a bit over the top? Cartoons used to let us escape reality.","zh":"這是不是有點太誇張了？卡通以前是讓我們暫時逃離現實的。"},{"speaker":"Joanna","speakerZh":"室友 Joanna","en":"Exactly! Manners are everything, but we don't need corporate warnings to tell us how to be polite.","zh":"沒錯！禮貌是一切，但我們不需要企業標語來教我們怎麼做人。"},{"speaker":"Me","speakerZh":"我","en":"I agree. Let's just enjoy the nostalgia and be kind to each other.","zh":"我同意，讓我們好好享受懷舊時光並善待彼此就好。"}]}];
 
-  // 讀取 URL 參數，支援 ?u=3 直達
-  const urlParamU = new URLSearchParams(window.location.search).get('u');
-  let currentUnitId = parseInt(urlParamU, 10);
+  // 讀取 URL 參數或 hash，支援 ?u=3, ?unit=3, #u=3, #unit=3 直達
+  const urlParams = new URLSearchParams(window.location.search);
+  const hashMatch = window.location.hash.match(/(?:unit|u)=(d+)/);
+  const paramVal = urlParams.get('u') || urlParams.get('unit') || (hashMatch ? hashMatch[1] : null);
+  let currentUnitId = parseInt(paramVal, 10);
   if (isNaN(currentUnitId) || currentUnitId < 1 || currentUnitId > UNITS.length) {
-    currentUnitId = 1;
+    currentUnitId = 2;
   }
 
   let activeTab = 'matrix';
@@ -853,12 +869,12 @@
     });
 
     area.innerHTML =
-      '<div style="background:' + (isCorrect ? '#ECF5EE' : '#FAF6EC') + '; border:1px solid ' + (isCorrect ? '#7FB69A' : '#E3DCC8') + '; border-radius:12px; padding:16px;">' +
-        '<div style="font-weight:700; color:' + (isCorrect ? '#2F4538' : '#D9534F') + '; margin-bottom:8px;">' +
+      '<div style="background:' + (isCorrect ? '#183B2C' : '#2A1817') + '; border:1px solid ' + (isCorrect ? '#2D664D' : '#8C4336') + '; border-radius:12px; padding:16px;">' +
+        '<div style="font-weight:700; color:' + (isCorrect ? '#E8B94A' : '#FF9D99') + '; margin-bottom:8px;">' +
           (isCorrect ? '🎉 完全正確！太棒了！' : '✍️ 還有少許差異，請對照以下字詞：') +
         '</div>' +
         '<div style="margin-bottom:10px;">' + diffHtml + '</div>' +
-        '<div style="font-size:12px; color:#5B6B5F;">標準答案：<strong style="color:#1E2F24;">' + q.en + '</strong></div>' +
+        '<div style="font-size:12px; color:#CFE0D1;">標準答案：<strong style="color:#FFFFFF; font-family:'Kalam', cursive; font-size:16px;">' + q.en + '</strong></div>' +
       '</div>';
   }
 
@@ -868,10 +884,10 @@
     const area = document.getElementById('practiceResultArea');
     area.style.display = 'block';
     area.innerHTML =
-      '<div style="background:#FAF6EC; border:1px solid #E3DCC8; border-radius:12px; padding:14px;">' +
-        '<div style="font-size:12px; color:#5B6B5F; font-weight:700;">標準英文答案：</div>' +
-        '<div style="font-family:\'Kalam\', cursive; font-size:18px; color:#1E2F24; font-weight:600; margin:4px 0;">' + q.en + '</div>' +
-        '<div style="font-size:12.5px; color:#5B6B5F;">中文意涵：' + q.zh + '</div>' +
+      '<div style="background:#162E25; border:1px solid #2D5343; border-radius:12px; padding:14px;">' +
+        '<div style="font-size:12px; color:#A6C4AA; font-weight:700;">標準英文答案：</div>' +
+        '<div style="font-family:'Kalam', cursive; font-size:18px; color:#FFFFFF; font-weight:600; margin:4px 0;">' + q.en + '</div>' +
+        '<div style="font-size:12.5px; color:#CFE0D1;">中文意涵：' + q.zh + '</div>' +
       '</div>';
   }
 
