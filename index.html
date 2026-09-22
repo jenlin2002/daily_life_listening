@@ -3,1184 +3,969 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>英文聽力高頻句練習</title>
+<title>美式生活館｜American Life Hub - 生活化實用美語情境對話隨身聽</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@400;700&family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --bg: #1B3A2F;
-    --bg2: #163026;
-    --paper: #F7F3E8;
-    --paper2: #EFE9D8;
+  :root {
+    --bg-dark: #1B3A2F;
+    --bg-darker: #142820;
+    --card-border: #3d5a48;
     --yellow: #E8B94A;
-    --red: #D97A6C;
-    --green: #7FB69A;
-    --ink: #2B2B2B;
-    --ink-soft: #5B5B52;
+    --green-accent: #7FB69A;
+    --paper: #FAF6EC;
+    --paper-border: #E3DCC8;
+    --ink: #26332B;
+    --ink-soft: #5B6B5F;
     --line: #2A4A3C;
   }
-  *{box-sizing:border-box; margin:0; padding:0;}
-  html, body{ height:100%; }
-  body{
-    background:var(--bg); color:var(--paper);
-    font-family:'Noto Sans TC', sans-serif;
-    min-height:100vh; display:flex; flex-direction:column;
-  }
-  header{
-    padding:16px 20px; border-bottom:1px solid var(--line);
-    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;
-  }
-  .title-block{ display:flex; flex-direction:column; gap:2px; }
-  .eyebrow{
-    font-family:'Space Mono', monospace; font-size:11px; letter-spacing:3px;
-    color:var(--yellow); font-weight:700;
-  }
-  h1{ font-family:'Kalam', cursive; font-size:22px; }
-  .header-actions{ display:flex; gap:8px; flex-wrap:wrap; }
-  .btn{
-    font-family:'Noto Sans TC'; font-size:13px; font-weight:700; cursor:pointer;
-    border:1.5px solid var(--yellow); background:transparent; color:var(--yellow);
-    padding:8px 14px; border-radius:20px; transition:background 0.15s, color 0.15s;
-  }
-  .btn:hover{ background:var(--yellow); color:var(--bg); }
-  .btn.primary{ background:var(--yellow); color:var(--bg); }
-  .btn.primary:hover{ opacity:0.85; }
-  .btn.danger{ border-color:var(--red); color:var(--red); }
-  .btn.danger:hover{ background:var(--red); color:var(--paper); }
-
-  .layout{ flex:1; display:flex; overflow:hidden; }
-
-  nav{
-    width:230px; flex-shrink:0; background:var(--bg2); border-right:1px solid var(--line);
-    overflow-y:auto; padding:12px 0;
-  }
-  .unit-btn{
-    display:block; width:100%; text-align:left; background:transparent; border:none;
-    color:var(--paper); font-family:'Noto Sans TC'; font-size:14px; padding:11px 18px;
-    cursor:pointer; border-left:3px solid transparent; transition:background 0.15s;
-  }
-  .unit-btn:hover{ background:rgba(255,255,255,0.05); }
-  .unit-btn.active{ background:rgba(232,185,74,0.12); border-left-color:var(--yellow); color:var(--yellow); font-weight:700; }
-  .unit-num{ font-family:'Space Mono', monospace; font-size:11px; opacity:0.7; margin-right:6px; }
-  .unit-progress{ font-size:11px; opacity:0.6; margin-top:2px; }
-
-  main{ flex:1; overflow-y:auto; padding:24px 28px 60px; }
-  .unit-header{ margin-bottom:18px; }
-  .unit-header h2{ font-family:'Kalam', cursive; font-size:26px; color:var(--paper); margin-bottom:4px; }
-  .unit-header .sub{ font-size:13px; color:#9AA89C; }
-
-  .toolbar{ display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap; }
-
-  table{ width:100%; border-collapse:collapse; }
-  thead th{
-    text-align:left; font-size:12px; color:var(--yellow); font-weight:700;
-    padding:8px 10px; border-bottom:1.5px solid var(--line); font-family:'Space Mono', monospace; letter-spacing:1px;
-  }
-  tbody tr{ border-bottom:1px solid var(--line); }
-  tbody tr:hover{ background:rgba(255,255,255,0.02); }
-  td{ padding:8px 10px; vertical-align:top; }
-  td.num{ font-family:'Space Mono', monospace; font-size:13px; color:#9AA89C; width:36px; padding-top:14px; }
-  td.check{ width:40px; text-align:center; padding-top:12px; }
-  td.play{ width:44px; text-align:center; padding-top:8px; }
-  td.del{ width:36px; text-align:center; padding-top:10px; }
-
-  textarea.cell-input{
-    width:100%; min-height:38px; resize:vertical; background:var(--bg2); color:var(--paper);
-    border:1px solid var(--line); border-radius:8px; padding:8px 10px; font-family:'Noto Sans TC'; font-size:14px;
-    line-height:1.4;
-  }
-  textarea.cell-input.en{ font-style:italic; }
-  textarea.cell-input:focus{ outline:none; border-color:var(--yellow); }
-
-  input[type="checkbox"]{
-    width:18px; height:18px; accent-color:var(--yellow); cursor:pointer;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg-dark);
+    color: var(--ink);
+    font-family: 'Noto Sans TC', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
   }
 
-  .play-btn{
-    width:30px; height:30px; border-radius:50%; border:1.5px solid var(--green);
-    background:transparent; color:var(--green); font-size:13px; cursor:pointer;
-    display:flex; align-items:center; justify-content:center; transition:background 0.15s, color 0.15s;
+  /* 頂部深綠區塊 */
+  header.hero-header {
+    background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%);
+    border-bottom: 1px solid var(--card-border);
+    padding: 24px 20px 20px;
+    color: #FFFFFF;
   }
-  .play-btn:hover{ background:var(--green); color:var(--bg); }
-  .play-btn.playing{ background:var(--yellow); border-color:var(--yellow); color:var(--bg); animation:pulse 0.9s infinite; }
-  @keyframes pulse{
-    0%,100%{ box-shadow:0 0 0 rgba(232,185,74,0); }
-    50%{ box-shadow:0 0 10px rgba(232,185,74,0.8); }
+  .header-container {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  .top-nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 14px;
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(61, 90, 72, 0.7);
+  }
+  .brand-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(232, 185, 74, 0.15);
+    border: 1px solid rgba(232, 185, 74, 0.4);
+    color: var(--yellow);
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 12px;
+    font-weight: 700;
+  }
+  .brand-sub {
+    font-size: 12px;
+    color: #A6C4AA;
+    margin-left: 8px;
+  }
+  .back-home-link {
+    color: #CFE0D1;
+    text-decoration: none;
+    font-size: 13px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.15s;
+  }
+  .back-home-link:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+  }
+  .unit-main-title {
+    font-family: 'Kalam', cursive;
+    font-size: 30px;
+    font-weight: 700;
+    margin: 6px 0;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    flex-wrap: wrap;
+    color: #FFFFFF;
+  }
+  .unit-en-title {
+    font-size: 20px;
+    font-weight: normal;
+    color: #A6C4AA;
+  }
+  .situation-box {
+    margin-top: 6px;
+    font-size: 13.5px;
+    color: #CFE0D1;
+    line-height: 1.6;
+  }
+  .situation-title {
+    color: #FFFFFF;
+    font-weight: 600;
+  }
+  .situation-desc {
+    color: #A6C4AA;
+    font-size: 12.5px;
+    margin-top: 2px;
   }
 
-  .del-btn{
-    width:26px; height:26px; border-radius:50%; border:1px solid var(--line);
-    background:transparent; color:#9AA89C; font-size:14px; cursor:pointer;
-    display:flex; align-items:center; justify-content:center; transition:border-color 0.15s, color 0.15s;
+  /* 進度條 */
+  .progress-wrap {
+    margin-top: 16px;
+    background: rgba(27, 43, 33, 0.8);
+    border: 1px solid rgba(61, 90, 72, 0.6);
+    border-radius: 10px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
-  .del-btn:hover{ border-color:var(--red); color:var(--red); }
-
-  .empty-hint{
-    text-align:center; padding:60px 20px; color:#9AA89C; font-size:14px; line-height:1.8;
+  .progress-text {
+    font-size: 12px;
+    font-weight: 700;
+    color: #EEF2EA;
+    white-space: nowrap;
   }
-
-  .section-divider{
-    margin:34px 0 18px; padding-top:22px; border-top:1px solid var(--line);
-    display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  .progress-bar-bg {
+    flex: 1;
+    height: 10px;
+    background: #2F4538;
+    border-radius: 9999px;
+    overflow: hidden;
   }
-  .section-divider h3{ font-family:'Kalam', cursive; font-size:20px; color:var(--paper); }
-  .section-divider .eyebrow{ display:block; margin-bottom:2px; }
-
-  .dialogue-list{ display:flex; flex-direction:column; gap:10px; max-width:720px; }
-  .dialogue-row{ display:flex; align-items:flex-start; gap:10px; }
-  .dialogue-row.speaker-B{ flex-direction:row-reverse; }
-
-  .speaker-badge{
-    flex-shrink:0; width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center;
-    font-family:'Space Mono', monospace; font-weight:700; font-size:13px; margin-top:4px;
-  }
-  .speaker-badge.A{ background:var(--green); color:var(--bg); }
-  .speaker-badge.B{ background:var(--yellow); color:var(--bg); }
-
-  .dialogue-bubble{
-    flex:1; max-width:78%; background:var(--bg2); border:1px solid var(--line); border-radius:14px;
-    padding:10px 12px; display:flex; flex-direction:column; gap:6px;
-  }
-  .dialogue-row.speaker-B .dialogue-bubble{ border-color:rgba(232,185,74,0.35); }
-  .dialogue-bubble-top{ display:flex; align-items:center; gap:8px; }
-  .dialogue-bubble textarea.cell-input{ min-height:32px; font-size:14px; }
-  .dialogue-bubble .zh-input{ font-size:13px; opacity:0.9; }
-
-  .speaker-select{
-    background:var(--bg2); color:var(--paper); border:1px solid var(--line); border-radius:6px;
-    font-family:'Space Mono', monospace; font-size:12px; padding:3px 6px; cursor:pointer;
+  .progress-bar-fill {
+    height: 100%;
+    background: #B5842A;
+    border-radius: 9999px;
+    transition: width 0.3s ease;
   }
 
-  footer{
-    padding:10px 20px; border-top:1px solid var(--line); font-size:12px; color:#9AA89C;
-    text-align:center;
+  /* 主體白色/淺色卡片區 */
+  main.main-content {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 24px 20px 80px;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }
 
-  @media (max-width: 720px){
-    .layout{ flex-direction:column; }
-    nav{ width:100%; max-height:160px; border-right:none; border-bottom:1px solid var(--line); }
-    main{ padding:16px; }
+  .card-block {
+    background: #FFFFFF;
+    border: 1px solid var(--paper-border);
+    border-radius: 14px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    overflow: hidden;
+  }
+
+  /* 16 單元滑軌 */
+  .unit-selector-card {
+    padding: 14px 16px;
+  }
+  .selector-label-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+  }
+  .unit-scroll-track {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: thin;
+  }
+  .unit-chip-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    flex-shrink: 0;
+    border: 1px solid var(--paper-border);
+    background: var(--paper);
+    color: var(--ink);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .unit-chip-btn:hover {
+    background: #EEF3EA;
+  }
+  .unit-chip-btn.active {
+    background: #2F4538;
+    color: #FFFFFF;
+    border-color: #2F4538;
+    font-weight: 700;
+  }
+  .unit-done-pill {
+    background: #B5842A;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* 功能操作列 (Tabs + 輔助按鈕) */
+  .controls-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+  }
+  .tabs-group {
+    display: flex;
+    background: var(--paper);
+    padding: 4px;
+    border-radius: 10px;
+    border: 1px solid var(--paper-border);
+    gap: 4px;
+  }
+  .tab-btn {
+    border: none;
+    background: transparent;
+    padding: 7px 14px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--ink-soft);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s;
+  }
+  .tab-btn.active {
+    background: #2F4538;
+    color: #FFFFFF;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  }
+  .aux-controls {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .aux-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 11px;
+    border-radius: 8px;
+    border: 1px solid var(--paper-border);
+    background: var(--paper);
+    color: #2F4538;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .aux-btn:hover {
+    background: #EEF3EA;
+  }
+  .aux-btn.active {
+    background: #2F4538;
+    color: #FFFFFF;
+    border-color: #2F4538;
+  }
+
+  /* 核心句型表格 */
+  .table-header {
+    background: #23372C;
+    color: #FFFFFF;
+    padding: 12px 18px;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .th-num { width: 50px; }
+  .th-en { flex: 1; min-width: 200px; }
+  .th-zh { width: 260px; text-align: right; padding-right: 20px; }
+  .th-check { width: 70px; text-align: center; }
+
+  .sentence-row {
+    display: flex;
+    align-items: center;
+    padding: 14px 18px;
+    border-bottom: 1px solid #ECE7D8;
+    transition: background 0.15s;
+  }
+  .sentence-row:last-child { border-bottom: none; }
+  .sentence-row:hover { background: #FAF7F0; }
+  .sentence-row.done { background: rgba(181, 132, 42, 0.04); }
+
+  .col-num {
+    width: 50px;
+    display: flex;
+    align-items: center;
+  }
+  .speaker-round-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--paper-border);
+    background: var(--paper);
+    color: #2F4538;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.15s;
+  }
+  .speaker-round-btn:hover {
+    background: #2F4538;
+    color: #FFFFFF;
+    transform: scale(1.08);
+  }
+  .col-en {
+    flex: 1;
+    font-family: 'Kalam', cursive;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1E2F24;
+    padding: 0 14px;
+    line-height: 1.4;
+  }
+  .col-zh {
+    width: 260px;
+    text-align: right;
+    padding-right: 20px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .col-check {
+    width: 70px;
+    text-align: center;
+  }
+  .custom-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #2F4538;
+  }
+
+  .blur-text {
+    filter: blur(4px);
+    transition: filter 0.2s;
+    user-select: none;
+  }
+  .blur-text:hover {
+    filter: blur(0);
+    user-select: auto;
+  }
+
+  /* 對話模式 */
+  .dialogue-container {
+    padding: 20px;
+  }
+  .dialogue-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding-bottom: 14px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--paper-border);
+  }
+  .dialogue-turn {
+    background: var(--paper);
+    border: 1px solid var(--paper-border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+    transition: border-color 0.15s;
+  }
+  .dialogue-turn.active-line {
+    border-color: #B5842A;
+    background: #FFF8E7;
+  }
+  .turn-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6px;
+  }
+  .turn-badge {
+    background: #2F4538;
+    color: #FFFFFF;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 6px;
+  }
+  .turn-en {
+    font-family: 'Kalam', cursive;
+    font-size: 16px;
+    color: #1E2F24;
+    font-weight: 600;
+  }
+  .turn-zh {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+
+  /* 聽力默寫 / 盲聽測驗 */
+  .practice-container {
+    padding: 24px 20px;
+  }
+  .practice-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 14px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--paper-border);
+  }
+  .practice-box {
+    background: var(--paper);
+    border: 1px solid var(--paper-border);
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .practice-audio-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #2F4538;
+    color: #FFFFFF;
+    border: none;
+    font-size: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    transition: transform 0.15s;
+  }
+  .practice-audio-btn:hover {
+    transform: scale(1.08);
+  }
+  .practice-textarea {
+    width: 100%;
+    border-radius: 10px;
+    border: 1px solid var(--paper-border);
+    padding: 12px 14px;
+    font-size: 15px;
+    font-family: inherit;
+    resize: vertical;
+    outline: none;
+    margin-bottom: 14px;
+  }
+  .practice-textarea:focus {
+    border-color: #2F4538;
+  }
+  .submit-ans-btn {
+    background: #2F4538;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.15s;
+  }
+  .submit-ans-btn:hover {
+    background: #3D5A48;
+  }
+  .diff-word {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-right: 4px;
+    font-size: 14px;
+  }
+  .diff-correct {
+    background: #ECF5EE;
+    color: #2F4538;
+    font-weight: 600;
+  }
+  .diff-wrong {
+    background: #FEE2E2;
+    color: #D9534F;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  footer.page-footer {
+    text-align: center;
+    padding: 24px;
+    font-size: 12px;
+    color: #CFE0D1;
+    border-top: 1px solid var(--line);
+    background: var(--bg-darker);
   }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="title-block">
-    <div class="eyebrow">LISTENING PRACTICE</div>
-    <h1>英文聽力高頻句練習</h1>
-  </div>
-  <div class="header-actions">
-    <a class="btn" href="https://jenlin2002.github.io/" style="text-decoration:none; display:inline-flex; align-items:center;">🏠 回總目錄</a>
-    <button class="btn" id="exportBtn">⬇ 匯出備份</button>
-    <button class="btn" id="importBtn">⬆ 匯入備份</button>
-    <input type="file" id="importFile" accept=".json" style="display:none">
+<!-- 頂部綠底英雄區 -->
+<header class="hero-header">
+  <div class="header-container">
+    <div class="top-nav-bar">
+      <div style="display:flex; align-items:center;">
+        <span class="brand-badge">🏛️ 美式生活館｜American Life Hub</span>
+        <span class="brand-sub">生活化實用美語・情境對話隨身聽</span>
+      </div>
+      <div>
+        <a href="https://jenlin2002.github.io" class="back-home-link">
+          <span>← 回首頁總入口</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="unit-main-title">
+      <span id="heroUnitTitle">Unit 1 認識新朋友</span>
+      <span class="unit-en-title" id="heroUnitEn">Meeting New Friends</span>
+    </div>
+
+    <div class="situation-box">
+      <div>情境核心：<span class="situation-title" id="heroSituationTitle">去室友的朋友跨年派對</span></div>
+      <div class="situation-desc" id="heroSituationDesc">跨年派對前在宿舍化妝準備，隨後到派對認識新朋友聊家鄉、科系與音樂愛好。</div>
+    </div>
+
+    <!-- 進度條 -->
+    <div class="progress-wrap">
+      <div class="progress-text" id="progressSummaryText">本單元背完進度：0 / 28 句 (0%)</div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressBarFill" style="width: 0%;"></div>
+      </div>
+    </div>
   </div>
 </header>
 
-<div class="layout">
-  <nav id="unitNav"></nav>
-  <main id="mainArea"></main>
-</div>
+<main class="main-content">
+  <!-- 單元目錄切換 (Unit Selection) -->
+  <div class="card-block unit-selector-card">
+    <div class="selector-label-row">
+      <span>單元目錄切換 (UNIT SELECTION) :</span>
+      <span style="color:#B5842A;">共 16 單元高頻句庫</span>
+    </div>
+    <div class="unit-scroll-track" id="unitTrack">
+      <!-- 由 JS 動態生成 16 個單元按鈕 -->
+    </div>
+  </div>
 
-<footer>資料會自動儲存在這台電腦的瀏覽器裡（localStorage）。換電腦或清瀏覽器資料前，記得先點「匯出備份」。</footer>
+  <!-- 功能控制列 -->
+  <div class="card-block controls-bar">
+    <div class="tabs-group">
+      <button class="tab-btn active" id="tabMatrixBtn" onclick="setTab('matrix')">
+        📖 高頻句矩陣 (<span id="matrixCount">28</span>)
+      </button>
+      <button class="tab-btn" id="tabDialogueBtn" onclick="setTab('dialogue')">
+        💬 真實情境課文 (<span id="dialogueCount">19句</span>)
+      </button>
+      <button class="tab-btn" id="tabPracticeBtn" onclick="setTab('practice')">
+        🎧 聽力默寫/盲聽測驗
+      </button>
+    </div>
+
+    <div class="aux-controls">
+      <button class="aux-btn" id="speedBtn" onclick="toggleSpeed()">
+        語速: <span id="speedLabel">1x</span>
+      </button>
+      <button class="aux-btn" id="hideEnBtn" onclick="toggleHideEn()">
+        <span>👁️ 遮蔽英文</span>
+      </button>
+      <button class="aux-btn" id="hideZhBtn" onclick="toggleHideZh()">
+        <span>👁️ 遮蔽中文</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- 分頁 1: 高頻句矩陣 -->
+  <div class="card-block" id="tabContentMatrix">
+    <div class="table-header">
+      <div class="th-num">編號</div>
+      <div class="th-en">核心高頻句型 (點擊語音播放)</div>
+      <div class="th-zh">道地中文解釋</div>
+      <div class="th-check">背完標記</div>
+    </div>
+    <div id="sentenceList"></div>
+  </div>
+
+  <!-- 分頁 2: 真實情境課文 -->
+  <div class="card-block dialogue-container" id="tabContentDialogue" style="display:none;">
+    <div class="dialogue-toolbar">
+      <div style="font-size:13px; font-weight:700; color:#2F4538;">
+        雙人生活日常情境對話（支援單句發音與整段自動連播）：
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button class="aux-btn" id="playAllDlgBtn" onclick="toggleDialoguePlay()">
+          <span>▶️ 播放整段對話</span>
+        </button>
+      </div>
+    </div>
+    <div id="dialogueList"></div>
+  </div>
+
+  <!-- 分頁 3: 聽力默寫 / 盲聽測驗 -->
+  <div class="card-block practice-container" id="tabContentPractice" style="display:none;">
+    <div class="practice-head">
+      <div>
+        <h3 style="font-size:16px; font-weight:700; color:#2F4538;">聽力盲聽默寫訓練 (Dictation Challenge)</h3>
+        <p style="font-size:12px; color:var(--ink-soft); margin-top:2px;">按下喇叭聆聽句子，在輸入框中打出聽到的英文句子，檢驗耳朵敏銳度！</p>
+      </div>
+      <div style="font-size:13px; font-weight:700; color:#B5842A; font-family:'Space Mono', monospace;" id="practiceCounter">
+        第 1 / 28 題
+      </div>
+    </div>
+
+    <div class="practice-box">
+      <div style="display:flex; align-items:center; gap:14px;">
+        <button class="practice-audio-btn" onclick="playPracticeAudio()" title="點擊聆聽句子">
+          🔊
+        </button>
+        <div>
+          <div style="font-size:12px; font-weight:700; color:#B5842A;">請仔細聆聽音檔並打出英文：</div>
+          <div style="font-size:13.5px; color:var(--ink-soft); margin-top:3px;" id="practiceZhHint">中文提示：...</div>
+        </div>
+      </div>
+    </div>
+
+    <textarea class="practice-textarea" id="practiceInput" rows="3" placeholder="在此輸入您聽到的英文句子 (例如: You're coming to the party...)"></textarea>
+
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+      <div style="display:flex; gap:8px;">
+        <button class="submit-ans-btn" onclick="checkPracticeAnswer()">送出比對答案</button>
+        <button class="aux-btn" onclick="revealAnswer()">查看正確答案</button>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button class="aux-btn" onclick="stepPractice(-1)">← 上一題</button>
+        <button class="aux-btn" onclick="stepPractice(1)">下一題 →</button>
+      </div>
+    </div>
+
+    <div id="practiceResultArea" style="margin-top:16px; display:none;">
+      <!-- 結果比對顯示 -->
+    </div>
+  </div>
+</main>
+
+<footer class="page-footer">
+  美式生活館 American Life Hub · Branden &amp; Melissa 英文成長園地 · 16 單元生活實境美語
+</footer>
 
 <script>
-  const UNITS = [
-    "認識新朋友", "家庭對話", "餐廳點餐", "購物與結帳", "住家維修",
-    "旅行與住宿", "健康與醫療", "客訴與抱怨", "交朋友閒聊", "心靈對話",
-    "開玩笑幽默", "生活分享、社交邀約與拒絕", "工作與面試", "工作閒聊",
-    "新聞時事探討", "價值觀傳遞"
-  ];
+  const UNITS = [{"id":1,"title":"Unit 1 認識新朋友","titleEn":"Meeting New Friends","icon":"👋","category":"社交生活","situationTitle":"去室友的朋友跨年派對","situationDescription":"跨年派對前在宿舍化妝準備，隨後到派對認識新朋友聊家鄉、科系與音樂愛好。","sentences":[{"id":1,"en":"You're coming to the party later tonight, right?","zh":"今晚你會來派對吧？"},{"id":2,"en":"Start getting ready.","zh":"開始準備（出門）。"},{"id":3,"en":"I literally just landed and got no fancy outfit.","zh":"我剛下飛機，根本沒有帶正式的衣服。"},{"id":4,"en":"No worries. / No biggies. / Don't worry about it. / It's okay.","zh":"別擔心。"},{"id":5,"en":"Nice meeting you. / Nice to meet you.","zh":"很高興認識你。"},{"id":6,"en":"My family lives 2 hours away.","zh":"我家人住在離這裡兩小時的地方。"},{"id":7,"en":"We moved here 10 years ago from Virginia.","zh":"我們十年前從維吉尼亞州搬到這裡。"},{"id":8,"en":"I've never been there.","zh":"我從沒去過那裡。"},{"id":9,"en":"I would like to visit one day.","zh":"我希望有一天能去那裡。"},{"id":10,"en":"There are a lot of museums and historical sites to visit.","zh":"那裡有很多博物館和歷史景點可以參觀。"},{"id":11,"en":"I'd imagine.","zh":"我想也是。"},{"id":12,"en":"Considering it's one of the oldest cities.","zh":"畢竟那是最古老的城市之一。"},{"id":13,"en":"What's your major?","zh":"你的主修是什麼？"},{"id":14,"en":"I am in Beasley School of Law.","zh":"我就讀於 Beasley 法學院。"},{"id":15,"en":"But I'm actually more interested in making music or playing pickleball.","zh":"但我其實更喜歡製作音樂或玩匹克球。"},{"id":16,"en":"I've always wanted to try pickleball.","zh":"我一直想打打看匹克球。"},{"id":17,"en":"It varies. / It depends.","zh":"看情況 / 不一定。"},{"id":18,"en":"I make mostly country and jazz music.","zh":"我主要是做鄉村音樂和爵士樂。"},{"id":19,"en":"What brought you back to business school?","zh":"你怎麼會想回商學院？"},{"id":20,"en":"Mostly I want to be an independent musician.","zh":"主要是因為我想當獨立音樂人。"},{"id":21,"en":"My father encouraged me to come back to school.","zh":"我父親鼓勵我回到學校。"},{"id":22,"en":"You have a wise dad.","zh":"妳有一位很有智慧的爸爸。"},{"id":23,"en":"I assume / suppose you are gonna practice law?","zh":"我猜你將來會當執業律師吧？"},{"id":24,"en":"I don't think that's gonna / going to happen.","zh":"我覺得應該不會。"},{"id":25,"en":"You should pursue / go after it.","zh":"你應該追求那個目標。"},{"id":26,"en":"Whatever it is that is true to your heart!","zh":"做妳真正熱愛的事情！"},{"id":27,"en":"Go grab some sliders and alcohol.","zh":"去拿點小漢堡和酒。"},{"id":28,"en":"I'll see you on the rooftop for the countdown later.","zh":"等會倒數時屋頂見喔！"}],"dialogue":[{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"Hey! You’re coming to the party later tonight, right?","zh":"嘿！今晚你會來派對吧？"},{"speaker":"Me","speakerZh":"我","en":"Oh yeah! What time does it start?","zh":"哦，當然！派對什麼時候開始？"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"At eight!","zh":"八點！"},{"speaker":"Me","speakerZh":"我","en":"Sweet. I’ll start getting ready.","zh":"太棒了！那我開始準備。"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"You can borrow my pink dress. I have two dresses and I think you will look great in the pink one!","zh":"你可以借我的粉色洋裝。我有兩件洋裝，我覺得你穿粉色那件會很好看！"},{"speaker":"Me","speakerZh":"我","en":"Awww that would be great since I literally just landed and got no fancy outfit.","zh":"哇，那太好了！因為我剛下飛機，根本沒有帶正式的衣服。"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"No worries! I got you, girl. Let’s start getting ready!","zh":"不用擔心！我幫你搞定，女孩～我們一起開始準備吧！"},{"speaker":"Jessica","speakerZh":"新朋友 Jessica","en":"So you’re Daisy’s new roomie, right?","zh":"所以妳是 Daisy 的新室友，對吧？"},{"speaker":"Me","speakerZh":"我","en":"Yeah, hi! Nice meeting you.","zh":"對啊，嗨！很高興認識妳。"},{"speaker":"Jessica","speakerZh":"新朋友 Jessica","en":"Hi, I’m Jessica. So… where are you from?","zh":"嗨，我是 Jessica。妳來自哪裡？"},{"speaker":"Me","speakerZh":"我","en":"I’m from Taiwan!","zh":"我來自台灣！"},{"speaker":"Jessica","speakerZh":"新朋友 Jessica","en":"Wow, that’s nice. I have a friend who’s also from Taiwan! Well, I’m from Philly, but my family lives 2 hours away and we moved here 10 years ago from Virginia.","zh":"哇，真棒！我有一個朋友也來自台灣！我來自費城，但我家人住在離這裡兩小時的地方，我們十年前從維吉尼亞搬到這裡。"},{"speaker":"Me","speakerZh":"我","en":"Sweet! I’ve never been there but I would like to visit one day!","zh":"太酷了！我從沒去過那裡，但我希望有一天能去看看！"},{"speaker":"Jessica","speakerZh":"新朋友 Jessica","en":"Yeah, for sure you should! There are a lot of museums and historical sites to visit.","zh":"妳一定要去！那裡有很多博物館和歷史景點可以參觀。"},{"speaker":"Me","speakerZh":"我","en":"I’d imagine, considering it’s one of the oldest cities. What’s your major?","zh":"我可以想像，畢竟那是最古老的城市之一。妳主修什麼？"},{"speaker":"Jessica","speakerZh":"新朋友 Jessica","en":"Nice! I’m in Fox Business School. But I’m actually more interested in making music or playing pickleball.","zh":"很棒！我在 Fox 商學院。但我其實更喜歡製作音樂或玩匹克球。"},{"speaker":"Me","speakerZh":"我","en":"I’ve always wanted to try pickleball! What kind of music do you make?","zh":"我一直想試試匹克球！妳做什麼類型的音樂？"},{"speaker":"Jessica","speakerZh":"新朋友 Jessica","en":"It varies. Mostly country and jazz. That’s a good thing! I’m gonna go grab some sliders and alcohol.","zh":"各種都有，主要是鄉村和爵士樂。我要去拿點迷你漢堡和酒。"},{"speaker":"Me","speakerZh":"我","en":"Aight. I’ll see you on the rooftop for the countdown later!","zh":"好啊。等會倒數時屋頂見！"}]},{"id":2,"title":"Unit 2 家庭對話","titleEn":"Family & Roommates","icon":"🏠","category":"家庭生活","situationTitle":"下課後跟室友聊天煮晚餐","situationDescription":"下課回家討論做家事分工（洗碗、倒垃圾）、煮晚餐、水電工報修與成年後的壓力。","sentences":[{"id":1,"en":"How's your day been? / How are you today?","zh":"你今天過得怎麼樣？"},{"id":2,"en":"I'm a bit under the weather / unwell. / I'm not feeling well / too great.","zh":"我身體有點不太舒服。"},{"id":3,"en":"I'm just gonna / going to take some Theraflu.","zh":"我打算服用一些感冒藥水。"},{"id":4,"en":"I have some Theraflu left in the kitchen cabinets.","zh":"我廚房櫃子裡還有一些感冒藥水。"},{"id":5,"en":"I went to the (running) track with Mia earlier.","zh":"我剛剛跟Mia去操場跑步。"},{"id":6,"en":"One second / One moment / Hold on / Hold up / Wait.","zh":"等一下。"},{"id":7,"en":"I met up with Charles at the lab.","zh":"我在實驗室跟 Charles碰面。"},{"id":8,"en":"We studied for the final (exam).","zh":"我們有一起讀書準備期末考。"},{"id":9,"en":"It's been a long day.","zh":"今天真是漫長的一天。（發生好多事很疲憊）"},{"id":10,"en":"I'll help with the dirty dishes while you make dinner!","zh":"我來幫忙洗碗，妳來做飯！"},{"id":11,"en":"Who is on trash duty?","zh":"今天是誰負責倒垃圾？"},{"id":12,"en":"Let's just divide up the chores.","zh":"我們可以分配一下家務。"},{"id":13,"en":"Take out the trash.","zh":"倒垃圾。"},{"id":14,"en":"I'll make us some spinach omelette.","zh":"我來做菠菜歐姆蛋。"},{"id":15,"en":"We'll have a pregame in the living room.","zh":"我們星期五出去前可以在客廳來場小酌。"},{"id":16,"en":"I was planning to switch up my room.","zh":"我打算那時候重新佈置房間。"},{"id":17,"en":"No biggies / No worries.","zh":"沒什麼大不了的。"},{"id":18,"en":"You do you.","zh":"做自己。"},{"id":19,"en":"The faucet's been acting up lately.","zh":"那水龍頭最近又出狀況了。"},{"id":20,"en":"Is it leaking again?","zh":"又漏水了嗎？"},{"id":21,"en":"Call the plumber.","zh":"打電話叫水電工。"},{"id":22,"en":"Adulting is hard.","zh":"長大了真的不容易。"},{"id":23,"en":"I feel you / I get you.","zh":"我懂你。"},{"id":24,"en":"On the bright side.","zh":"往好的方面想。"},{"id":25,"en":"Have a blast!","zh":"玩得開心！"}],"dialogue":[{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"Hey! How’s your day been?","zh":"嘿！今天過得怎麼樣？"},{"speaker":"Me","speakerZh":"我","en":"Just got back from my last class. What about you?","zh":"剛從最後一堂課回來。妳呢？"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"Ugh… I think I’m a bit under the weather. Nothing too serious though. I’m just gonna take some Theraflu.","zh":"唉……我身體有點不太舒服，但應該沒什麼大礙。我打算服用一些感冒藥水。"},{"speaker":"Me","speakerZh":"我","en":"Oh no, get well soon! I have some Theraflu left in the kitchen cabinets.","zh":"喔不，快點好起來！我廚房櫃子裡還有一些感冒藥水。"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"Yup, it’s been a long day. Let’s get cooking!","zh":"是啊，今天真是個漫長的一天。來一起做晚飯吧！"},{"speaker":"Me","speakerZh":"我","en":"Aight. I’ll help with the dirty dishes while you make dinner! Who’s on trash duty today?","zh":"好啊。我來幫忙洗碗，妳來做飯！今天是誰負責倒垃圾？"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"Not sure but let’s just divide up the chores. You’ll do the dishes and take out the trash, and I’ll make us some spinach omelette and baked chicken.","zh":"不確定，但我們可以分配一下家務。妳洗碗和倒垃圾，我來做菠菜歐姆蛋和烤雞。"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"Also, the faucet’s been acting up lately.","zh":"還有，那水龍頭最近又出狀況了。"},{"speaker":"Me","speakerZh":"我","en":"The faucet? Is it leaking again?","zh":"水龍頭？又漏水了嗎？"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"Yeah, we should call that plumber we used last time and ask him to fix it up.","zh":"對啊，我們應該打電話叫上次那個水管工來修一下。"},{"speaker":"Me","speakerZh":"我","en":"Adulting is hard, Daisy!","zh":"長大了真的不容易，Daisy！"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"I feel you. On the bright side, we will have a blast at the party on Friday.","zh":"我懂你。往好的方面想，我們星期五派對會玩得很開心。"},{"speaker":"Me","speakerZh":"我","en":"Can’t wait!","zh":"等不及了！"}]},{"id":3,"title":"Unit 3 餐廳點餐","titleEn":"Ordering Food","icon":"🌯","category":"餐飲飲食","situationTitle":"去Chipotle點晚餐＋去Insomnia Cookies買點心","situationDescription":"點選墨西哥捲餅碗（選飯、豆子、肉類配料、加酪梨醬）、刷卡結帳、以及烘焙店買一盒熱餅乾。","sentences":[{"id":1,"en":"What can I get started for you today?","zh":"今天想要吃什麼？"},{"id":2,"en":"Can I get a bowl?","zh":"我要一份碗裝的餐點。"},{"id":3,"en":"You got it.","zh":"好的馬上做。"},{"id":4,"en":"What kind of rice / beans / protein?","zh":"你要什麼飯 / 豆子 / 蛋白質？"},{"id":5,"en":"There's chicken, steak, carnitas, sofritas, and grilled veggies.","zh":"我們有雞肉、牛排、燉豬肉、素肉和烤蔬菜。"},{"id":6,"en":"Can you do chicken and veggies, half and half?","zh":"可以雞肉和烤蔬菜各一半嗎？"},{"id":7,"en":"Any salsa? Mild, medium, or hot?","zh":"要哪種莎莎醬？溫和、中辣還是辣？"},{"id":8,"en":"Guac is extra.","zh":"酪梨醬需要額外收費。"},{"id":9,"en":"Any chips and guac?","zh":"要加玉米片和酪梨醬嗎？"},{"id":10,"en":"Cash or card?","zh":"付現金還是刷卡？"},{"id":11,"en":"You're all set.","zh":"完成囉！"},{"id":12,"en":"Have a good one / day!","zh":"祝你今天愉快！"},{"id":13,"en":"You as well!","zh":"你也是！"},{"id":14,"en":"Which flavor is the most popular?","zh":"哪一個口味最受歡迎？"},{"id":15,"en":"Chocolate peanut butter cup and triple chocolate.","zh":"巧克力花生醬杯和三重巧克力。"},{"id":16,"en":"Can I get a box of six?","zh":"我可以要六個裝一盒的嗎？"},{"id":17,"en":"Let me get those packed for you.","zh":"我幫你打包。"},{"id":18,"en":"Alrighty / Alright.","zh":"好的。"},{"id":19,"en":"Did you need the receipt printed?","zh":"需要列印收據嗎？"},{"id":20,"en":"Be out in just a second.","zh":"馬上為你送上！"}],"dialogue":[{"speaker":"Chipotle Staff","speakerZh":"店員","en":"What can I get started for you today?","zh":"今天想點什麼呢？"},{"speaker":"Me","speakerZh":"我","en":"Can I get a bowl? Brown rice and black beans.","zh":"我要一份碗裝的餐點，糙米飯和黑豆。"},{"speaker":"Chipotle Staff","speakerZh":"店員","en":"And what kind of protein? There’s chicken, steak, carnitas, sofritas, grilled veggies…","zh":"那蛋白質呢？有雞肉、牛排、卡尼塔豬肉、素食豆腐和烤蔬菜。"},{"speaker":"Me","speakerZh":"我","en":"Can you do chicken and veggies, half and half?","zh":"可以雞肉和蔬菜各一半嗎？"},{"speaker":"Chipotle Staff","speakerZh":"店員","en":"I think so, yes of course! Any salsa? Mild, medium, or hot?","zh":"可以的，當然！要哪種莎莎醬？溫和、中辣還是辣？"},{"speaker":"Me","speakerZh":"我","en":"The green one looks good to me. Corn, cheese, and guac.","zh":"我覺得綠色的不錯。玉米、起司和酪梨醬。"},{"speaker":"Chipotle Staff","speakerZh":"店員","en":"Guac is extra. Is that okay? Your total is $18.50 today. Cash or card?","zh":"酪梨醬要額外加錢，可以嗎？今天總共是 $18.50，付現還是刷卡？"},{"speaker":"Me","speakerZh":"我","en":"Card. You’re all set? You as well!","zh":"刷卡。祝你今天愉快！你也是！"}]},{"id":4,"title":"Unit 4 購物與結帳","titleEn":"Shopping & Retail","icon":"👗","category":"休閒購物","situationTitle":"去Forever21買衣服","situationDescription":"進店閒逛、找試衣間試穿洋裝、詢問米色款式、無袖/長裙版型與櫃台刷卡結帳。","sentences":[{"id":1,"en":"Are you looking for anything specific / particular today?","zh":"你今天有特別想找什麼嗎？"},{"id":2,"en":"Just browsing / looking.","zh":"只是隨便看看。"},{"id":3,"en":"Let me know if you need help with anything.","zh":"如果需要幫忙隨時告訴我。"},{"id":4,"en":"Where is the fitting room?","zh":"請問試衣間在哪裡？"},{"id":5,"en":"Straight down the hallway to the right.","zh":"沿著走廊直走，在右邊。"},{"id":6,"en":"I'll go try it on.","zh":"我去試穿看看。"},{"id":7,"en":"I was hoping it comes in beige.","zh":"我真希望有米色的款式。"},{"id":8,"en":"Do you have this dress in a different color?","zh":"這件洋裝有其他顏色嗎？"},{"id":9,"en":"I can help you with that.","zh":"我可以幫你看看。"},{"id":10,"en":"It is available online and in store.","zh":"這款線上和門市都可以買到。"},{"id":11,"en":"It comes in these colors.","zh":"有這些顏色。"},{"id":12,"en":"Are you looking for a going out dress or a (more) casual dress?","zh":"妳是想找正式外出穿的洋裝還是比較休閒的洋裝？"},{"id":13,"en":"Do you want a maxi dress like this one or midi or mini?","zh":"你想要像這樣的長裙，還是中長裙或短裙？"},{"id":14,"en":"Sleeveless, shortsleeves, longsleeves, strapless, or no preference?","zh":"（袖子要）無袖、短袖、長袖、平肩還是沒特別偏好？"},{"id":15,"en":"One is a sleeveless denim maxi with the buttons.","zh":"第一件是無袖牛仔長裙，帶有鈕扣設計。"},{"id":16,"en":"Where is the register? / Where do I check out / pay?","zh":"收銀台在哪裡？"},{"id":17,"en":"Are you a member with us?","zh":"您是我們的會員嗎？"},{"id":18,"en":"Your total's gonna be $87.63 today.","zh":"今天的總金額是87.63美金。"},{"id":19,"en":"Cash or card?","zh":"你要支付現金還是刷卡？"},{"id":20,"en":"When you're ready, it'll ask you a question on the screen.","zh":"等您準備好後，螢幕上會有問題讓您回答。"},{"id":21,"en":"Did you need a bag?","zh":"需要袋子嗎？"},{"id":22,"en":"Do you want a copy of your receipt? / Would you like a receipt?","zh":"需要收據嗎？"}],"dialogue":[{"speaker":"Forever staff","speakerZh":"店員","en":"Hi, welcome! Are you looking for anything specific today?","zh":"嗨，歡迎光臨！今天有特別想找的東西嗎？"},{"speaker":"Me","speakerZh":"我","en":"No, I’m just browsing. Excuse me, where is the fitting room?","zh":"沒有，我只是隨便看看。不好意思，請問試衣間在哪裡？"},{"speaker":"Forever staff","speakerZh":"店員","en":"Straight down the hall way to the right.","zh":"一直走過走廊，然後右轉。"},{"speaker":"Me","speakerZh":"我","en":"Excuse me, do you have this dress in a different color? I was hoping it comes in beige.","zh":"不好意思，這件有其他顏色嗎？我真希望有米色的。"},{"speaker":"Forever staff","speakerZh":"店員","en":"We’re looking at a beige strapless midi dress with a satin texture. I’ll bring it to the fitting room for you.","zh":"我們看這款米色中長平肩緞面洋裝，我幫您送去試衣間。"},{"speaker":"Me","speakerZh":"我","en":"I’ll take this one. Where is the register… Ah found it.","zh":"我要這件。收銀台在哪裡……啊找到了。"},{"speaker":"Forever staff","speakerZh":"店員","en":"Your total’s gonna be $87.63 today. Cash or card? Did you need a bag?","zh":"今天的總金額是87.63美元。你要付現還是刷卡？需要袋子嗎？"},{"speaker":"Me","speakerZh":"我","en":"Card, and yes please. Thanks, you as well!","zh":"刷卡，要袋子，謝謝，祝您也有美好一天！"}]},{"id":5,"title":"Unit 5 住家維修","titleEn":"Home Repairs & AC","icon":"🔧","category":"居家生活","situationTitle":"家裡冷氣壞掉叫修","situationDescription":"夏天冷氣壓縮機故障、冷媒不足、技工開出分項估價單與考慮長遠換新冷氣。","sentences":[{"id":1,"en":"I'm calling because my AC is not working.","zh":"我打電話來是因為我的冷氣壞了。"},{"id":2,"en":"I was wondering when you guys can come out and check it.","zh":"我想詢問你們什麼時候能來檢查一下？"},{"id":3,"en":"It hasn't turned on since yesterday.","zh":"它從昨天開始就沒有再啟動。"},{"id":4,"en":"We'll send him in / out on Monday.","zh":"我們會安排他週一過去。"},{"id":5,"en":"The (AC) unit is out here in the backyard.","zh":"（冷氣）設備在後院這邊。"},{"id":6,"en":"The compressor blew out and you are also low on refrigerant.","zh":"壓縮機壞掉了，而且你的冷媒也快不足了。"},{"id":7,"en":"The total before taxes is gonna be $5,325.25.","zh":"稅前價格總共是5,325.25美金。"},{"id":8,"en":"I listed all these problems out on an itemized estimate / statement.","zh":"我把所有問題都列在一份有細項的估價單上了。"},{"id":9,"en":"Holy moly!","zh":"天啊！"},{"id":10,"en":"It's gonna run into a lot of problems.","zh":"未來可能會有很多問題。"},{"id":11,"en":"I would recommend possibly looking at replacing your (AC) unit.","zh":"我建議你考慮更換（冷氣）設備。"},{"id":12,"en":"In the long run.","zh":"從長遠來看。"},{"id":13,"en":"I will send you this estimate for repairing your current (AC) unit.","zh":"我會把修理目前（冷氣）設備的估價單傳給你。"},{"id":14,"en":"I also noticed the thermostat seems off.","zh":"我也發現恆溫器好像不正常。"},{"id":15,"en":"It's not reading the temperature correctly.","zh":"因為它沒有顯示正確的溫度。"},{"id":16,"en":"Thanks for stopping by!","zh":"謝謝你過來一趟！"},{"id":17,"en":"Anytime / You're welcome!","zh":"不客氣！隨時為您服務！"}],"dialogue":[{"speaker":"AC Staff","speakerZh":"客服","en":"Hello this is air conditioning USA. How can I help you?","zh":"哈囉，這裡是美國冷氣公司。請問我可以如何協助你？"},{"speaker":"Me","speakerZh":"我","en":"Hi! I’m calling because my AC is not working. It hasn’t turned on since yesterday.","zh":"嗨！我打電話來是因為我的冷氣壞了，從昨天開始就沒再啟動。"},{"speaker":"Technician","speakerZh":"技師","en":"The unit is out here. Looks like the compressor blew out and you are low on refrigerant.","zh":"設備在後院。看起來壓縮機壞了，而且冷媒不足。"},{"speaker":"Technician","speakerZh":"技師","en":"The total before taxes is gonna be $5,325.25. Honestly, replacing it is better in the long run.","zh":"稅前估價是 5,325.25 美元。老實說長遠來看換新機更好。"},{"speaker":"Me","speakerZh":"我","en":"Holy moly… that’s expensive! I also noticed the thermostat seems off.","zh":"天啊太貴了！我也注意到恆溫器怪怪的。"},{"speaker":"Technician","speakerZh":"技師","en":"I will send you an itemized estimate with options. Thanks for stopping by! Anytime!","zh":"我會把分項估價單寄給妳。謝謝妳！不客氣！"}]},{"id":6,"title":"Unit 6 旅行與住宿","titleEn":"Travel & Accommodation","icon":"✈️","category":"出國旅遊","situationTitle":"第一次到洛杉磯機場＋旅館 check in","situationDescription":"入境海關問答（目的、天數、住處地址、現金）、飯店櫃台辦理入住、海景套房升級與房卡。","sentences":[{"id":1,"en":"What are you here for?","zh":"你來這裡的目的是什麼？"},{"id":2,"en":"I'm here for a vacation.","zh":"我來這裡渡假。"},{"id":3,"en":"Where are you staying?","zh":"你要住在哪裡？"},{"id":4,"en":"I'm staying at a hotel for two nights then staying with my old coworker.","zh":"我會先住兩晚飯店，然後住在我的老同事家。"},{"id":5,"en":"The address of the hotel is 216 Los Angeles Blvd.","zh":"飯店的地址是洛杉磯大道216號。"},{"id":6,"en":"How long do you plan to stay here?","zh":"你預計在這裡待多久？"},{"id":7,"en":"In total 32 days.","zh":"總共32天。"},{"id":8,"en":"How much money are you bringing in cash?","zh":"你帶了多少現金？"},{"id":9,"en":"A little under $2,000.","zh":"不到 2,000 美金。"},{"id":10,"en":"No need to declare it.","zh":"不需要申報。"},{"id":11,"en":"What is your profession?","zh":"你的職業是什麼？"},{"id":12,"en":"I am a marketing manager for a tech company.","zh":"我是科技公司的行銷主管。"},{"id":13,"en":"You're all set!","zh":"都好了！"},{"id":14,"en":"Can I see the credit card that you used for your reservation?","zh":"我可以看一下您用來預訂的信用卡嗎？"},{"id":15,"en":"I was wondering if you have any suite upgrades available today?","zh":"我想問一下今天有套房升級的選項嗎？"},{"id":16,"en":"I upgraded you to an ocean view suite on the 33rd floor with a Jacuzzi.","zh":"我已經幫您升級到33樓有按摩浴缸的海景套房。"},{"id":17,"en":"Did you need one or two key cards?","zh":"你需要一張還是兩張房卡？"},{"id":18,"en":"What time does it open and close?","zh":"它幾點開放和關閉？（營業時間）"},{"id":19,"en":"There is a $20 per day resort fee.","zh":"每天有20美金的度假村費用。"},{"id":20,"en":"Enjoy your vacation!","zh":"祝您旅途愉快！"}],"dialogue":[{"speaker":"Custom","speakerZh":"海關官員","en":"What are you here for? Where are you staying?","zh":"你來這裡的目的是什麼？你要住在哪裡？"},{"speaker":"Me","speakerZh":"我","en":"I’m here for a vacation. I’m staying at a hotel for two nights then staying with my old coworker.","zh":"我來這裡度假，我會先住兩晚酒店，然後住老同事家。"},{"speaker":"Custom","speakerZh":"海關官員","en":"How much money are you bringing in cash? And what is your profession?","zh":"你帶了多少現金？您的職業是什麼？"},{"speaker":"Me","speakerZh":"我","en":"A little under $2,000. I am a marketing manager for a tech company.","zh":"不到2000美元。我是科技公司的行銷主管。"},{"speaker":"Hotel front desk","speakerZh":"櫃台經理","en":"Hi, checking in? So I upgraded you to an ocean view suite on the 33rd floor with a Jacuzzi!","zh":"您好，辦理入住嗎？我幫您升級到33樓帶按摩浴缸的海景套房！"},{"speaker":"Me","speakerZh":"我","en":"Oh, awesome! Two key cards please, and what time does the gym close?","zh":"太棒了！請給我兩張房卡，還有健身房幾點關閉？"},{"speaker":"Hotel front desk","speakerZh":"櫃台經理","en":"It opens daily from 6 in the morning til midnight. Enjoy your vacation!","zh":"每天早上6點到午夜12點開放。祝您旅途愉快！"}]},{"id":7,"title":"Unit 7 健康與醫療","titleEn":"Health & Medical Care","icon":"🏥","category":"健康醫療","situationTitle":"發燒拉肚子掛病求診","situationDescription":"前往急診 Urgent Care 掛號填表、向醫生描述發燒脫水與疑似腸胃炎症狀、給予用藥建議。","sentences":[{"id":1,"en":"What brings you here today?","zh":"今天哪裡不舒服？"},{"id":2,"en":"I think I have a fever.","zh":"我覺得我發燒了。"},{"id":3,"en":"I will need your (picture) id.","zh":"我需要您的身份證件。"},{"id":4,"en":"Date of birth?","zh":"出生日期？"},{"id":5,"en":"I also need the insurance card.","zh":"我也需要你的醫療保險卡。"},{"id":6,"en":"Fill out this top portion of the form, sign, and put down the date.","zh":"請填寫表格上半部，簽名並填上日期。"},{"id":7,"en":"Take a seat there and the doctor will call you.","zh":"請在那邊坐一下，醫生會叫您。"},{"id":8,"en":"I've been having a fever since yesterday, diarrhea too.","zh":"我從昨天開始發燒，還有拉肚子。"},{"id":9,"en":"At that point, I hadn't eaten anything for 30 hours.","zh":"當時我已經大概30個小時沒吃東西了。"},{"id":10,"en":"I started getting chills.","zh":"我開始發冷。"},{"id":11,"en":"Any exposure to someone with a flu?","zh":"你是否有接觸有流感的人？"},{"id":12,"en":"You're negative for covid, and also negative for the flu.","zh":"你的 COVID 和流感檢測結果都是陰性的。"},{"id":13,"en":"Is it associated with anything that you ate?","zh":"會不會是跟你吃的東西有關？"},{"id":14,"en":"I just had some leftover pasta from a restaurant.","zh":"我只是吃了餐廳的義大利麵剩菜。"},{"id":15,"en":"Are you allergic to any medications?","zh":"你有對任何藥物過敏嗎？"},{"id":16,"en":"Your heart rate is a bit elevated.","zh":"你的心率有點偏高。"},{"id":17,"en":"Give them a stool sample.","zh":"給他們送糞便樣本。"},{"id":18,"en":"Chills and headaches are primarily caused by dehydration.","zh":"發冷和頭痛主要是因為脫水造成的。"},{"id":19,"en":"Try to stay away from spicy food, greasy food, and dairy.","zh":"盡量避免辛辣食物、油膩食物和乳製品。"},{"id":20,"en":"Electrolyte drinks will help you a lot. Feel better!","zh":"電解質飲料對你會有很大的幫助。希望你早日康復！"}],"dialogue":[{"speaker":"Receptionist","speakerZh":"櫃台","en":"Hi, what brings you here today? I will need your photo ID and insurance card.","zh":"您好今天哪裡不舒服？我需要看您的證件和保險卡。"},{"speaker":"Me","speakerZh":"我","en":"I think I have a fever and diarrhea since last night. I started getting chills.","zh":"我好像發燒拉肚子了，昨天開始發冷。"},{"speaker":"Doctor","speakerZh":"醫生","en":"Good news: you're negative for COVID and flu. Did you eat any leftover food?","zh":"好消息：流感與新冠都是陰性。妳最近有吃隔夜剩菜嗎？"},{"speaker":"Me","speakerZh":"我","en":"Yes, some leftover pasta. Not allergic to any medications.","zh":"有，吃了些剩義大利麵。我對藥物沒有過敏。"},{"speaker":"Doctor","speakerZh":"醫生","en":"Headaches and chills are from dehydration. Drink electrolyte drinks and avoid dairy. Feel better!","zh":"頭痛發冷主要來自脫水。多喝電解質水、別吃乳製品。祝早日康復！"}]},{"id":8,"title":"Unit 8 客訴與抱怨","titleEn":"Complaints & Support","icon":"🚗","category":"生活應急","situationTitle":"租車結果輪胎壞掉","situationDescription":"高速公路匝道前胎壓燈亮起，緊急致電租車客服尋求拖車救援、趕航班焦慮與賠償爭取。","sentences":[{"id":1,"en":"Hello. How can I help you?","zh":"喂，請問有什麼可以協助您的？"},{"id":2,"en":"I'm calling because the tire pressure light has been on.","zh":"我打電話是因為輪胎氣壓燈亮了。"},{"id":3,"en":"I did try to put air in the tires.","zh":"我有嘗試幫輪胎打氣。"},{"id":4,"en":"I didn't want to risk it on a 2-hour freeway drive.","zh":"我不想冒險開兩小時的高速公路。"},{"id":5,"en":"Who am I speaking to?","zh":"請問怎麼稱呼您？"},{"id":6,"en":"I apologize for the inconvenience.","zh":"很抱歉造成您的不便。"},{"id":7,"en":"We will send someone to tow your car away.","zh":"我們會派人去拖您的車。"},{"id":8,"en":"Where are you located? We are right down the ramp of a freeway.","zh":"您的位置在哪裡？我們就在高速公路出口匝道下方。"},{"id":9,"en":"I see a McDonald's across the street.","zh":"我看到對街有一家麥當勞。"},{"id":10,"en":"The tow truck is on the way.","zh":"拖車已經派遣過去了。"},{"id":11,"en":"Our flight is taking off in 4 hours.","zh":"我們的航班四個小時後就要起飛了。"},{"id":12,"en":"We were cutting it close.","zh":"我們時間已經很緊迫了。"},{"id":13,"en":"Will the cost be compensated?","zh":"你們會補償費用嗎？"},{"id":14,"en":"What would you suggest?","zh":"你建議怎麼做？"},{"id":15,"en":"I might have to miss my flight.","zh":"我可能會錯過我的航班。"},{"id":16,"en":"You can talk to the branch manager.","zh":"你可以和門市經理聯絡。"}],"dialogue":[{"speaker":"Customer Service","speakerZh":"租車客服","en":"Elephant Car Rental support. How can I help you?","zh":"這裡是租車客服，請問有什麼可以協助您的？"},{"speaker":"Me","speakerZh":"我","en":"The tire pressure light is on. I tried putting air but it's not working, and our flight leaves in 4 hours!","zh":"胎壓燈亮了，打氣也沒用，而且我們4小時後班機要起飛！"},{"speaker":"Customer Service","speakerZh":"租車客服","en":"The tow truck is on the way, arriving in 20 minutes. Where are you located?","zh":"拖車已出發約20分鐘抵達。請問您的確切位置？"},{"speaker":"Me","speakerZh":"我","en":"Down the freeway ramp across from McDonald's. Can you compensate for our Uber or hotel?","zh":"在高速匝道下麥當勞對面。你們可以補償我們叫Uber或住宿費嗎？"},{"speaker":"Customer Service","speakerZh":"租車客服","en":"Unfortunately we cannot authorize that from support, but you can speak to the branch manager.","zh":"很遺憾線上客服無法授權，但您可以向門市經理洽談。"}]},{"id":9,"title":"Unit 9 交朋友閒聊","titleEn":"Small Talk & Making Friends","icon":"🚇","category":"社交生活","situationTitle":"在地鐵上認識新朋友","situationDescription":"舊金山地鐵售票機前問路、聊素食茶葉進出口生意、邀約攀岩與交換 IG 帳號。","sentences":[{"id":1,"en":"Do you know how to use this ticket machine?","zh":"你知道怎麼用這個售票機嗎？"},{"id":2,"en":"So it's your first time here in SF?","zh":"所以這是你第一次來舊金山吧？"},{"id":3,"en":"I'm just in town for a conference tomorrow.","zh":"我來這裡參加一個明天的研討會。"},{"id":4,"en":"What do you do? / What got you into that?","zh":"你是做什麼工作的？是什麼讓你開始做這個的？"},{"id":5,"en":"I am vegan so I enjoy cooking a lot.","zh":"我吃素，所以我很喜歡煮飯。"},{"id":6,"en":"I got so hooked on this tea.","zh":"我迷上了這種茶。"},{"id":7,"en":"It just went from there.","zh":"事情就這樣發展起來了。"},{"id":8,"en":"My stop is next. What a story!","zh":"我下一站就到了。真是個精彩的故事呀！"},{"id":9,"en":"I'm gonna meet up with my friends to go rock climbing later.","zh":"我待會要和朋友一起去攀岩。"},{"id":10,"en":"Do you wanna join us? I'll text you.","zh":"你要不要加入我們？我可以等下傳訊息給你。"},{"id":11,"en":"You can take my Instagram.","zh":"你可以加我的 Instagram。"},{"id":12,"en":"Cool beans! Take care and nice meeting you!","zh":"好喔好喔！保重，很高興認識你！"}],"dialogue":[{"speaker":"Me","speakerZh":"我","en":"Excuse me, do you know how to use this ticket machine?","zh":"不好意思，你知道怎麼用這個售票機嗎？"},{"speaker":"Sam","speakerZh":"新朋友 Sam","en":"Yeah, just tap your card here. First time in San Francisco?","zh":"沒問題，刷這裡即可。第一次來舊金山嗎？"},{"speaker":"Me","speakerZh":"我","en":"Yup, in town for a conference. I'm a teacher. What do you do?","zh":"對，來參加研討會。我是老師，你呢？"},{"speaker":"Sam","speakerZh":"新朋友 Sam","en":"I import African tea! I got hooked on it because I'm vegan. Hey, wanna go rock climbing later?","zh":"我做非洲茶葉進出口！因為吃素愛上它。對了待會要一起攀岩嗎？"},{"speaker":"Me","speakerZh":"我","en":"Sounds fun! You can take my Instagram. My stop is next!","zh":"聽起來很酷！你可以加我 IG，我下一站到了！"}]},{"id":10,"title":"Unit 10 心靈對話","titleEn":"Heart-to-Heart Talk","icon":"☕","category":"情感陪伴","situationTitle":"室友說想跟男友分手","situationDescription":"客廳深夜心靈傾訴、失戀療傷安慰、價值觀不合與「天涯何處無芳草」鼓勵。","sentences":[{"id":1,"en":"Is everything alright?","zh":"一切都還好嗎？"},{"id":2,"en":"My boyfriend and I just broke up.","zh":"我和我男朋友剛分手了。"},{"id":3,"en":"I'm still processing everything too.","zh":"我也還在沉澱這一切。"},{"id":4,"en":"I'm sorry to hear that. / Take all the time you need.","zh":"我很遺憾聽到這個消息 / 給自己足夠的時間修復。"},{"id":5,"en":"We were not on the same page.","zh":"我們在很多事情上都沒有共同的想法。"},{"id":6,"en":"If you think it was the right thing to do, it's for the better.","zh":"如果你認為這是正確的決定，這樣對未來比較好。"},{"id":7,"en":"There are plenty of fish in the sea.","zh":"天涯何處無芳草。（機會還很多）"},{"id":8,"en":"Get out and mingle!","zh":"出去和人交際吧！"},{"id":9,"en":"The silver lining is that it gives you time to focus on yourself.","zh":"好處是這讓你有時間專注在自己身上。"},{"id":10,"en":"Sometimes endings are blessings in disguise.","zh":"有時候結束其實是化妝的祝福。"},{"id":11,"en":"She'll come out of it.","zh":"她會走出來的。（從悲傷中恢復）"},{"id":12,"en":"Is there anything I can do for you? Maybe movie night tonight?","zh":"有什麼我可以幫忙的嗎？要不要今晚來個電影之夜？"}],"dialogue":[{"speaker":"Me","speakerZh":"我","en":"Hey Daisy! Why are you so quiet today? Is everything alright?","zh":"嘿 Daisy！今天怎麼這麼安靜？還好嗎？"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"My boyfriend and I broke up. We were just not on the same page anymore.","zh":"我和男友分手了。我們很多想法已經不在同一個頻率上了。"},{"speaker":"Me","speakerZh":"我","en":"Take your time to heal. Plus, there are plenty of fish in the sea! It's a blessing in disguise.","zh":"慢慢療傷，天涯何處無芳草！有時候結束是化妝的祝福。"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"Thanks, girl! Maybe movie night tonight with popcorn?","zh":"謝謝妳！今晚要不要吃爆米花看電影？"},{"speaker":"Me","speakerZh":"我","en":"I'll get the popcorn ready! You're the best!","zh":"我來準備爆米花！妳最棒了！"}]},{"id":11,"title":"Unit 11 開玩笑幽默","titleEn":"Humor & Blind Date","icon":"🍕","category":"社交娛樂","situationTitle":"嘗試網路約會","situationDescription":"初次相親約會聊天、彼此自嘲破冰、聊養貓（燕尾服貓）、神經科學與 AA 制分帳。","sentences":[{"id":1,"en":"You are taller than I imagined.","zh":"你比我想像的還要高。"},{"id":2,"en":"I'll take that as a compliment!","zh":"我就當這是一個讚美了！"},{"id":3,"en":"Excuse me. We're ready to order!","zh":"不好意思，我們可以點餐了！"},{"id":4,"en":"I hope I'm not too nerdy.","zh":"我希望我不會讓你覺得我太書呆子。"},{"id":5,"en":"Does that make you an expert mind reader?","zh":"那表示你會讀心術嗎？"},{"id":6,"en":"What's your favorite karaoke song? This is how I judge people.","zh":"你最愛的KTV歌曲是什麼？這是我判斷人的方式。"},{"id":7,"en":"My cat really seemed to need emotional support.","zh":"我家貓真的看起來很需要我陪。"},{"id":8,"en":"He's a tuxedo. Shut up! They are majestic!","zh":"他是燕尾服貓。別鬧了！牠們好漂亮啊！"},{"id":9,"en":"I just want to put it out there. I am very open-minded.","zh":"我只是想先說清楚，我是心態很開放的人。"},{"id":10,"en":"I had fun! We'll split the check.","zh":"我玩得很開心！我們帳單分開付（各付各的）。"}],"dialogue":[{"speaker":"Anthony","speakerZh":"約會對象 Anthony","en":"Hey! You are taller than I imagined. Ready for some Chinese food?","zh":"嗨！妳比我想像的還高。準備吃中餐了嗎？"},{"speaker":"Me","speakerZh":"我","en":"I'll take that as a compliment! Let's get chicken potstickers and spring rolls.","zh":"我就當成讚美囉！先來點鍋貼和春捲吧。"},{"speaker":"Anthony","speakerZh":"約會對象 Anthony","en":"I study neuroscience. Does that make me too nerdy? What's your karaoke song?","zh":"我讀神經科學，會太書呆子嗎？妳最愛的KTV歌曲是什麼？"},{"speaker":"Me","speakerZh":"我","en":"Haha, I got two cats at home. Look, I have to meet my friends in 30 mins, we'll split the check?","zh":"我家有兩隻貓。對了我等會有朋友聚會，我們帳單各自付吧？"},{"speaker":"Anthony","speakerZh":"約會對象 Anthony","en":"Sure thing! Enjoy your night!","zh":"沒問題！祝妳今晚愉快！"}]},{"id":12,"title":"Unit 12 生活分享與邀約","titleEn":"Life Updates & Invites","icon":"🗓️","category":"日常生活","situationTitle":"跟室友的週五閒聊與邀約","situationDescription":"聊論文進度、下班搭車塞車買外帶、朋友邀約週末去海灘爬山、禮貌委婉拒絕邀約（Take a rain check）。","sentences":[{"id":1,"en":"How was work? / How was school?","zh":"工作如何？ / 學校怎麼樣？"},{"id":2,"en":"I had lunch late because I was in a meeting.","zh":"我午餐吃得比較晚，因為在開會。"},{"id":3,"en":"The train ran late so it took me extra long to get back.","zh":"火車延誤了，所以我花了更長的時間才回來。"},{"id":4,"en":"I finally handed in my essays.","zh":"我終於交了論文報告。"},{"id":5,"en":"What is your plan for this weekend?","zh":"你週末有什麼計劃嗎？"},{"id":6,"en":"We're going on a hike tomorrow. Would you like to come?","zh":"我們明天要去爬山。你想一起來嗎？"},{"id":7,"en":"If you're free, you should come hang with us!","zh":"如果你有空，你應該一起加入我們！"},{"id":8,"en":"Thanks for inviting me but I'm going to have to take a rain check this time.","zh":"感謝你的邀請，但這次我得改天再跟你約（婉拒）。"},{"id":9,"en":"I would love to but I have to get this essay turned in tomorrow.","zh":"我很想去，但我明天得交這篇論文。"},{"id":10,"en":"I'm so sorry but I won't be able to make it this time. Have fun!","zh":"非常抱歉，但這次我沒辦法參加。祝你們玩得開心！"}],"dialogue":[{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"How was school? Did you hand in the paper?","zh":"今天上課如何？論文交了嗎？"},{"speaker":"Me","speakerZh":"我","en":"Finally handed it in! But train ran late so it took forever.","zh":"終於交了！但火車大誤點花了好久才回家。"},{"speaker":"Roommate Daisy","speakerZh":"室友 Daisy","en":"We are going to the beach tomorrow. Wanna join us?","zh":"我們明天要去海邊，要一起來嗎？"},{"speaker":"Me","speakerZh":"我","en":"I'd love to, but I have another deadline tomorrow so I'll take a rain check!","zh":"超想去，但我明天還有另一個報告要交，這次先改天囉！"}]},{"id":13,"title":"Unit 13 工作與面試","titleEn":"Job Interview & Career","icon":"💼","category":"職場專業","situationTitle":"去外商應徵行銷主管","situationDescription":"外商行銷經理面試（自我介紹、Amazon 廣告活動經驗、換跑道動機、薪資期待與 401k 福利）。","sentences":[{"id":1,"en":"You must be Susan!","zh":"你就是蘇珊吧！"},{"id":2,"en":"We'll learn more about your professional experience.","zh":"我們會更深入了解你的專業經驗。"},{"id":3,"en":"Can you briefly tell me more about yourself?","zh":"可以簡單介紹一下你自己嗎？"},{"id":4,"en":"My main responsibilities include monitoring paid ad campaigns on Amazon.","zh":"我的主要工作包括監控亞馬遜上的付費廣告活動。"},{"id":5,"en":"Can you share an example of a marketing campaign you worked on?","zh":"能分享一個你曾做的行銷活動案例嗎？"},{"id":6,"en":"A Black Friday sales campaign. We hit that target.","zh":"一個黑色星期五促銷活動，我們達成了那個目標。"},{"id":7,"en":"How will you add value to our company in the first 90 days if you are hired?","zh":"如果你被錄取，在前90天內如何為我們公司帶來價值？"},{"id":8,"en":"What are your salary expectations?","zh":"你的期待薪資是多少？"},{"id":9,"en":"Based on my last job, I am looking at a salary of $85,000.","zh":"根據我上一份工作的薪資，我希望薪資能在 85,000 美元左右。"},{"id":10,"en":"Our benefits include 3 insurances: Medical, dental, and eye care.","zh":"我們的福利包括三種保險：醫療、牙科和眼部保健。"},{"id":11,"en":"We also include 401k and match up employee contributions up to 3%.","zh":"我們有 401k 福利，並提供至多 3% 的員工自付對等撥提。"},{"id":12,"en":"Every Tuesday, we have Lunch and Learn. We will be in touch through email.","zh":"每週二我們有「午餐與學習」活動。我們會透過 Email 與您保持聯繫。"}],"dialogue":[{"speaker":"Interviewer Susan","speakerZh":"面試官 Susan","en":"Hi! Can you briefly tell me more about yourself?","zh":"嗨！可以簡單介紹一下你自己嗎？"},{"speaker":"Me","speakerZh":"我","en":"For sure. In the past 3 years, I worked as a marketing manager monitoring ad campaigns on Amazon and Google.","zh":"當然，過去三年我擔任行銷經理，負責監控亞馬遜與Google的廣告活動。"},{"speaker":"Interviewer Susan","speakerZh":"面試官 Susan","en":"What are your salary expectations?","zh":"最後，你的期待薪資是多少？"},{"speaker":"Me","speakerZh":"我","en":"Based on my last job, I am looking at a salary of $85,000. I'm open to discussion.","zh":"根據我上一份工作的職責，我期待在 85,000 美元左右，抱持開放討論態度。"},{"speaker":"Interviewer Susan","speakerZh":"面試官 Susan","en":"Everything sounds good. We will be in touch through email!","zh":"聽起來都很不錯，我們後續會通過 Email 與您聯繫！"}]},{"id":14,"title":"Unit 14 工作閒聊","titleEn":"Water Cooler Chit-Chat","icon":"☕","category":"職場日常","situationTitle":"跟同事在洗手間與茶水間閒聊","situationDescription":"聊週末帶小孩去南瓜園、看道奇隊棒球比賽、養寵物與養育孩子的甜蜜混亂。","sentences":[{"id":1,"en":"Good to see you! How's your weekend?","zh":"很高興見到你！你的週末過得怎麼樣？"},{"id":2,"en":"Can you believe how cold / hot it is outside today?","zh":"你敢相信今天外面有多冷 / 多熱嗎？"},{"id":3,"en":"I took my kids to a pumpkin patch.","zh":"我帶我的孩子們去南瓜園玩。"},{"id":4,"en":"They were not behaving well. You're doing your best.","zh":"他們不太聽話。你已經盡力了。"},{"id":5,"en":"Did you catch the Dodgers game last night?","zh":"你昨晚有看道奇隊的比賽嗎？"},{"id":6,"en":"I'm not a big baseball fan.","zh":"我不算是棒球迷。"},{"id":7,"en":"Parenting is a blessing even if at times it's chaotic.","zh":"養育孩子是一個祝福，即使有時候會很混亂。"},{"id":8,"en":"I should've just gotten another dog.","zh":"當初早知道我應該再養一隻狗的。"},{"id":9,"en":"Before you know it, they'll be all grown up and out of the house.","zh":"轉眼之間，他們就長大然後搬出家裡了。"},{"id":10,"en":"No kids, no stress. Enjoy it while you can!","zh":"沒有小孩就沒有壓力，趁還能享受的時候好好享受吧！"}],"dialogue":[{"speaker":"Coworker Karen","speakerZh":"同事 Karen","en":"Hey! Can you believe how freezing it is outside today?","zh":"嗨！妳敢相信今天外面有多冰冷嗎？"},{"speaker":"Me","speakerZh":"我","en":"I know! Did you do anything fun with your kids over the weekend?","zh":"真的！妳週末有帶孩子們去哪裡玩嗎？"},{"speaker":"Coworker Karen","speakerZh":"同事 Karen","en":"Took them to a pumpkin patch, but they were acting crazy. Sometimes I think I should have gotten a dog!","zh":"帶去南瓜園，但吵翻天了。有時候真覺得當初養狗就好！"},{"speaker":"Me","speakerZh":"我","en":"Haha! Parenting is a blessing even if it's chaotic. Enjoy it while you can!","zh":"哈哈！養孩子雖然混亂但也是祝福，好好享受吧！"}]},{"id":15,"title":"Unit 15 新聞時事探討","titleEn":"News & Current Affairs","icon":"📰","category":"社會議題","situationTitle":"跟室友看電視聊新聞與通膨","situationDescription":"聊物價通膨飆升（汽油加滿變貴）、選舉民調、媒體聳動報導與華爾街房市飆漲。","sentences":[{"id":1,"en":"Just a little down in the dumps.","zh":"只是有點情緒低落 / 心情沮喪。"},{"id":2,"en":"Prices have been skyrocketing.","zh":"物價一直飆升。"},{"id":3,"en":"It used to cost 20 dollars to fill up.","zh":"以前加滿油箱只要 20 美元。"},{"id":4,"en":"I was looking at the polls.","zh":"我剛剛在看民調 / 調查問卷。"},{"id":5,"en":"It will have a negative impact on the economy.","zh":"這會對經濟產生負面影響。"},{"id":6,"en":"Most of it is not even objective news reporting, it's just sensationalism.","zh":"大多數根本不是客觀新聞報導，只是聳動煽情。"},{"id":7,"en":"You are only bringing yourself down by reading up on this stuff.","zh":"你光是讀這些東西，只是讓自己心情更低落。"},{"id":8,"en":"Look at the housing market. Prices have gone up three times.","zh":"看看房地產市場，房價都漲了三倍。"},{"id":9,"en":"Caught red-handed.","zh":"當場被抓包（做壞事或尷尬時）。"},{"id":10,"en":"How about we head out and grab a coffee? My treat!","zh":"我們出去喝杯咖啡怎麼樣？我請客！"}],"dialogue":[{"speaker":"Roommate Marry","speakerZh":"室友 Marry","en":"I'm just so down in the dumps looking at the news and gas prices.","zh":"看新聞和油價飆漲，心情真的好沮喪。"},{"speaker":"Me","speakerZh":"我","en":"Watching too much news will only make you depressed. Most of it is pure sensationalism.","zh":"看太多新聞只會讓妳憂鬱，大部分都是聳動報導。"},{"speaker":"Roommate Marry","speakerZh":"室友 Marry","en":"True. You seem to know a lot about housing prices though!","zh":"也是。不過妳好像對房價也很了解嘛！"},{"speaker":"Me","speakerZh":"我","en":"Oops... caught red-handed! Tell you what, let's grab coffee. My treat!","zh":"哎呀被抓包了！這樣吧，我們去買杯咖啡，我請客！"}]},{"id":16,"title":"Unit 16 價值觀傳遞","titleEn":"Values & Opinions","icon":"🎬","category":"深度思辨","situationTitle":"跟室友聊童年老卡通與文化敏感性","situationDescription":"聊童年懷舊卡通電影前的免責警告標語、政治正確（Politically Correct）與人際待人禮貌。","sentences":[{"id":1,"en":"What has brought this on?","zh":"怎麼突然這麼說？"},{"id":2,"en":"I am feeling gloomy so I just lay back.","zh":"我心情很低落，所以我就放鬆躺著休息。"},{"id":3,"en":"When I was a young girl, those movies were my world.","zh":"當我還是小女孩時，那些電影曾經是我的全世界。"},{"id":4,"en":"This program contains disrespectful depictions of culture.","zh":"本節目包含對文化不尊重的描繪（警告標語）。"},{"id":5,"en":"Isn't that a little bit over the top?","zh":"這是不是有點太誇張了？"},{"id":6,"en":"It takes me away from everything.","zh":"它讓我暫時逃離所有現實與壓力。"},{"id":7,"en":"The very term 'being politically correct' started in America.","zh":"「政治正確」這個詞本來就是從美國開始的。"},{"id":8,"en":"In the rest of the world, it is merely known as being nice and polite.","zh":"在世界其他地方，它就只是待人親切有禮貌而已。"},{"id":9,"en":"Manners are everything!","zh":"禮貌就是一切！"},{"id":10,"en":"The world is hiding its head in the sand.","zh":"世界卻選擇把頭埋在沙子裡（鴕鳥心態，視而不見）。"}],"dialogue":[{"speaker":"Joanna","speakerZh":"室友 Joanna","en":"I put on an old cartoon movie, but there was a warning about cultural sensitivity!","zh":"我放了一部童年老卡通，前面竟然有文化敏感度警告標語！"},{"speaker":"Me","speakerZh":"我","en":"Isn't that a bit over the top? Cartoons used to let us escape reality.","zh":"這是不是有點太誇張了？卡通以前是讓我們暫時逃離現實的。"},{"speaker":"Joanna","speakerZh":"室友 Joanna","en":"Exactly! Manners are everything, but we don't need corporate warnings to tell us how to be polite.","zh":"沒錯！禮貌是一切，但我們不需要企業標語來教我們怎麼做人。"},{"speaker":"Me","speakerZh":"我","en":"I agree. Let's just enjoy the nostalgia and be kind to each other.","zh":"我同意，讓我們好好享受懷舊時光並善待彼此就好。"}]}];
 
-const DEFAULT_DATA = {
-  0: {
-    sentences: [
-      { en: "Hi, I don't think we've met before. I'm Sarah.", zh: "嗨，我們應該還沒見過面，我是Sarah。", done: false },
-      { en: "Nice to meet you! How do you know the host?", zh: "很高興認識你！你是怎麼認識主人的？", done: false },
-      { en: "So, what do you do for a living?", zh: "那你是做什麼工作的？", done: false },
-      { en: "I just moved here a few months ago.", zh: "我幾個月前才剛搬來這裡。", done: false },
-      { en: "Where are you originally from?", zh: "你原本是哪裡人？", done: false },
-      { en: "We should exchange numbers and keep in touch.", zh: "我們應該交換一下電話，保持聯絡。", done: false },
-      { en: "I love your accent — where did you grow up?", zh: "我很喜歡你的口音，你是在哪裡長大的？", done: false },
-      { en: "What brought you to this event tonight?", zh: "是什麼原因讓你今晚來參加這個活動？", done: false },
-      { en: "Feel free to add me on Instagram.", zh: "歡迎在Instagram上加我。", done: false },
-      { en: "It was great chatting with you.", zh: "跟你聊天很開心。", done: false },
-      { en: "Let's grab coffee sometime.", zh: "我們找時間一起喝杯咖啡吧。", done: false },
-      { en: "I'm terrible with names, sorry — could you say that again?", zh: "我很不會記名字，抱歉，可以再說一次嗎？", done: false },
-    ],
-    dialogue: [
-      { speaker: "A", en: "Hi, I don't think we've met before. I'm Sarah.", zh: "嗨，我們應該還沒見過面，我是Sarah。" },
-      { speaker: "B", en: "Nice to meet you! I'm Alex. How do you know the host?", zh: "很高興認識你！我是Alex，你是怎麼認識主人的？" },
-      { speaker: "A", en: "We used to be roommates back in college. What about you?", zh: "我們大學時當過室友，你呢？" },
-      { speaker: "B", en: "Oh, I actually just started dating his sister a few months ago.", zh: "喔，我其實幾個月前才開始跟他妹妹交往。" },
-      { speaker: "A", en: "No way, that's sweet. So what do you do for a living?", zh: "真的假的，好甜。那你是做什麼工作的？" },
-      { speaker: "B", en: "I'm a graphic designer, mostly freelance. What about you?", zh: "我是平面設計師，大部分是接案。你呢？" },
-      { speaker: "A", en: "I just moved here a few months ago, so I'm still job hunting.", zh: "我幾個月前才剛搬來這裡，所以還在找工作。" },
-      { speaker: "B", en: "Oh, where are you originally from?", zh: "喔，那你原本是哪裡人？" },
-      { speaker: "A", en: "I grew up in Seattle, but I've lived a few different places since.", zh: "我在西雅圖長大，不過後來住過幾個不同的地方。" },
-      { speaker: "B", en: "I love your accent — where did you pick that up?", zh: "我很喜歡你的口音，是在哪裡養成的？" },
-      { speaker: "A", en: "Ha, I get that a lot. Mostly Seattle, with some time in the UK too.", zh: "哈，很多人都這樣說，主要是西雅圖，加上在英國待過一段時間。" },
-      { speaker: "B", en: "That explains it. So what brought you to this event tonight?", zh: "難怪。那你今晚是怎麼會來這個活動的？" },
-      { speaker: "A", en: "Honestly, I don't know many people here yet, so I figured I'd just come.", zh: "老實說我在這裡還不太認識人，所以就想說來看看。" },
-      { speaker: "B", en: "That's a great mindset. I'm always down to meet new people too.", zh: "這樣想很棒，我也一直都很樂於認識新朋友。" },
-      { speaker: "A", en: "We should exchange numbers and keep in touch.", zh: "我們應該交換一下電話，保持聯絡。" },
-      { speaker: "B", en: "Definitely, feel free to add me on Instagram too.", zh: "當然，也歡迎在Instagram上加我。" },
-      { speaker: "A", en: "Perfect, I'll send you a follow request later tonight.", zh: "太好了，我今晚等等就傳追蹤邀請給你。" },
-      { speaker: "B", en: "Sounds good. I'm terrible with names, sorry — could you say yours again?", zh: "好啊。我很不會記名字，抱歉，可以再說一次你的名字嗎？" },
-      { speaker: "A", en: "Ha, no worries, it's Sarah.", zh: "哈，沒關係，是Sarah。" },
-      { speaker: "B", en: "Right, Sarah, got it this time.", zh: "對，Sarah，這次記住了。" },
-      { speaker: "A", en: "It was great chatting with you.", zh: "跟你聊天很開心。" },
-      { speaker: "B", en: "Same here. Let's grab coffee sometime, maybe next week?", zh: "我也是，我們找時間喝杯咖啡吧，下禮拜如何？" },
-      { speaker: "A", en: "I'd love that. I'll text you.", zh: "我很樂意，我再傳訊息給你。" },
-      { speaker: "B", en: "Perfect, talk soon!", zh: "太好了，晚點聊！" },
-    ],
-  },
-  1: {
-    sentences: [
-      { en: "Dinner's almost ready, can you set the table?", zh: "晚餐快好了，可以幫忙擺餐具嗎？", done: false },
-      { en: "Have you finished your homework yet?", zh: "你功課寫完了嗎？", done: false },
-      { en: "I'm heading out, I'll be back by seven.", zh: "我要出門了，七點前會回來。", done: false },
-      { en: "Can you pick up your brother from school today?", zh: "你今天可以去學校接你弟弟嗎？", done: false },
-      { en: "We need to talk about your grades.", zh: "我們得聊聊你的成績。", done: false },
-      { en: "Don't forget to take out the trash.", zh: "別忘了把垃圾拿出去倒。", done: false },
-      { en: "Grandma is coming to visit this weekend.", zh: "阿嬤這週末要來拜訪。", done: false },
-      { en: "Can we go over the family budget tonight?", zh: "我們今晚可以討論一下家庭預算嗎？", done: false },
-      { en: "Your room is a mess, please clean it up.", zh: "你房間亂七八糟，請整理一下。", done: false },
-      { en: "I'm proud of how far you've come.", zh: "我為你的進步感到驕傲。", done: false },
-      { en: "Let's plan something fun for the holidays.", zh: "我們來規劃一下假期要做什麼有趣的事。", done: false },
-      { en: "Can you turn down the TV? I'm on a call.", zh: "可以把電視音量調小嗎？我在講電話。", done: false },
-    ],
-    dialogue: [
-      { speaker: "A", en: "Mom, dinner's almost ready, can you set the table?", zh: "媽，晚餐快好了，可以幫忙擺餐具嗎？" },
-      { speaker: "B", en: "Sure, just give me a second, I'm on the phone with your aunt.", zh: "好，等我一下，我在跟你阿姨講電話。" },
-      { speaker: "A", en: "Okay. Oh, have you finished your homework yet?", zh: "好。喔對了，你功課寫完了嗎？" },
-      { speaker: "B", en: "Almost, I just have math left.", zh: "快了，只剩數學。" },
-      { speaker: "A", en: "Alright, finish it before dinner please.", zh: "好，麻煩晚餐前寫完。" },
-      { speaker: "B", en: "I will. By the way, I'm heading out after dinner, I'll be back by seven.", zh: "我會的。對了，我晚餐後要出門一下，七點前會回來。" },
-      { speaker: "A", en: "Where are you going?", zh: "你要去哪裡？" },
-      { speaker: "B", en: "Just to Jake's to work on a group project.", zh: "去Jake家做小組報告。" },
-      { speaker: "A", en: "Okay, that's fine. Can you pick up your brother from school tomorrow though?", zh: "好，沒問題。不過你明天可以去學校接你弟弟嗎？" },
-      { speaker: "B", en: "Yeah, I can do that. What time?", zh: "可以啊，幾點？" },
-      { speaker: "A", en: "Around three thirty. Also, we need to talk about your grades sometime this week.", zh: "大概三點半。還有，我們這禮拜要找時間聊聊你的成績。" },
-      { speaker: "B", en: "Ugh, okay. Is it really that bad?", zh: "唉，好吧，有那麼糟嗎？" },
-      { speaker: "A", en: "Not terrible, but there's room for improvement. We'll talk after dinner.", zh: "不算太糟，但還有進步空間，晚餐後再聊。" },
-      { speaker: "B", en: "Fine. Oh, don't forget to take out the trash tonight.", zh: "好啦。對了，別忘了今晚要把垃圾拿出去倒。" },
-      { speaker: "A", en: "Right, I almost forgot. Grandma's coming to visit this weekend too.", zh: "對耶，我差點忘了，阿嬤這週末也要來拜訪。" },
-      { speaker: "B", en: "Oh nice! Can we go over the family budget before then? I want to ask about something.", zh: "太好了！那之前我們可以先討論一下家庭預算嗎？我想問件事。" },
-      { speaker: "A", en: "Sure, what's on your mind?", zh: "好啊，你想問什麼？" },
-      { speaker: "B", en: "Never mind, I'll bring it up at dinner.", zh: "算了，我晚餐時再說。" },
-      { speaker: "A", en: "Okay. Your room is a mess, by the way, please clean it up before Grandma gets here.", zh: "好。對了，你房間亂七八糟，阿嬤來之前請整理一下。" },
-      { speaker: "B", en: "I will, I promise.", zh: "我會的，我保證。" },
-      { speaker: "A", en: "I'm proud of how far you've come this year, you know.", zh: "你知道嗎，我為你今年的進步感到很驕傲。" },
-      { speaker: "B", en: "Thanks, Mom, that means a lot.", zh: "謝謝媽，這對我來說意義重大。" },
-      { speaker: "A", en: "Let's plan something fun for the holidays too.", zh: "我們也來規劃一下假期要做什麼有趣的事。" },
-      { speaker: "B", en: "Sounds great. Can you turn down the TV a bit? I'm trying to study.", zh: "聽起來不錯。可以把電視音量調小一點嗎？我在念書。" },
-      { speaker: "A", en: "Oh sorry, sure thing.", zh: "喔抱歉，沒問題。" },
-    ],
-  },
-  2: {
-    sentences: [
-      { en: "Table for two, please.", zh: "麻煩兩位。", done: false },
-      { en: "Could we see the menu, please?", zh: "可以給我們看一下菜單嗎？", done: false },
-      { en: "What do you recommend?", zh: "你們有什麼推薦的嗎？", done: false },
-      { en: "I'll have the grilled salmon, medium rare.", zh: "我要烤鮭魚，五分熟。", done: false },
-      { en: "Could I get that without onions?", zh: "可以幫我不要放洋蔥嗎？", done: false },
-      { en: "Is this dish spicy?", zh: "這道菜辣嗎？", done: false },
-      { en: "Can we get some more water, please?", zh: "可以再給我們一些水嗎？", done: false },
-      { en: "I'm allergic to peanuts, does this contain any?", zh: "我對花生過敏，這裡面有花生嗎？", done: false },
-      { en: "Could we split the bill?", zh: "我們可以分開結帳嗎？", done: false },
-      { en: "Everything was delicious, thank you.", zh: "一切都很好吃，謝謝。", done: false },
-      { en: "Can I get this to go?", zh: "我可以打包嗎？", done: false },
-      { en: "Could we get the check, please?", zh: "可以幫我們結帳嗎？", done: false },
-    ],
-    dialogue: [
-      { speaker: "A", en: "Hi, table for two, please.", zh: "你好，麻煩兩位。" },
-      { speaker: "B", en: "Of course, right this way. Could I get you started with something to drink?", zh: "好的，這邊請。要先幫兩位點飲料嗎？" },
-      { speaker: "A", en: "Just water for now, thanks. What do you recommend on the menu?", zh: "先給我們水就好，謝謝。菜單上有什麼推薦的嗎？" },
-      { speaker: "B", en: "The grilled salmon is really popular tonight.", zh: "今晚的烤鮭魚很受歡迎。" },
-      { speaker: "A", en: "That sounds good. I'll have the grilled salmon, medium rare, please.", zh: "聽起來不錯，我要烤鮭魚，五分熟，謝謝。" },
-      { speaker: "B", en: "Great choice. And for you, sir?", zh: "很棒的選擇。這位先生呢？" },
-      { speaker: "A", en: "Is this dish spicy? I have a pretty low spice tolerance.", zh: "這道菜辣嗎？我對辣的耐受度滿低的。" },
-      { speaker: "B", en: "It's mild, just a little kick.", zh: "偏溫和，只有一點點辣。" },
-      { speaker: "A", en: "Perfect, I'll try that one then. Could I get that without onions?", zh: "太好了，那我要那道。可以幫我不要放洋蔥嗎？" },
-      { speaker: "B", en: "Of course, no problem. Could we also get some more water, please?", zh: "當然沒問題。（同桌）可以再給我們一些水嗎？" },
-      { speaker: "A", en: "Absolutely. Oh, and I'm allergic to peanuts, does this contain any?", zh: "（服務生）當然。對了，我對花生過敏，這裡面有花生嗎？" },
-      { speaker: "B", en: "Let me double check with the kitchen for you.", zh: "我幫你跟廚房確認一下。" },
-      { speaker: "A", en: "Thanks, I really appreciate that.", zh: "謝謝，真的很感謝。" },
-      { speaker: "B", en: "Good news, it's peanut-free. I'll get your order started.", zh: "好消息，這道沒有花生，我馬上幫你們送單。" },
-      { speaker: "A", en: "Great, thank you so much.", zh: "太好了，非常謝謝你。" },
-      { speaker: "B", en: "How is everything tasting so far?", zh: "目前味道還喜歡嗎？" },
-      { speaker: "A", en: "Everything was delicious, thank you.", zh: "一切都很好吃，謝謝。" },
-      { speaker: "B", en: "Glad to hear it. Would you like to see the dessert menu?", zh: "很高興聽到這樣，要看一下甜點菜單嗎？" },
-      { speaker: "A", en: "No thanks, we're pretty full. Could we get the check, please?", zh: "不用了，我們吃得滿飽的。可以幫我們結帳嗎？" },
-      { speaker: "B", en: "Of course. Would you like to split the bill?", zh: "當然，你們要分開結帳嗎？" },
-      { speaker: "A", en: "No, we'll pay together. And could I get the rest of this to go?", zh: "不用，我們一起付。另外可以幫我把剩下的打包嗎？" },
-      { speaker: "B", en: "Sure thing, I'll bring that right out.", zh: "沒問題，我馬上拿出來給你。" },
-      { speaker: "A", en: "Thanks again, everything was great.", zh: "再次謝謝，一切都很棒。" },
-    ],
-  },
-  3: {
-    sentences: [
-      { en: "Do you have this in a smaller size?", zh: "這件有小一點的尺寸嗎？", done: false },
-      { en: "I'm just browsing, thanks.", zh: "我只是看看，謝謝。", done: false },
-      { en: "Is this on sale right now?", zh: "這個現在有在打折嗎？", done: false },
-      { en: "Can I try this on?", zh: "我可以試穿嗎？", done: false },
-      { en: "Where are the fitting rooms?", zh: "試衣間在哪裡？", done: false },
-      { en: "Do you accept credit cards?", zh: "你們可以刷卡嗎？", done: false },
-      { en: "Can I get a refund for this?", zh: "我可以退這個貨嗎？", done: false },
-      { en: "Do you have a loyalty program?", zh: "你們有會員集點的方案嗎？", done: false },
-      { en: "This doesn't fit, can I exchange it?", zh: "這件不合身，我可以換貨嗎？", done: false },
-      { en: "Can you gift-wrap this for me?", zh: "可以幫我把這個包裝成禮物嗎？", done: false },
-      { en: "I think I was overcharged.", zh: "我覺得我被多收錢了。", done: false },
-      { en: "Keep the change.", zh: "不用找了。", done: false },
-    ],
-    dialogue: [
-      { speaker: "A", en: "Excuse me, do you have this shirt in a smaller size?", zh: "不好意思，這件襯衫有小一點的尺寸嗎？" },
-      { speaker: "B", en: "Let me check in the back for you. What size are you looking for?", zh: "我幫你去後面看看，你需要什麼尺寸？" },
-      { speaker: "A", en: "A small, if you have it.", zh: "小號，如果有的話。" },
-      { speaker: "B", en: "We actually just got a shipment in, let me look.", zh: "我們剛好有到貨，我看一下。" },
-      { speaker: "A", en: "Thank you, I really appreciate it. I'm just browsing otherwise.", zh: "謝謝，真的很感謝。不然我原本只是隨便看看。" },
-      { speaker: "B", en: "No problem, take your time. Here you go, we had one left.", zh: "不客氣，慢慢看。給你，剛好還剩一件。" },
-      { speaker: "A", en: "Perfect. Is this on sale right now?", zh: "太好了，這個現在有在打折嗎？" },
-      { speaker: "B", en: "Yes, actually, it's twenty percent off this week.", zh: "有，這禮拜打八折。" },
-      { speaker: "A", en: "Great, can I try it on?", zh: "太好了，我可以試穿嗎？" },
-      { speaker: "B", en: "Of course, the fitting rooms are right over there.", zh: "當然，試衣間就在那邊。" },
-      { speaker: "A", en: "Thanks. Do you accept credit cards, by the way?", zh: "謝謝，對了，你們可以刷卡嗎？" },
-      { speaker: "B", en: "Yes, we take all major cards.", zh: "可以，我們接受所有主要信用卡。" },
-      { speaker: "A", en: "Great, I'll take it if it fits.", zh: "太好了，如果合身我就買了。" },
-      { speaker: "B", en: "No problem, just let me know if you need another size.", zh: "沒問題，需要別的尺寸再跟我說。" },
-      { speaker: "A", en: "It fits perfectly. Oh, do you have a loyalty program?", zh: "很合身。對了，你們有會員集點的方案嗎？" },
-      { speaker: "B", en: "We do, would you like to sign up? It's free.", zh: "有的，要加入嗎？是免費的。" },
-      { speaker: "A", en: "Sure, why not. Also, can you gift-wrap this for me?", zh: "好啊，可以。另外可以幫我把這個包裝成禮物嗎？" },
-      { speaker: "B", en: "Of course, that'll just take a minute.", zh: "當然，這只需要一分鐘。" },
-      { speaker: "A", en: "Thank you so much. Here's my card.", zh: "太感謝了，這是我的卡。" },
-      { speaker: "B", en: "All set. Your total comes to twenty-four dollars.", zh: "好了，總共二十四塊。" },
-      { speaker: "A", en: "Here you go, keep the change.", zh: "給你，不用找了。" },
-      { speaker: "B", en: "Thank you! Have a great day.", zh: "謝謝你！祝你有美好的一天。" },
-    ],
-  },
-  4: {
-    sentences: [
-      { en: "The kitchen sink is leaking again.", zh: "廚房水槽又漏水了。", done: false },
-      { en: "Can you take a look at the air conditioner?", zh: "你可以幫忙看一下冷氣嗎？", done: false },
-      { en: "The Wi-Fi keeps dropping every few minutes.", zh: "Wi-Fi每隔幾分鐘就會斷線。", done: false },
-      { en: "We need to call a plumber.", zh: "我們得叫水電工來。", done: false },
-      { en: "The light in the hallway burned out.", zh: "走廊的燈壞了。", done: false },
-      { en: "How much would it cost to fix this?", zh: "修這個大概要多少錢？", done: false },
-      { en: "Is this covered under warranty?", zh: "這個有保固嗎？", done: false },
-      { en: "The door won't close properly.", zh: "這扇門關不太起來。", done: false },
-      { en: "Can you come by sometime this week?", zh: "你這禮拜可以找時間過來一趟嗎？", done: false },
-      { en: "There's a strange noise coming from the pipes.", zh: "水管傳來奇怪的聲音。", done: false },
-      { en: "We might need to replace the whole unit.", zh: "我們可能需要把整組換掉。", done: false },
-      { en: "Thanks for coming on such short notice.", zh: "謝謝你這麼臨時還願意過來。", done: false },
-    ],
-    dialogue: [
-      { speaker: "A", en: "Hi, I'm calling about the leak under my kitchen sink.", zh: "你好，我打來是關於廚房水槽下面漏水的問題。" },
-      { speaker: "B", en: "Sure, can you tell me when it started?", zh: "好的，可以告訴我是什麼時候開始的嗎？" },
-      { speaker: "A", en: "It's been dripping since yesterday morning.", zh: "從昨天早上就開始滴水了。" },
-      { speaker: "B", en: "Got it. We can send someone over this afternoon, if that works.", zh: "了解，我們今天下午可以派人過去，這樣可以嗎？" },
-      { speaker: "A", en: "That would be great. How much would it cost to fix something like this?", zh: "太好了，修這種問題大概要多少錢？" },
-      { speaker: "B", en: "It depends on the issue, but usually between fifty and a hundred dollars.", zh: "要看實際情況，通常在五十到一百塊之間。" },
-      { speaker: "A", en: "Is this covered under warranty? We had some plumbing work done last year.", zh: "這個有保固嗎？我們去年有做過水電工程。" },
-      { speaker: "B", en: "Let me check that for you. Can I get your address?", zh: "我幫你查一下，可以給我你的地址嗎？" },
-      { speaker: "A", en: "Sure, it's 42 Maple Street.", zh: "可以，是Maple街42號。" },
-      { speaker: "B", en: "Okay, I see the record. Looks like it's still under warranty.", zh: "好，我看到紀錄了，看起來還在保固期內。" },
-      { speaker: "A", en: "That's a relief. What time should I expect them?", zh: "太好了。大概幾點會到？" },
-      { speaker: "B", en: "Probably around two or three o'clock.", zh: "大概兩三點左右。" },
-      { speaker: "A", en: "Okay, I'll make sure to be home. There's also a strange noise coming from the pipes lately.", zh: "好，我會確保自己在家。最近水管也一直有奇怪的聲音。" },
-      { speaker: "B", en: "I'll let the technician know to check that too.", zh: "我會請技師一起檢查那個。" },
-      { speaker: "A", en: "Thanks. Also, the light in the hallway burned out, is that something you handle too?", zh: "謝謝，還有走廊的燈壞了，這也是你們處理的範圍嗎？" },
-      { speaker: "B", en: "We mostly do plumbing, but I can note it down and see if he has time.", zh: "我們主要是處理水電，但我可以記下來，看他有沒有時間順便處理。" },
-      { speaker: "A", en: "That would be really helpful, thank you.", zh: "那真的幫大忙了，謝謝你。" },
-      { speaker: "B", en: "No problem at all. We'll see you this afternoon then.", zh: "不客氣，那下午見。" },
-      { speaker: "A", en: "Thanks for coming on such short notice.", zh: "謝謝你這麼臨時還願意過來。" },
-      { speaker: "B", en: "Of course, that's what we're here for.", zh: "當然，這就是我們的工作。" },
-    ],
-  },
-  5: {
-    sentences: [
-      { en: "I'd like to check in, please.", zh: "我要辦理入住，麻煩了。", done: false },
-      { en: "Do you have any rooms available for tonight?", zh: "你們今晚還有空房嗎？", done: false },
-      { en: "What time is checkout?", zh: "退房時間是幾點？", done: false },
-      { en: "Is breakfast included?", zh: "有包含早餐嗎？", done: false },
-      { en: "Could we get a room with a better view?", zh: "我們可以換一間視野比較好的房間嗎？", done: false },
-      { en: "Is there a shuttle to the airport?", zh: "有到機場的接駁車嗎？", done: false },
-      { en: "My flight got delayed, can I check in late?", zh: "我的班機延誤了，可以晚一點入住嗎？", done: false },
-      { en: "Do you know any good restaurants nearby?", zh: "你知道附近有什麼不錯的餐廳嗎？", done: false },
-      { en: "Could I extend my stay by one more night?", zh: "我可以再多住一晚嗎？", done: false },
-      { en: "Is the Wi-Fi password on the card?", zh: "Wi-Fi密碼在這張卡上嗎？", done: false },
-      { en: "We got a bit lost trying to find this place.", zh: "我們找這個地方的時候有點迷路。", done: false },
-      { en: "This trip has been amazing so far.", zh: "這趟旅行到目前為止都很棒。", done: false },
-    ],
-    dialogue: [
-      { speaker: "A", en: "Hi, I have a reservation under Chen.", zh: "你好，我用陳姓訂了房。" },
-      { speaker: "B", en: "Let me check... yes, I see it here. Checking in for two nights?", zh: "我看一下...對，我找到了，入住兩晚對嗎？" },
-      { speaker: "A", en: "That's right. Is breakfast included?", zh: "沒錯，有包含早餐嗎？" },
-      { speaker: "B", en: "Yes, it's served from seven to ten in the lobby restaurant.", zh: "有的，大廳餐廳七點到十點供應早餐。" },
-      { speaker: "A", en: "Perfect. Do you have any rooms available with a better view, by any chance?", zh: "太好了。有沒有機會換一間視野比較好的房間？" },
-      { speaker: "B", en: "Let me check availability... yes, we can upgrade you to a room with an ocean view for a small fee.", zh: "我查一下空房...有的，可以幫你升等到海景房，需要補一點差價。" },
-      { speaker: "A", en: "That sounds great, let's do that. Also, is there a shuttle to the airport?", zh: "聽起來不錯，就這樣吧。另外有到機場的接駁車嗎？" },
-      { speaker: "B", en: "Yes, it runs every hour starting at six a.m.", zh: "有的，從早上六點開始每小時一班。" },
-      { speaker: "A", en: "Perfect. My flight actually got delayed today, is that why I'm checking in a bit late?", zh: "太好了。我的班機今天其實有延誤，這是我比較晚入住的原因。" },
-      { speaker: "B", en: "No worries at all, we have your reservation held. Do you know any good restaurants nearby, by the way?", zh: "完全沒問題，我們有幫你保留房間。對了，你知道附近有什麼不錯的餐廳嗎？" },
-      { speaker: "A", en: "Actually, that's what I wanted to ask you!", zh: "其實這正是我想問你的問題！" },
-      { speaker: "B", en: "Ha, there's a great seafood place two blocks from here, very popular with guests.", zh: "哈，這裡走兩個街區有間很棒的海鮮餐廳，住客都很推薦。" },
-      { speaker: "A", en: "Perfect, we'll check it out tonight. Could I also extend my stay by one more night?", zh: "太好了，我們今晚就去試試。我也可以再多住一晚嗎？" },
-      { speaker: "B", en: "Let me check... yes, that room is available for one more night.", zh: "我查一下...有的，那間房還可以再多住一晚。" },
-      { speaker: "A", en: "Great, let's add that on. Is the Wi-Fi password on the card?", zh: "太好了，那就加上去。Wi-Fi密碼在這張卡上嗎？" },
-      { speaker: "B", en: "Yes, it's printed right on the back.", zh: "有的，就印在背面。" },
-      { speaker: "A", en: "Perfect. We got a little lost trying to find this place earlier, but we're here now.", zh: "太好了。我們剛才找這個地方的時候有點迷路，不過現在到了。" },
-      { speaker: "B", en: "That happens a lot, the street signs around here can be confusing.", zh: "這裡常常發生這種事，這附近的路標有點容易搞混。" },
-      { speaker: "A", en: "This trip has been amazing so far, honestly.", zh: "老實說，這趟旅行到目前為止都很棒。" },
-      { speaker: "B", en: "That's wonderful to hear. Enjoy the rest of your stay!", zh: "很高興聽到這樣，祝你們接下來玩得愉快！" },
-    ],
-  },
-  6: {
-    sentences: [
-      { en: "I haven't been feeling well the past few days.", zh: "我這幾天覺得不太舒服。", done: false },
-      { en: "I'd like to make an appointment with Dr. Lin.", zh: "我想要預約林醫師的門診。", done: false },
-      { en: "Where does it hurt exactly?", zh: "確切是哪裡痛？", done: false },
-      { en: "I've had this cough for about a week.", zh: "我這個咳嗽已經一個禮拜了。", done: false },
-      { en: "Are there any side effects to this medication?", zh: "這個藥有什麼副作用嗎？", done: false },
-      { en: "Do I need to fast before the blood test?", zh: "抽血前需要空腹嗎？", done: false },
-      { en: "How many times a day should I take this?", zh: "這個藥一天要吃幾次？", done: false },
-      { en: "I'm allergic to penicillin.", zh: "我對盤尼西林過敏。", done: false },
-      { en: "Should I be worried about this?", zh: "這個需要擔心嗎？", done: false },
-      { en: "When should I come back for a follow-up?", zh: "我什麼時候應該回診？", done: false },
-      { en: "I feel a lot better than yesterday.", zh: "我覺得比昨天好多了。", done: false },
-      { en: "Please take care of yourself.", zh: "請照顧好自己。", done: false },
-    ],
-    dialogue: [
-      { speaker: "A", en: "Hi, I'd like to make an appointment, please.", zh: "你好，我想預約門診，麻煩了。" },
-      { speaker: "B", en: "Sure, what seems to be the problem?", zh: "好的，請問是什麼狀況？" },
-      { speaker: "A", en: "I haven't been feeling well the past few days. I've had this cough for about a week now.", zh: "我這幾天覺得不太舒服，這個咳嗽已經一個禮拜了。" },
-      { speaker: "B", en: "I see. Does Dr. Lin's schedule on Thursday at ten work for you?", zh: "了解，林醫師星期四早上十點的時段可以嗎？" },
-      { speaker: "A", en: "That works. Should I bring anything?", zh: "可以，我需要帶什麼東西嗎？" },
-      { speaker: "B", en: "Just your insurance card, that's all.", zh: "帶健保卡就好。" },
-      { speaker: "A", en: "Got it, thank you.", zh: "好的，謝謝。" },
-      { speaker: "B", en: "So, where does it hurt exactly?", zh: "那具體是哪裡不舒服？" },
-      { speaker: "A", en: "Mostly my throat, and I've had a mild fever too.", zh: "主要是喉嚨，還有輕微發燒。" },
-      { speaker: "B", en: "Okay, let's take a look. Are there any side effects to this medication I should know about, if you're on any?", zh: "好，我看看。你目前有在吃什麼藥嗎？如果有的話有什麼副作用要注意的嗎？" },
-      { speaker: "A", en: "No, I'm not on anything right now. I'm allergic to penicillin though.", zh: "沒有，目前沒有在吃藥，不過我對盤尼西林過敏。" },
-      { speaker: "B", en: "Good to know, I'll keep that in mind. Should I be worried about this?", zh: "了解，我會記住這點。（病人問）這個需要擔心嗎？" },
-      { speaker: "A", en: "No, this looks like a common cold, nothing serious.", zh: "不用，這看起來是一般感冒，沒什麼大問題。" },
-      { speaker: "B", en: "That's a relief. How many times a day should I take this?", zh: "太好了。這個藥一天要吃幾次？" },
-      { speaker: "A", en: "Twice a day, once in the morning and once before bed.", zh: "一天兩次，早上一次、睡前一次。" },
-      { speaker: "B", en: "Got it. When should I come back for a follow-up?", zh: "了解。我什麼時候應該回診？" },
-      { speaker: "A", en: "If you're not feeling better in a week, come back and see me.", zh: "如果一週後還沒好轉，再回來找我。" },
-      { speaker: "B", en: "Will do, thank you so much, doctor.", zh: "好的，非常謝謝你，醫師。" },
-      { speaker: "A", en: "Take care of yourself, and get some rest.", zh: "請照顧好自己，多休息。" },
-    ],
-  },
-  7: {
-    sentences: [
-      { en: "I'd like to file a complaint.", zh: "我想要提出客訴。", done: false },
-      { en: "This isn't what I ordered.", zh: "這不是我點的東西。", done: false },
-      { en: "I've been waiting for over 30 minutes.", zh: "我已經等了超過30分鐘。", done: false },
-      { en: "This product arrived damaged.", zh: "這個產品送來的時候是損壞的。", done: false },
-      { en: "Can I speak to a manager, please?", zh: "可以請經理跟我談談嗎？", done: false },
-      { en: "This is unacceptable.", zh: "這是無法接受的。", done: false },
-      { en: "I'd like a refund or a replacement.", zh: "我想要退款或換貨。", done: false },
-      { en: "Nobody has gotten back to me about this.", zh: "沒有人針對這件事回覆我。", done: false },
-      { en: "This is the second time this has happened.", zh: "這已經是第二次發生這種事了。", done: false },
-      { en: "I understand your frustration, let me fix this for you.", zh: "我理解你的不滿，讓我幫你解決。", done: false },
-      { en: "I'd appreciate a follow-up on this issue.", zh: "希望能有人針對這個問題跟進。", done: false },
-      { en: "Thank you for resolving this so quickly.", zh: "謝謝你這麼快解決這個問題。", done: false },
-    ],
-    dialogue: [
-      { speaker: "A", en: "Hi, I'd like to file a complaint about a recent order.", zh: "你好，我想針對最近的一筆訂單提出客訴。" },
-      { speaker: "B", en: "I'm sorry to hear that. What happened?", zh: "很抱歉聽到這個，請問發生什麼事了？" },
-      { speaker: "A", en: "I received the wrong item, and honestly, this isn't what I ordered at all.", zh: "我收到的商品是錯的，老實說這根本不是我點的東西。" },
-      { speaker: "B", en: "I completely understand your frustration. Can you give me your order number?", zh: "我完全理解你的不滿，可以給我訂單編號嗎？" },
-      { speaker: "A", en: "Sure, it's 48291. Also, I've been waiting for over thirty minutes just to talk to someone.", zh: "可以，是48291。而且我已經等了超過三十分鐘才等到人接電話。" },
-      { speaker: "B", en: "I sincerely apologize for the wait. Let me look into this right away.", zh: "真的很抱歉讓你久等，我馬上幫你查。" },
-      { speaker: "A", en: "This product also arrived damaged, on top of being the wrong item.", zh: "而且這個商品除了是錯的以外，送來的時候還是損壞的。" },
-      { speaker: "B", en: "That's definitely not acceptable, I'm really sorry about that.", zh: "這真的是無法接受的，非常抱歉。" },
-      { speaker: "A", en: "This is actually the second time this has happened with your company.", zh: "這已經是第二次跟你們公司發生這種事了。" },
-      { speaker: "B", en: "I hear you, and that's fair to be upset about. Let me fix this for you right now.", zh: "我理解，你會生氣是合理的，我現在馬上幫你處理。" },
-      { speaker: "A", en: "I'd appreciate a refund or a replacement, whichever is faster.", zh: "我想要退款或換貨，看哪個比較快。" },
-      { speaker: "B", en: "I can process a refund immediately, and I'll also send a replacement at no extra cost.", zh: "我可以馬上幫你辦退款，另外也會免費幫你補寄一份。" },
-      { speaker: "A", en: "Can I speak to a manager as well, just so this gets documented?", zh: "我也可以請經理跟我談談嗎，這樣有個紀錄？" },
-      { speaker: "B", en: "Of course, I'll note everything in the system and have a manager follow up with you.", zh: "當然，我會把一切記錄在系統裡，並請經理跟進聯絡你。" },
-      { speaker: "A", en: "I'd appreciate a follow-up on this within a few days.", zh: "希望能在幾天內有人針對這件事跟進。" },
-      { speaker: "B", en: "Absolutely, you'll hear from us by Thursday at the latest.", zh: "沒問題，最晚星期四之前我們會聯絡你。" },
-      { speaker: "A", en: "Thank you for resolving this so quickly, I really do appreciate it.", zh: "謝謝你這麼快解決這個問題，我真的很感激。" },
-      { speaker: "B", en: "Of course, and again, I'm really sorry for the trouble this caused you.", zh: "不客氣，再次為造成的困擾向你道歉。" },
-    ],
-  },
-  8: {
-    sentences: [
-      { en: "So, how was your weekend?", zh: "你週末過得如何？", done: false },
-      { en: "Did you catch the game last night?", zh: "你昨晚有看比賽嗎？", done: false },
-      { en: "I've been meaning to ask, where'd you get that jacket?", zh: "我一直想問，你那件外套是在哪裡買的？", done: false },
-      { en: "Have you tried that new café downtown?", zh: "你有去過市中心那間新開的咖啡廳嗎？", done: false },
-      { en: "What are you up to this weekend?", zh: "你這週末有什麼安排？", done: false },
-      { en: "I can't believe it's already Friday.", zh: "真不敢相信已經星期五了。", done: false },
-      { en: "Any plans for the holidays?", zh: "假期有什麼計畫嗎？", done: false },
-      { en: "That show you recommended was so good.", zh: "你推薦的那部影集真的很好看。", done: false },
-      { en: "I've been really into hiking lately.", zh: "我最近很迷爬山。", done: false },
-      { en: "We should hang out more often.", zh: "我們應該多聚聚。", done: false },
-      { en: "Long time no see!", zh: "好久不見！", done: false },
-      { en: "What's new with you?", zh: "你最近有什麼新鮮事？", done: false },
-    ],
-    dialogue: [
-      { speaker: "A", en: "Hey, long time no see! How have you been?", zh: "嘿，好久不見！你最近好嗎？" },
-      { speaker: "B", en: "I've been good, just busy with work. How about you?", zh: "我很好，就是工作比較忙，你呢？" },
-      { speaker: "A", en: "Same here, though I finally took a short trip last week.", zh: "我也是，不過我上禮拜終於出去玩了一趟。" },
-      { speaker: "B", en: "Nice, where did you go?", zh: "不錯耶，你去哪裡了？" },
-      { speaker: "A", en: "Just a quick weekend trip to the coast. It was really relaxing.", zh: "就一個週末去海邊，很放鬆。" },
-      { speaker: "B", en: "That sounds amazing. Did you catch the game last night, by the way?", zh: "聽起來很棒。對了，你昨晚有看比賽嗎？" },
-      { speaker: "A", en: "I did! What a finish, right?", zh: "有啊！結局也太精彩了對吧？" },
-      { speaker: "B", en: "Seriously. Hey, I've been meaning to ask, where'd you get that jacket?", zh: "真的。嘿，我一直想問，你那件外套是在哪裡買的？" },
-      { speaker: "A", en: "Oh, this? I got it at that new shop downtown.", zh: "喔這件？我在市中心那間新店買的。" },
-      { speaker: "B", en: "Have you tried that new café near there too? I heard it's really good.", zh: "你有去過那附近新開的咖啡廳嗎？聽說很不錯。" },
-      { speaker: "A", en: "Not yet, but it's on my list. What are you up to this weekend?", zh: "還沒，不過在我的口袋名單裡。你這週末有什麼安排？" },
-      { speaker: "B", en: "Nothing solid yet. I can't believe it's already Friday, honestly.", zh: "還沒確定，說真的我不敢相信已經星期五了。" },
-      { speaker: "A", en: "I know, this week flew by. Any plans for the holidays coming up?", zh: "對啊，這禮拜過得好快。快到的假期有什麼計畫嗎？" },
-      { speaker: "B", en: "Probably just visiting family. That show you recommended was so good, by the way.", zh: "應該就是去看家人。對了，你推薦的那部影集真的很好看。" },
-      { speaker: "A", en: "Right? I finished the whole season in two days.", zh: "對吧？我兩天就追完整季了。" },
-      { speaker: "B", en: "Same here. I've been really into hiking lately too, you should join sometime.", zh: "我也是。我最近也很迷爬山，你有空可以一起來。" },
-      { speaker: "A", en: "I'd love that, we should hang out more often anyway.", zh: "我很樂意，反正我們應該多聚聚。" },
-      { speaker: "B", en: "Agreed. What's new with you otherwise?", zh: "同意。你最近還有什麼新鮮事嗎？" },
-      { speaker: "A", en: "Not much, just the usual. Let's plan something soon though.", zh: "沒什麼，就日常。不過我們該找時間約一下。" },
-      { speaker: "B", en: "Definitely, I'll text you this week.", zh: "一定，我這禮拜傳訊息給你。" },
-    ],
-  },
-  9: {
-    sentences: [
-      { en: "Can I talk to you about something personal?", zh: "我可以跟你聊一件比較私人的事嗎？", done: false },
-      { en: "I've been feeling really overwhelmed lately.", zh: "我最近覺得壓力很大、有點喘不過氣。", done: false },
-      { en: "I just need someone to listen right now.", zh: "我現在只是需要有人聽我說。", done: false },
-      { en: "I'm not sure I'm making the right decision.", zh: "我不確定自己做的決定是不是對的。", done: false },
-      { en: "Thank you for always being there for me.", zh: "謝謝你一直都在我身邊。", done: false },
-      { en: "I've been struggling with this for a while.", zh: "這件事我已經掙扎了一陣子。", done: false },
-      { en: "It means a lot that you understand.", zh: "你能理解我，對我來說意義重大。", done: false },
-      { en: "I don't want you to worry about me.", zh: "我不希望你為我擔心。", done: false },
-      { en: "Sometimes I just need a good cry.", zh: "有時候我只是需要好好哭一場。", done: false },
-      { en: "I really appreciate you opening up to me.", zh: "我很感謝你願意對我敞開心房。", done: false },
-      { en: "We'll get through this together.", zh: "我們會一起度過這個難關。", done: false },
-      { en: "I feel like myself again.", zh: "我覺得自己終於找回原本的樣子了。", done: false },
-    ],
-    dialogue: [
-      { speaker: "A", en: "Hey, do you have a minute? I need to talk about something.", zh: "嘿，你有時間嗎？我有件事想聊聊。" },
-      { speaker: "B", en: "Of course, what's going on?", zh: "當然，怎麼了？" },
-      { speaker: "A", en: "I've just been feeling really overwhelmed lately, and I don't fully know why.", zh: "我最近覺得壓力很大、有點喘不過氣，也不太知道為什麼。" },
-      { speaker: "B", en: "That's okay, you don't have to have a clear reason. Do you want to talk about it?", zh: "沒關係，不一定要有明確的原因，你想聊聊嗎？" },
-      { speaker: "A", en: "I think I just need someone to listen right now, honestly.", zh: "老實說，我現在可能只是需要有人聽我說。" },
-      { speaker: "B", en: "I'm here for you, take your time. No pressure.", zh: "我在這裡陪你，慢慢說沒關係，不用有壓力。" },
-      { speaker: "A", en: "I've been struggling with this decision for a while now, and I'm not sure I'm making the right one.", zh: "我已經掙扎這個決定好一陣子了，也不確定自己做的是不是對的。" },
-      { speaker: "B", en: "That sounds really hard. What's making it so difficult?", zh: "聽起來真的很不容易，是什麼讓這個決定這麼難？" },
-      { speaker: "A", en: "I guess I'm scared of disappointing people, more than anything else.", zh: "我想我最害怕的還是讓大家失望。" },
-      { speaker: "B", en: "That makes a lot of sense. It means a lot that you're being this open with me.", zh: "這樣想很合理。你能這樣對我敞開心房，對我來說意義重大。" },
-      { speaker: "A", en: "Thank you for always being there for me, really.", zh: "真的很謝謝你一直都在我身邊。" },
-      { speaker: "B", en: "Always. I don't want you to feel like you're carrying this alone.", zh: "一直都會在。我不希望你覺得自己是一個人在扛這件事。" },
-      { speaker: "A", en: "Sometimes I just need a good cry, and that's okay too, right?", zh: "有時候我只是需要好好哭一場，這樣也可以吧？" },
-      { speaker: "B", en: "Absolutely, that's completely okay. Let it out if you need to.", zh: "當然可以，這完全沒問題，需要的話就讓自己哭出來吧。" },
-      { speaker: "A", en: "I really appreciate you listening without judging me.", zh: "真的很感謝你聽我說，而且不批判我。" },
-      { speaker: "B", en: "Of course. We'll get through this together, one step at a time.", zh: "當然。我們會一起度過這個難關，一步一步來。" },
-      { speaker: "A", en: "I don't want you to worry about me too much though.", zh: "不過我也不希望你太為我擔心。" },
-      { speaker: "B", en: "I know, but that's what people who care about you do sometimes.", zh: "我知道，不過這就是在乎你的人有時候會做的事。" },
-      { speaker: "A", en: "Thanks. I already feel a bit lighter just talking about it.", zh: "謝謝，光是講出來我就覺得輕鬆一點了。" },
-      { speaker: "B", en: "I'm really glad to hear that. I feel like you're finding your way back to yourself.", zh: "很高興聽到這樣，感覺你正在慢慢找回自己。" },
-    ],
-  },
-  10: {
-    sentences: [
-      { en: "I'm just messing with you.", zh: "我只是在跟你開玩笑啦。", done: false },
-      { en: "You should've seen your face!", zh: "你應該看看你自己的表情！", done: false },
-      { en: "I can't keep a straight face right now.", zh: "我現在忍不住要笑了。", done: false },
-      { en: "That joke was so bad it's actually funny.", zh: "那個笑話爛到很好笑。", done: false },
-      { en: "Don't take it too seriously, I'm kidding.", zh: "別太認真，我是開玩笑的。", done: false },
-      { en: "He's got such a dry sense of humor.", zh: "他的幽默感很冷。", done: false },
-      { en: "I walked right into that one.", zh: "我完全被你耍了。", done: false },
-      { en: "You're such a dork.", zh: "你真的很呆耶。", done: false },
-      { en: "That was way too cheesy.", zh: "那真的太老套了。", done: false },
-      { en: "I can't believe you actually fell for that.", zh: "真不敢相信你居然上當了。", done: false },
-      { en: "Okay, that was actually pretty funny.", zh: "好啦，那個真的滿好笑的。", done: false },
-      { en: "Let's not go there.", zh: "別提那個了。", done: false },
-    ],
-    dialogue: [
-      { speaker: "A", en: "Guess what happened to me today.", zh: "你猜我今天發生什麼事。" },
-      { speaker: "B", en: "What?", zh: "什麼事？" },
-      { speaker: "A", en: "I walked into a glass door in front of everyone at the office.", zh: "我在辦公室當著大家的面撞到玻璃門。" },
-      { speaker: "B", en: "No way, are you okay?", zh: "不會吧，你還好嗎？" },
-      { speaker: "A", en: "Yeah, just my pride was hurt, mostly.", zh: "還好，主要是面子掛不住而已。" },
-      { speaker: "B", en: "I would've paid to see that, honestly.", zh: "老實說我願意付錢看那一幕。" },
-      { speaker: "A", en: "Very funny. I'm never living this down, am I?", zh: "很好笑喔，我這下永遠洗不掉這個形象了對吧？" },
-      { speaker: "B", en: "Nope, this is going straight into the group chat.", zh: "沒錯，這個一定要傳到群組裡。" },
-      { speaker: "A", en: "Don't you dare. I'm just messing with you about the group chat thing, do whatever you want.", zh: "你敢喔。我開玩笑的啦，隨便你要不要傳。" },
-      { speaker: "B", en: "Ha, you should've seen your face just now when you said that.", zh: "哈，你剛剛講那句話的表情真該讓你看看。" },
-      { speaker: "A", en: "Okay, that was actually pretty funny, I'll give you that.", zh: "好啦，那個真的滿好笑的，這點我承認。" },
-      { speaker: "B", en: "He's got such a dry sense of humor too, by the way, our new coworker.", zh: "對了，我們新來的同事幽默感也很冷。" },
-      { speaker: "A", en: "Oh, I noticed. I walked right into one of his jokes yesterday.", zh: "喔我有注意到，我昨天完全被他的笑話耍了。" },
-      { speaker: "B", en: "What happened?", zh: "發生什麼事？" },
-      { speaker: "A", en: "He said something with a totally straight face and I believed him for like five minutes.", zh: "他一臉正經地說了一件事，我信了大概五分鐘。" },
-      { speaker: "B", en: "Classic. That's way too cheesy of a trick, but it works every time.", zh: "經典。這招真的老套，但每次都有用。" },
-      { speaker: "A", en: "I can't believe I actually fell for that one.", zh: "真不敢相信我居然上當了。" },
-      { speaker: "B", en: "Don't worry, we've all been there.", zh: "別擔心，我們都經歷過。" },
-      { speaker: "A", en: "True. Let's not go there about my glass door incident again though, please.", zh: "對啊。不過拜託，我的玻璃門事件就別再提了。" },
-      { speaker: "B", en: "No promises.", zh: "不保證喔。" },
-    ],
-  },
-  11: {
-    sentences: [
-      { en: "I finally finished that project I told you about.", zh: "我終於完成了之前跟你提到的那個專案。", done: false },
-      { en: "We're throwing a small get-together this Saturday, want to come?", zh: "我們這週六要辦個小聚會，你要來嗎？", done: false },
-      { en: "I'd love to, but I already have plans that day.", zh: "我很想去，但那天我已經有安排了。", done: false },
-      { en: "Can I get a rain check?", zh: "我們可以改天再約嗎？", done: false },
-      { en: "I'm not really up for going out tonight.", zh: "我今晚沒什麼心情出門。", done: false },
-      { en: "Thanks for the invite, but I'll have to pass this time.", zh: "謝謝你的邀約，不過這次我要跳過了。", done: false },
-      { en: "I've been meaning to invite you over for dinner.", zh: "我一直想邀你來家裡吃晚餐。", done: false },
-      { en: "Let's do it another time.", zh: "我們改天再約吧。", done: false },
-      { en: "I just got back from an amazing trip.", zh: "我剛從一趟很棒的旅行回來。", done: false },
-      { en: "I've got some exciting news to share.", zh: "我有一個很棒的消息要分享。", done: false },
-      { en: "Sorry for the late notice, but are you free tonight?", zh: "抱歉這麼臨時通知，你今晚有空嗎？", done: false },
-      { en: "I really appreciate you understanding.", zh: "很感謝你能理解。", done: false },
-    ],
-    dialogue: [
-      { speaker: "A", en: "I finally finished that painting I've been working on for months.", zh: "我終於完成了那幅畫了好幾個月的畫。" },
-      { speaker: "B", en: "That's amazing! I'd love to see it sometime.", zh: "太棒了！我很想找時間看看。" },
-      { speaker: "A", en: "You should come by this weekend, I'm having a few friends over actually.", zh: "你這週末可以來，我其實有約了幾個朋友。" },
-      { speaker: "B", en: "I'd love to, but I already have plans that day, unfortunately.", zh: "我很想去，不過那天我已經有安排了，真可惜。" },
-      { speaker: "A", en: "No worries, maybe another time then.", zh: "沒關係，那我們改天吧。" },
-      { speaker: "B", en: "Definitely, can I get a rain check on that?", zh: "一定會的，我們可以改天再約嗎？" },
-      { speaker: "A", en: "Of course. I just got back from an amazing trip too, I have to tell you about it sometime.", zh: "當然。我也剛從一趟很棒的旅行回來，我得找時間跟你分享。" },
-      { speaker: "B", en: "Oh, tell me now, I'm curious!", zh: "喔快跟我說，我很好奇！" },
-      { speaker: "A", en: "I've got some exciting news to share too, actually, but let's save it for when we meet up properly.", zh: "其實我也有一個很棒的消息要分享，不過我們等真的見面再說吧。" },
-      { speaker: "B", en: "Now I'm even more curious. Okay, let's do it another time then, when I'm not so busy.", zh: "現在我更好奇了。好吧，那我們改天再約，等我不那麼忙的時候。" },
-      { speaker: "A", en: "Sounds good. Actually, are you free tonight? I know it's short notice.", zh: "好啊。其實你今晚有空嗎？我知道這樣通知很臨時。" },
-      { speaker: "B", en: "Sorry for the late notice yourself, but I'm not really up for going out tonight, I'm pretty tired.", zh: "不好意思換我這麼臨時說，不過我今晚沒什麼心情出門，有點累。" },
-      { speaker: "A", en: "Totally understandable, no worries at all.", zh: "完全理解，別放在心上。" },
-      { speaker: "B", en: "Thanks for the invite though, I'll have to pass this time.", zh: "還是謝謝你的邀約，不過這次我要跳過了。" },
-      { speaker: "A", en: "No problem. I've been meaning to invite you over for dinner anyway, let's plan that instead.", zh: "沒問題，反正我一直想邀你來家裡吃晚餐，我們改約這個好了。" },
-      { speaker: "B", en: "I'd really love that. I really appreciate you understanding, by the way.", zh: "我很樂意，對了，很感謝你能理解。" },
-      { speaker: "A", en: "Of course, that's what friends are for.", zh: "當然，朋友就是要這樣。" },
-      { speaker: "B", en: "Let's lock in a date this week then.", zh: "那我們這禮拜就把日期定下來吧。" },
-      { speaker: "A", en: "Perfect, I'll text you a few options.", zh: "太好了，我傳幾個選項給你。" },
-    ],
-  },
-  12: {
-    sentences: [
-      { en: "Tell me a little about yourself.", zh: "跟我介紹一下你自己。", done: false },
-      { en: "Why are you interested in this position?", zh: "你為什麼對這個職位感興趣？", done: false },
-      { en: "What would you say is your biggest strength?", zh: "你覺得自己最大的優點是什麼？", done: false },
-      { en: "Can you walk me through your resume?", zh: "可以帶我看一下你的履歷嗎？", done: false },
-      { en: "Where do you see yourself in five years?", zh: "你覺得五年後的自己會是什麼樣子？", done: false },
-      { en: "I have three years of experience in this field.", zh: "我在這個領域有三年的經驗。", done: false },
-      { en: "What's the salary range for this role?", zh: "這個職位的薪資範圍大概是多少？", done: false },
-      { en: "Do you have any questions for me?", zh: "你有什麼問題想問我嗎？", done: false },
-      { en: "When can I expect to hear back?", zh: "我大概什麼時候會收到回覆？", done: false },
-      { en: "I'm really excited about this opportunity.", zh: "我對這個機會感到非常興奮。", done: false },
-      { en: "Thank you for taking the time to meet with me.", zh: "謝謝你撥空跟我面談。", done: false },
-      { en: "I look forward to hearing from you.", zh: "期待收到你的回覆。", done: false },
-    ],
-    dialogue: [
-      { speaker: "A", en: "Thanks for coming in today. Can you tell me a little about yourself?", zh: "謝謝你今天過來，可以跟我介紹一下自己嗎？" },
-      { speaker: "B", en: "Of course. I've been working in marketing for about four years now, mostly on the digital side.", zh: "當然，我在行銷領域已經工作大約四年了，主要是數位行銷。" },
-      { speaker: "A", en: "Why are you interested in this position specifically?", zh: "你為什麼對這個職位特別感興趣？" },
-      { speaker: "B", en: "I've always admired this company's work, and I think my skills are a good fit for the team.", zh: "我一直很欣賞這間公司，也覺得我的能力很適合這個團隊。" },
-      { speaker: "A", en: "Can you walk me through your resume a bit?", zh: "可以帶我看一下你的履歷嗎？" },
-      { speaker: "B", en: "Sure, I started out as a coordinator, then moved into a specialist role after two years.", zh: "當然，我一開始是協調專員，兩年後升為專員職位。" },
-      { speaker: "A", en: "What would you say is your biggest strength?", zh: "你覺得自己最大的優點是什麼？" },
-      { speaker: "B", en: "I'd say it's my ability to manage multiple projects at once without losing quality.", zh: "我覺得是我能同時處理多個專案，而且不影響品質。" },
-      { speaker: "A", en: "Where do you see yourself in five years?", zh: "你覺得五年後的自己會是什麼樣子？" },
-      { speaker: "B", en: "Ideally, growing into a leadership role, maybe managing a small team.", zh: "理想上，我希望能成長到管理職，也許帶一個小團隊。" },
-      { speaker: "A", en: "That's great to hear. What's the salary range for this role, do you know, or would you like me to share that?", zh: "很高興聽到這樣。你知道這個職位的薪資範圍嗎，還是需要我先說明？" },
-      { speaker: "B", en: "I'd appreciate you sharing that, actually.", zh: "其實我會很感謝你先說明。" },
-      { speaker: "A", en: "Of course. Do you have any other questions for me?", zh: "當然。你還有其他問題想問我嗎？" },
-      { speaker: "B", en: "Yes, what does a typical day look like in this role?", zh: "有的，這個職位平常的一天大概是什麼樣子？" },
-      { speaker: "A", en: "Great question. It's a mix of strategy meetings and hands-on campaign work.", zh: "好問題，大概是策略會議跟實際操作行銷活動各半。" },
-      { speaker: "B", en: "That sounds like a great balance. I'm really excited about this opportunity.", zh: "聽起來平衡得很好，我對這個機會感到非常興奮。" },
-      { speaker: "A", en: "When can I expect to hear back from you regarding next steps?", zh: "那我大概什麼時候會收到你們後續的回覆？" },
-      { speaker: "B", en: "We'll be in touch within the next week.", zh: "我們一週內會跟你聯絡。" },
-      { speaker: "A", en: "Thank you for taking the time to meet with me today.", zh: "謝謝你今天撥空跟我面談。" },
-      { speaker: "B", en: "Of course, thank you for coming in. We'll be in touch soon.", zh: "不客氣，謝謝你過來，我們很快就會聯絡你。" },
-    ],
-  },
-  13: {
-    sentences: [
-      { en: "Do you have a minute to go over this report?", zh: "你有時間看一下這份報告嗎？", done: false },
-      { en: "How's the project coming along?", zh: "專案進行得怎麼樣了？", done: false },
-      { en: "I'll send you the file by end of day.", zh: "我今天下班前會把檔案寄給你。", done: false },
-      { en: "Can we push the meeting to tomorrow?", zh: "我們可以把會議延到明天嗎？", done: false },
-      { en: "I'm swamped this week.", zh: "我這禮拜忙翻了。", done: false },
-      { en: "Let's touch base after lunch.", zh: "我們午餐後再對一下進度。", done: false },
-      { en: "Great job on the presentation earlier.", zh: "剛才的簡報做得很棒。", done: false },
-      { en: "I'm heading out for lunch, want anything?", zh: "我要出去吃午餐了，要幫你帶什麼嗎？", done: false },
-      { en: "Sorry, I completely spaced on that email.", zh: "抱歉，我完全忘了那封信。", done: false },
-      { en: "Let's circle back to this next week.", zh: "我們下週再回頭討論這個。", done: false },
-      { en: "Thanks for covering for me yesterday.", zh: "謝謝你昨天幫我代班。", done: false },
-      { en: "Have a good one!", zh: "祝你有美好的一天！", done: false },
-    ],
-    dialogue: [
-      { speaker: "A", en: "Hey, do you have a second to look at this report?", zh: "嘿，你有空看一下這份報告嗎？" },
-      { speaker: "B", en: "Sure, give me just a moment, I'm finishing up an email.", zh: "好，等我一下，我在回一封信。" },
-      { speaker: "A", en: "No rush, whenever you get a chance today is fine.", zh: "不急，你今天有空的時候看就好。" },
-      { speaker: "B", en: "Actually, I'm free right now, let's just do it.", zh: "其實我現在就有空，我們現在來看吧。" },
-      { speaker: "A", en: "Great, I just want a second opinion on this section here.", zh: "太好了，我只是想聽聽你對這部分的意見。" },
-      { speaker: "B", en: "Looks good to me overall, maybe just tighten up the summary a bit.", zh: "整體看起來不錯，摘要的部分可以再精簡一點。" },
-      { speaker: "A", en: "Good call, I'll fix that now. How's your project coming along, by the way?", zh: "有道理，我現在就來改。對了，你的專案進行得怎麼樣了？" },
-      { speaker: "B", en: "It's going okay, though I'm pretty swamped this week honestly.", zh: "還算順利，不過老實說我這禮拜忙翻了。" },
-      { speaker: "A", en: "I hear you. Can we push our one-on-one to tomorrow then?", zh: "我懂，那我們的一對一會議可以延到明天嗎？" },
-      { speaker: "B", en: "Yeah, that works better for me. Let's touch base after lunch tomorrow instead.", zh: "好，這樣對我比較好，我們明天午餐後再對一下進度。" },
-      { speaker: "A", en: "Sounds good. Oh, great job on the presentation earlier, by the way.", zh: "好，對了，剛才的簡報做得很棒。" },
-      { speaker: "B", en: "Thanks, I was pretty nervous about it actually.", zh: "謝謝，其實我還滿緊張的。" },
-      { speaker: "A", en: "Didn't show at all. I'm heading out for lunch soon, want anything?", zh: "完全看不出來。我等等要出去吃午餐，要幫你帶什麼嗎？" },
-      { speaker: "B", en: "Sure, whatever you're getting is fine. Oh wait, sorry, I completely spaced on that email you sent yesterday.", zh: "好，你買什麼我都可以。啊等等，抱歉，我完全忘了你昨天寄的那封信。" },
-      { speaker: "A", en: "No worries, it wasn't urgent. Let's circle back to it next week.", zh: "沒關係，不急，我們下週再回頭討論就好。" },
-      { speaker: "B", en: "Thanks for understanding. And thanks for covering for me yesterday too, I owe you one.", zh: "謝謝你的體諒，也謝謝你昨天幫我代班，我欠你一次。" },
-      { speaker: "A", en: "Anytime, that's what teammates are for.", zh: "隨時都可以，隊友就是要互相幫忙。" },
-      { speaker: "B", en: "Alright, I better get back to it. Have a good one!", zh: "好，我得繼續忙了，祝你有美好的一天！" },
-    ],
-  },
-  14: {
-    sentences: [
-      { en: "Did you see the news this morning?", zh: "你今天早上有看新聞嗎？", done: false },
-      { en: "What do you think about the new policy?", zh: "你對這項新政策有什麼看法？", done: false },
-      { en: "I've been following this story for weeks.", zh: "我已經追蹤這則新聞好幾週了。", done: false },
-      { en: "It's hard to know what to believe these days.", zh: "這年頭很難知道該相信什麼。", done: false },
-      { en: "That's a really controversial topic.", zh: "那是個很有爭議的話題。", done: false },
-      { en: "I saw a headline about that earlier.", zh: "我剛剛有看到關於那件事的新聞標題。", done: false },
-      { en: "The economy has been all over the news lately.", zh: "最近新聞一直在報導經濟的事。", done: false },
-      { en: "I try to get my news from a few different sources.", zh: "我會盡量從不同的來源獲取新聞。", done: false },
-      { en: "That really puts things into perspective.", zh: "這真的讓人重新看待這件事。", done: false },
-      { en: "I don't really follow politics that closely.", zh: "我沒有很密切關注政治。", done: false },
-      { en: "It's a complicated issue with no easy answer.", zh: "這是個複雜的議題，沒有簡單的答案。", done: false },
-      { en: "Let's agree to disagree on this one.", zh: "這件事我們就各自保留意見吧。", done: false },
-    ],
-    dialogue: [
-      { speaker: "A", en: "Did you catch the news about the new policy today?", zh: "你今天有看到那個新政策的新聞嗎？" },
-      { speaker: "B", en: "I did, it's been all over my feed all morning.", zh: "有啊，整個早上我的動態消息全都是這個。" },
-      { speaker: "A", en: "What do you think about it?", zh: "你對這件事有什麼看法？" },
-      { speaker: "B", en: "Honestly, I'm still not sure how I feel. It's a pretty complicated issue with no easy answer.", zh: "老實說我還不太確定自己的想法，這是個滿複雜的議題，沒有簡單的答案。" },
-      { speaker: "A", en: "Same here. I saw a headline about it earlier but didn't get to read the full article.", zh: "我也是，我剛才有看到相關的新聞標題，但沒空看完整篇文章。" },
-      { speaker: "B", en: "It's a really controversial topic too, people online seem pretty split on it.", zh: "這也是個很有爭議的話題，網路上大家的意見好像滿分歧的。" },
-      { speaker: "A", en: "I think we'll just have to wait and see how it actually plays out.", zh: "我覺得我們得再看看後續實際發展如何。" },
-      { speaker: "B", en: "Agreed. It's hard to know what to believe these days with so much information out there.", zh: "同意，這年頭資訊這麼多，很難知道該相信什麼。" },
-      { speaker: "A", en: "True, I try to get my news from a few different sources before forming an opinion.", zh: "對啊，我通常會從幾個不同的來源獲取新聞，才會下結論。" },
-      { speaker: "B", en: "That's probably the smartest way to go about it, honestly.", zh: "老實說這樣做應該是最聰明的方式了。" },
-      { speaker: "A", en: "The economy has been all over the news lately too, it feels a bit overwhelming.", zh: "最近經濟的新聞也一直被大量報導，感覺有點應接不暇。" },
-      { speaker: "B", en: "I know what you mean. That story really puts things into perspective though.", zh: "我懂你的意思，不過那則新聞確實讓人重新看待這件事。" },
-      { speaker: "A", en: "I don't really follow politics that closely myself, I'll be honest.", zh: "老實說，我自己沒有很密切關注政治。" },
-      { speaker: "B", en: "That's totally fair, it can get exhausting keeping up with everything.", zh: "這完全可以理解，要跟上所有事情真的滿累人的。" },
-      { speaker: "A", en: "Anyway, let's agree to disagree on this one, I don't think we'll see eye to eye.", zh: "總之這件事我們就各自保留意見吧，我覺得我們應該不會有共識。" },
-      { speaker: "B", en: "Fair enough, I respect that.", zh: "可以，我尊重這一點。" },
-    ],
-  },
-  15: {
-    sentences: [
-      { en: "I really believe honesty is the most important thing.", zh: "我真的認為誠實是最重要的事。", done: false },
-      { en: "Family always comes first for me.", zh: "對我來說家人永遠是第一位。", done: false },
-      { en: "I try to treat everyone with respect, no matter what.", zh: "不管怎樣我都盡量尊重每一個人。", done: false },
-      { en: "Hard work always pays off in the end.", zh: "努力最終總是會有回報的。", done: false },
-      { en: "I don't believe in giving up easily.", zh: "我不相信輕易放棄這件事。", done: false },
-      { en: "It's important to stay true to yourself.", zh: "忠於自己是很重要的事。", done: false },
-      { en: "I think kindness goes a long way.", zh: "我覺得善良能帶來很大的影響。", done: false },
-      { en: "We should always learn from our mistakes.", zh: "我們應該永遠從錯誤中學習。", done: false },
-      { en: "I value my independence a lot.", zh: "我很重視自己的獨立性。", done: false },
-      { en: "Life is too short to hold grudges.", zh: "人生太短了，不該懷恨在心。", done: false },
-      { en: "I want to raise my kids to be compassionate.", zh: "我希望把孩子教育成有同理心的人。", done: false },
-      { en: "At the end of the day, what matters most is being happy.", zh: "到頭來，最重要的是快樂。", done: false },
-    ],
-    dialogue: [
-      { speaker: "A", en: "Can I ask you something? What matters most to you in life?", zh: "我可以問你一件事嗎？你覺得人生中最重要的是什麼？" },
-      { speaker: "B", en: "Honestly, I think it's just being honest and kind to people, no matter what.", zh: "老實說，我覺得就是不管怎樣都對人誠實和善良。" },
-      { speaker: "A", en: "That's a good one. For me, it's staying true to myself even when it's hard.", zh: "這個答案很好，對我來說是即使很難，也要忠於自己。" },
-      { speaker: "B", en: "That's important too. I also think family always comes first, above almost everything.", zh: "這也很重要，我也覺得家人幾乎永遠是第一位。" },
-      { speaker: "A", en: "Definitely. I try to remind myself of that whenever work gets overwhelming.", zh: "沒錯，每次工作壓力大的時候我都會提醒自己這件事。" },
-      { speaker: "B", en: "Same here. I think kindness goes a long way too, more than people realize.", zh: "我也是，我覺得善良帶來的影響比大家想的還要大。" },
-      { speaker: "A", en: "Agreed. We should always learn from our mistakes instead of dwelling on them.", zh: "同意，我們應該從錯誤中學習，而不是一直沉浸在裡面。" },
-      { speaker: "B", en: "That's a good way to put it. I value my independence a lot as well, if I'm honest.", zh: "這樣說很好。老實說我也很重視自己的獨立性。" },
-      { speaker: "A", en: "That makes sense. Life is too short to hold grudges, in my opinion.", zh: "這樣想很合理，我覺得人生太短了，不該懷恨在心。" },
-      { speaker: "B", en: "I completely agree with that. I want to raise my kids to be compassionate above all else.", zh: "我完全同意，我希望能把孩子教育成有同理心的人，這比什麼都重要。" },
-      { speaker: "A", en: "That's a beautiful goal. Hard work always pays off in the end too, I really believe that.", zh: "這是個很美好的目標。我也真的相信，努力最終總是會有回報。" },
-      { speaker: "B", en: "I hope so. I don't believe in giving up easily either, even when things get tough.", zh: "希望如此，我也不相信輕易放棄，即使事情變得困難。" },
-      { speaker: "A", en: "At the end of the day, what matters most is just being happy, don't you think?", zh: "到頭來，最重要的就是快樂，你不覺得嗎？" },
-      { speaker: "B", en: "Completely agree. Well said, honestly.", zh: "完全同意，老實說說得真好。" },
-      { speaker: "A", en: "Thanks for sharing that with me, it's nice talking about this kind of thing.", zh: "謝謝你跟我分享這些，能聊這種話題感覺很好。" },
-      { speaker: "B", en: "Anytime, I really enjoyed this conversation.", zh: "隨時都可以，我很喜歡這次的聊天。" },
-    ],
-  },
-};
-
-  const STORAGE_KEY = "listening_practice_data_v1";
-  let data = loadData();
-  let currentUnit = 0;
-
-  function loadData(){
-    try{
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if(raw) return JSON.parse(raw);
-    }catch(e){}
-    // 沒有存檔紀錄時，使用預設的原創範例句子
-    return JSON.parse(JSON.stringify(DEFAULT_DATA));
+  // 讀取 URL 參數，支援 ?u=3 直達
+  const urlParamU = new URLSearchParams(window.location.search).get('u');
+  let currentUnitId = parseInt(urlParamU, 10);
+  if (isNaN(currentUnitId) || currentUnitId < 1 || currentUnitId > UNITS.length) {
+    currentUnitId = 1;
   }
 
-  function saveData(){
-    try{
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-    }catch(e){
-      alert("儲存失敗，瀏覽器儲存空間可能已滿。建議先匯出備份。");
-    }
+  let activeTab = 'matrix';
+  let playbackRate = 1.0;
+  let hideEnglish = false;
+  let hideChinese = false;
+
+  let practiceIdx = 0;
+  let completedMap = {};
+  try {
+    const saved = localStorage.getItem('listening_completed_map');
+    if (saved) completedMap = JSON.parse(saved);
+  } catch(e) {}
+
+  // 語音連播佇列
+  let isDialoguePlaying = false;
+  let dlgCurrentIdx = 0;
+
+  function getCurrentUnit() {
+    return UNITS.find(u => u.id === currentUnitId) || UNITS[0];
   }
 
-  function ensureUnitArray(idx){
-    if(!data[idx]){
-      data[idx] = { sentences: [], dialogue: [] };
-      return;
-    }
-    // 相容舊格式（舊版是直接存句子陣列，沒有sentences/dialogue分層）
-    if(Array.isArray(data[idx])){
-      data[idx] = { sentences: data[idx], dialogue: [] };
-      return;
-    }
-    if(!data[idx].sentences) data[idx].sentences = [];
-    if(!data[idx].dialogue) data[idx].dialogue = [];
-  }
-
-  // ---------- 語音播放（穩健版）----------
-  const speechSupported = typeof window.speechSynthesis !== 'undefined';
-  let cachedVoices = [];
-  function refreshVoiceCache(){ if(speechSupported) cachedVoices = window.speechSynthesis.getVoices(); }
-  if(speechSupported){
-    refreshVoiceCache();
-    window.speechSynthesis.onvoiceschanged = refreshVoiceCache;
-  }
-  function pickVoice(lang){
-    if(!cachedVoices.length) refreshVoiceCache();
-    const prefix = lang.split('-')[0];
-    const exactLocal = cachedVoices.find(v => v.lang === lang && v.localService === true);
-    if(exactLocal) return exactLocal;
-    const prefixLocal = cachedVoices.find(v => v.lang && v.lang.startsWith(prefix) && v.localService === true);
-    if(prefixLocal) return prefixLocal;
-    const exact = cachedVoices.find(v => v.lang === lang);
-    if(exact) return exact;
-    return cachedVoices.find(v => v.lang && v.lang.startsWith(prefix)) || null;
-  }
-  function whenVoicesReady(cb){
-    if(cachedVoices.length > 0){ cb(); return; }
-    refreshVoiceCache();
-    if(cachedVoices.length > 0){ cb(); return; }
-    let done = false;
-    const finish = () => { if(done) return; done = true; cb(); };
-    window.speechSynthesis.onvoiceschanged = () => { refreshVoiceCache(); finish(); };
-    setTimeout(finish, 400);
-  }
-  let warmedUp = false;
-  function warmUp(){
-    if(warmedUp || !speechSupported) return;
-    warmedUp = true;
-    try{
-      const w = new SpeechSynthesisUtterance(' ');
-      w.volume = 0; w.rate = 10;
-      window.speechSynthesis.speak(w);
-    }catch(e){}
-  }
-  document.addEventListener('click', warmUp, { once:true, capture:true });
-
-  function speakText(text, btnEl){
-    if(!speechSupported || !text || !text.trim()) return;
-    whenVoicesReady(() => {
-      window.speechSynthesis.cancel();
-      window.speechSynthesis.resume();
-      document.querySelectorAll('.play-btn').forEach(b => b.classList.remove('playing'));
-      const utter = new SpeechSynthesisUtterance(text);
-      utter.lang = 'en-US';
-      utter.rate = 0.85;
-      const v = pickVoice('en-US');
-      if(v) utter.voice = v;
-      if(btnEl) btnEl.classList.add('playing');
-      utter.onend = () => { if(btnEl) btnEl.classList.remove('playing'); };
-      utter.onerror = () => { if(btnEl) btnEl.classList.remove('playing'); };
-      window.speechSynthesis.speak(utter);
+  function renderUnitSelector() {
+    const track = document.getElementById('unitTrack');
+    track.innerHTML = '';
+    UNITS.forEach(u => {
+      const btn = document.createElement('button');
+      btn.className = 'unit-chip-btn' + (u.id === currentUnitId ? ' active' : '');
+      const doneCount = u.sentences.filter(s => completedMap['u' + u.id + '_s' + s.id]).length;
+      btn.innerHTML = '<span>' + u.icon + '</span><span style="font-weight:700;">Unit ' + u.id + '</span><span style="font-size:11px;opacity:0.9;">' + u.title.replace('Unit ' + u.id + ' ', '') + '</span>' +
+        (doneCount > 0 ? '<span class="unit-done-pill">' + doneCount + '</span>' : '');
+      btn.onclick = () => selectUnit(u.id);
+      track.appendChild(btn);
     });
   }
 
-  // ---------- 畫面渲染 ----------
-  function renderNav(){
-    const nav = document.getElementById('unitNav');
-    nav.innerHTML = '';
-    UNITS.forEach((title, i) => {
-      ensureUnitArray(i);
-      const rows = data[i].sentences;
-      const doneCount = rows.filter(r => r.done).length;
-      const b = document.createElement('button');
-      b.className = 'unit-btn' + (i === currentUnit ? ' active' : '');
-      b.innerHTML = `<span class="unit-num">U${i+1}</span>${title}` +
-        (rows.length ? `<div class="unit-progress">${doneCount} / ${rows.length} 背完</div>` : '');
-      b.addEventListener('click', () => { currentUnit = i; render(); });
-      nav.appendChild(b);
+  function selectUnit(id) {
+    currentUnitId = id;
+    practiceIdx = 0;
+    stopDialoguePlay();
+    document.getElementById('practiceResultArea').style.display = 'none';
+    document.getElementById('practiceInput').value = '';
+    render();
+  }
+
+  function renderHero() {
+    const u = getCurrentUnit();
+    document.getElementById('heroUnitTitle').textContent = u.title;
+    document.getElementById('heroUnitEn').textContent = u.titleEn;
+    document.getElementById('heroSituationTitle').textContent = u.situationTitle;
+    document.getElementById('heroSituationDesc').textContent = u.situationDescription;
+
+    const doneCount = u.sentences.filter(s => completedMap['u' + u.id + '_s' + s.id]).length;
+    const total = u.sentences.length;
+    const pct = total ? Math.round((doneCount / total) * 100) : 0;
+    document.getElementById('progressSummaryText').textContent = '本單元背完進度：' + doneCount + ' / ' + total + ' 句 (' + pct + '%)';
+    document.getElementById('progressBarFill').style.width = pct + '%';
+
+    document.getElementById('matrixCount').textContent = u.sentences.length;
+    document.getElementById('dialogueCount').textContent = u.dialogue.length + '句';
+  }
+
+  function renderSentenceList() {
+    const u = getCurrentUnit();
+    const container = document.getElementById('sentenceList');
+    container.innerHTML = '';
+
+    u.sentences.forEach((s, idx) => {
+      const isDone = !!completedMap['u' + u.id + '_s' + s.id];
+      const row = document.createElement('div');
+      row.className = 'sentence-row' + (isDone ? ' done' : '');
+
+      row.innerHTML =
+        '<div class="col-num">' +
+          '<button class="speaker-round-btn" onclick="speakText(\'' + s.en.replace(/'/g, "\\'") + '\')" title="點擊發音">🔊</button>' +
+        '</div>' +
+        '<div class="col-en ' + (hideEnglish ? 'blur-text' : '') + '">' + (idx + 1) + '. ' + s.en + '</div>' +
+        '<div class="col-zh ' + (hideChinese ? 'blur-text' : '') + '">' + s.zh + '</div>' +
+        '<div class="col-check">' +
+          '<input type="checkbox" class="custom-checkbox" ' + (isDone ? 'checked' : '') + ' onchange="toggleDone(' + u.id + ', ' + s.id + ', this.checked)">' +
+        '</div>';
+
+      container.appendChild(row);
     });
   }
 
-  function renderMain(){
-    const main = document.getElementById('mainArea');
-    ensureUnitArray(currentUnit);
-    const rows = data[currentUnit].sentences;
-    const dlg = data[currentUnit].dialogue;
+  function toggleDone(unitId, sentenceId, checked) {
+    const key = 'u' + unitId + '_s' + sentenceId;
+    if (checked) completedMap[key] = true;
+    else delete completedMap[key];
+    try {
+      localStorage.setItem('listening_completed_map', JSON.stringify(completedMap));
+    } catch(e) {}
+    renderHero();
+    renderUnitSelector();
+  }
 
-    main.innerHTML = `
-      <div class="unit-header">
-        <h2>Unit ${currentUnit + 1}　${UNITS[currentUnit]}</h2>
-        <div class="sub">共 ${rows.length} 句</div>
-      </div>
-      <div class="toolbar">
-        <button class="btn primary" id="addRowBtn">＋ 新增句子</button>
-        <button class="btn" id="playAllBtn">▶ 播放全部（未背完）</button>
-      </div>
-      ${rows.length === 0 ? `
-        <div class="empty-hint">
-          這個單元目前是空的。<br>
-          點上面「＋ 新增句子」開始輸入你自己的內容，<br>
-          每一行可以填英文句子、中文翻譯，勾選框用來標記「背完」。
-        </div>
-      ` : `
-        <table>
-          <thead>
-            <tr>
-              <th class="num">#</th>
-              <th>English</th>
-              <th>中文解釋</th>
-              <th>背完</th>
-              <th>播放</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody id="rowsBody"></tbody>
-        </table>
-      `}
+  function renderDialogueList() {
+    const u = getCurrentUnit();
+    const container = document.getElementById('dialogueList');
+    container.innerHTML = '';
 
-      <div class="section-divider">
-        <div>
-          <span class="eyebrow">DIALOGUE</span>
-          <h3>情境對話</h3>
-        </div>
-        <div class="toolbar" style="margin:0;">
-          <button class="btn primary" id="addLineBtn">＋ 新增台詞</button>
-          <button class="btn" id="playDialogueBtn">▶ 播放整段對話</button>
-        </div>
-      </div>
-      ${dlg.length === 0 ? `
-        <div class="empty-hint">
-          這個單元還沒有情境對話。<br>
-          點「＋ 新增台詞」開始輸入 A、B 兩人的對話內容。
-        </div>
-      ` : `<div class="dialogue-list" id="dialogueList"></div>`}
-    `;
+    u.dialogue.forEach((d, idx) => {
+      const card = document.createElement('div');
+      card.className = 'dialogue-turn' + (isDialoguePlaying && dlgCurrentIdx === idx ? ' active-line' : '');
+      card.id = 'dlg-line-' + idx;
 
-    document.getElementById('addRowBtn').addEventListener('click', () => {
-      data[currentUnit].sentences.push({ en: '', zh: '', done: false });
-      saveData();
-      render();
+      card.innerHTML =
+        '<div class="turn-header">' +
+          '<span class="turn-badge">' + d.speaker + ' (' + d.speakerZh + ')</span>' +
+          '<button class="aux-btn" style="padding:3px 8px; font-size:11px;" onclick="speakText(\'' + d.en.replace(/'/g, "\\'") + '\')">🔊 聽發音</button>' +
+        '</div>' +
+        '<div class="turn-en ' + (hideEnglish ? 'blur-text' : '') + '">' + d.en + '</div>' +
+        '<div class="turn-zh ' + (hideChinese ? 'blur-text' : '') + '">' + d.zh + '</div>';
+
+      container.appendChild(card);
     });
-    document.getElementById('playAllBtn').addEventListener('click', () => playAllInUnit());
-    document.getElementById('addLineBtn').addEventListener('click', () => {
-      const last = dlg[dlg.length - 1];
-      const nextSpeaker = last && last.speaker === 'A' ? 'B' : 'A';
-      data[currentUnit].dialogue.push({ speaker: nextSpeaker, en: '', zh: '' });
-      saveData();
-      render();
-    });
-    document.getElementById('playDialogueBtn').addEventListener('click', () => playAllDialogue());
-
-    if(rows.length > 0){
-      const tbody = document.getElementById('rowsBody');
-      rows.forEach((row, idx) => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td class="num">${idx + 1}</td>
-          <td><textarea class="cell-input en" data-field="en" data-idx="${idx}" placeholder="英文句子...">${escapeHtml(row.en)}</textarea></td>
-          <td><textarea class="cell-input" data-field="zh" data-idx="${idx}" placeholder="中文翻譯...">${escapeHtml(row.zh)}</textarea></td>
-          <td class="check"><input type="checkbox" data-idx="${idx}" ${row.done ? 'checked' : ''}></td>
-          <td class="play"><button class="play-btn" data-idx="${idx}">🔊</button></td>
-          <td class="del"><button class="del-btn" data-idx="${idx}" title="刪除這一句">✕</button></td>
-        `;
-        tbody.appendChild(tr);
-      });
-
-      tbody.querySelectorAll('textarea.cell-input').forEach(el => {
-        el.addEventListener('input', () => {
-          const idx = parseInt(el.dataset.idx, 10);
-          const field = el.dataset.field;
-          data[currentUnit].sentences[idx][field] = el.value;
-          saveData();
-        });
-      });
-      tbody.querySelectorAll('input[type="checkbox"]').forEach(el => {
-        el.addEventListener('change', () => {
-          const idx = parseInt(el.dataset.idx, 10);
-          data[currentUnit].sentences[idx].done = el.checked;
-          saveData();
-          renderNav();
-        });
-      });
-      tbody.querySelectorAll('.play-btn').forEach(el => {
-        el.addEventListener('click', () => {
-          const idx = parseInt(el.dataset.idx, 10);
-          speakText(data[currentUnit].sentences[idx].en, el);
-        });
-      });
-      tbody.querySelectorAll('.del-btn').forEach(el => {
-        el.addEventListener('click', () => {
-          const idx = parseInt(el.dataset.idx, 10);
-          if(confirm('確定要刪除這一句嗎？')){
-            data[currentUnit].sentences.splice(idx, 1);
-            saveData();
-            render();
-          }
-        });
-      });
-    }
-
-    if(dlg.length > 0){
-      const list = document.getElementById('dialogueList');
-      dlg.forEach((line, idx) => {
-        const row = document.createElement('div');
-        row.className = 'dialogue-row speaker-' + line.speaker;
-        row.innerHTML = `
-          <div class="speaker-badge ${line.speaker}">${line.speaker}</div>
-          <div class="dialogue-bubble">
-            <div class="dialogue-bubble-top">
-              <select class="speaker-select" data-idx="${idx}">
-                <option value="A" ${line.speaker === 'A' ? 'selected' : ''}>A</option>
-                <option value="B" ${line.speaker === 'B' ? 'selected' : ''}>B</option>
-              </select>
-              <button class="play-btn" data-idx="${idx}">🔊</button>
-              <button class="del-btn" data-idx="${idx}" title="刪除這句台詞" style="margin-left:auto;">✕</button>
-            </div>
-            <textarea class="cell-input en" data-field="en" data-idx="${idx}" placeholder="English line...">${escapeHtml(line.en)}</textarea>
-            <textarea class="cell-input zh-input" data-field="zh" data-idx="${idx}" placeholder="中文翻譯...">${escapeHtml(line.zh)}</textarea>
-          </div>
-        `;
-        list.appendChild(row);
-      });
-
-      list.querySelectorAll('.speaker-select').forEach(el => {
-        el.addEventListener('change', () => {
-          const idx = parseInt(el.dataset.idx, 10);
-          data[currentUnit].dialogue[idx].speaker = el.value;
-          saveData();
-          render();
-        });
-      });
-      list.querySelectorAll('.dialogue-bubble textarea.cell-input').forEach(el => {
-        el.addEventListener('input', () => {
-          const idx = parseInt(el.dataset.idx, 10);
-          const field = el.dataset.field;
-          data[currentUnit].dialogue[idx][field] = el.value;
-          saveData();
-        });
-      });
-      list.querySelectorAll('.dialogue-bubble .play-btn').forEach(el => {
-        el.addEventListener('click', () => {
-          const idx = parseInt(el.dataset.idx, 10);
-          speakText(data[currentUnit].dialogue[idx].en, el);
-        });
-      });
-      list.querySelectorAll('.dialogue-bubble .del-btn').forEach(el => {
-        el.addEventListener('click', () => {
-          const idx = parseInt(el.dataset.idx, 10);
-          if(confirm('確定要刪除這句台詞嗎？')){
-            data[currentUnit].dialogue.splice(idx, 1);
-            saveData();
-            render();
-          }
-        });
-      });
-    }
   }
 
-  function escapeHtml(str){
-    if(!str) return '';
-    return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  function renderPractice() {
+    const u = getCurrentUnit();
+    if (practiceIdx >= u.sentences.length) practiceIdx = 0;
+    const q = u.sentences[practiceIdx];
+
+    document.getElementById('practiceCounter').textContent = '第 ' + (practiceIdx + 1) + ' / ' + u.sentences.length + ' 題';
+    document.getElementById('practiceZhHint').textContent = '中文提示：' + q.zh;
   }
 
-  function playAllInUnit(){
-    const rows = data[currentUnit].sentences.filter(r => !r.done && r.en && r.en.trim());
-    if(rows.length === 0){ alert('這個單元沒有「未背完」且有內容的句子可以播放。'); return; }
-    let i = 0;
-    function playNext(){
-      if(i >= rows.length) return;
-      const text = rows[i].en;
-      i++;
-      whenVoicesReady(() => {
-        window.speechSynthesis.cancel();
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.lang = 'en-US';
-        utter.rate = 0.85;
-        const v = pickVoice('en-US');
-        if(v) utter.voice = v;
-        utter.onend = () => setTimeout(playNext, 400);
-        window.speechSynthesis.speak(utter);
-      });
-    }
-    playNext();
+  function playPracticeAudio() {
+    const u = getCurrentUnit();
+    const q = u.sentences[practiceIdx];
+    speakText(q.en);
   }
 
-  function playAllDialogue(){
-    const lines = data[currentUnit].dialogue.filter(l => l.en && l.en.trim());
-    if(lines.length === 0){ alert('這個單元還沒有可播放的對話內容。'); return; }
-    let i = 0;
-    function playNext(){
-      if(i >= lines.length) return;
-      const text = lines[i].en;
-      i++;
-      whenVoicesReady(() => {
-        window.speechSynthesis.cancel();
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.lang = 'en-US';
-        utter.rate = 0.85;
-        const v = pickVoice('en-US');
-        if(v) utter.voice = v;
-        utter.onend = () => setTimeout(playNext, 500);
-        window.speechSynthesis.speak(utter);
-      });
-    }
-    playNext();
+  function stepPractice(delta) {
+    const u = getCurrentUnit();
+    let next = practiceIdx + delta;
+    if (next < 0) next = u.sentences.length - 1;
+    if (next >= u.sentences.length) next = 0;
+    practiceIdx = next;
+    document.getElementById('practiceResultArea').style.display = 'none';
+    document.getElementById('practiceInput').value = '';
+    renderPractice();
   }
 
-  function render(){
-    renderNav();
-    renderMain();
-  }
+  function checkPracticeAnswer() {
+    const u = getCurrentUnit();
+    const q = u.sentences[practiceIdx];
+    const userAns = document.getElementById('practiceInput').value.trim();
+    const cleanUser = userAns.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const cleanTarget = q.en.toLowerCase().replace(/[^a-z0-9]/g, '');
+    const isCorrect = cleanUser === cleanTarget;
 
-  // ---------- 匯出／匯入 ----------
-  document.getElementById('exportBtn').addEventListener('click', () => {
-    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = '英文聽力練習_備份_' + new Date().toISOString().slice(0,10) + '.json';
-    a.click();
-    URL.revokeObjectURL(url);
-  });
+    const area = document.getElementById('practiceResultArea');
+    area.style.display = 'block';
 
-  document.getElementById('importBtn').addEventListener('click', () => {
-    document.getElementById('importFile').click();
-  });
-  document.getElementById('importFile').addEventListener('change', (e) => {
-    const file = e.target.files[0];
-    if(!file) return;
-    const reader = new FileReader();
-    reader.onload = () => {
-      try{
-        const imported = JSON.parse(reader.result);
-        if(confirm('匯入備份會覆蓋目前瀏覽器裡的資料，確定要繼續嗎？')){
-          data = imported;
-          saveData();
-          currentUnit = 0;
-          render();
-          alert('匯入完成！');
-        }
-      }catch(err){
-        alert('這個檔案看起來不是有效的備份檔。');
+    let diffHtml = '';
+    const targetWords = q.en.split(' ');
+    const userWords = userAns.split(' ');
+    targetWords.forEach((tw, i) => {
+      const uw = userWords[i] || '';
+      const wCleanT = tw.toLowerCase().replace(/[^a-z0-9]/g, '');
+      const wCleanU = uw.toLowerCase().replace(/[^a-z0-9]/g, '');
+      if (wCleanT === wCleanU) {
+        diffHtml += '<span class="diff-word diff-correct">' + tw + '</span>';
+      } else {
+        diffHtml += '<span class="diff-word diff-wrong">' + (uw || '___') + ' (' + tw + ')</span>';
       }
-    };
-    reader.readAsText(file);
-    e.target.value = '';
-  });
+    });
 
+    area.innerHTML =
+      '<div style="background:' + (isCorrect ? '#ECF5EE' : '#FAF6EC') + '; border:1px solid ' + (isCorrect ? '#7FB69A' : '#E3DCC8') + '; border-radius:12px; padding:16px;">' +
+        '<div style="font-weight:700; color:' + (isCorrect ? '#2F4538' : '#D9534F') + '; margin-bottom:8px;">' +
+          (isCorrect ? '🎉 完全正確！太棒了！' : '✍️ 還有少許差異，請對照以下字詞：') +
+        '</div>' +
+        '<div style="margin-bottom:10px;">' + diffHtml + '</div>' +
+        '<div style="font-size:12px; color:#5B6B5F;">標準答案：<strong style="color:#1E2F24;">' + q.en + '</strong></div>' +
+      '</div>';
+  }
+
+  function revealAnswer() {
+    const u = getCurrentUnit();
+    const q = u.sentences[practiceIdx];
+    const area = document.getElementById('practiceResultArea');
+    area.style.display = 'block';
+    area.innerHTML =
+      '<div style="background:#FAF6EC; border:1px solid #E3DCC8; border-radius:12px; padding:14px;">' +
+        '<div style="font-size:12px; color:#5B6B5F; font-weight:700;">標準英文答案：</div>' +
+        '<div style="font-family:\'Kalam\', cursive; font-size:18px; color:#1E2F24; font-weight:600; margin:4px 0;">' + q.en + '</div>' +
+        '<div style="font-size:12.5px; color:#5B6B5F;">中文意涵：' + q.zh + '</div>' +
+      '</div>';
+  }
+
+  function setTab(tab) {
+    activeTab = tab;
+    document.getElementById('tabMatrixBtn').className = 'tab-btn' + (tab === 'matrix' ? ' active' : '');
+    document.getElementById('tabDialogueBtn').className = 'tab-btn' + (tab === 'dialogue' ? ' active' : '');
+    document.getElementById('tabPracticeBtn').className = 'tab-btn' + (tab === 'practice' ? ' active' : '');
+
+    document.getElementById('tabContentMatrix').style.display = tab === 'matrix' ? 'block' : 'none';
+    document.getElementById('tabContentDialogue').style.display = tab === 'dialogue' ? 'block' : 'none';
+    document.getElementById('tabContentPractice').style.display = tab === 'practice' ? 'block' : 'none';
+
+    stopDialoguePlay();
+  }
+
+  function toggleSpeed() {
+    playbackRate = playbackRate === 1.0 ? 0.8 : 1.0;
+    document.getElementById('speedLabel').textContent = playbackRate + 'x';
+    document.getElementById('speedBtn').className = 'aux-btn' + (playbackRate === 0.8 ? ' active' : '');
+  }
+
+  function toggleHideEn() {
+    hideEnglish = !hideEnglish;
+    document.getElementById('hideEnBtn').className = 'aux-btn' + (hideEnglish ? ' active' : '');
+    renderSentenceList();
+    renderDialogueList();
+  }
+
+  function toggleHideZh() {
+    hideChinese = !hideChinese;
+    document.getElementById('hideZhBtn').className = 'aux-btn' + (hideChinese ? ' active' : '');
+    renderSentenceList();
+    renderDialogueList();
+  }
+
+  function speakText(text, onEnded) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'en-US';
+    u.rate = playbackRate;
+    if (onEnded) u.onend = onEnded;
+    window.speechSynthesis.speak(u);
+  }
+
+  function toggleDialoguePlay() {
+    if (isDialoguePlaying) {
+      stopDialoguePlay();
+    } else {
+      isDialoguePlaying = true;
+      dlgCurrentIdx = 0;
+      document.getElementById('playAllDlgBtn').innerHTML = '<span>⏸️ 停止連播</span>';
+      document.getElementById('playAllDlgBtn').classList.add('active');
+      playNextDialogueLine();
+    }
+  }
+
+  function stopDialoguePlay() {
+    isDialoguePlaying = false;
+    if (window.speechSynthesis) window.speechSynthesis.cancel();
+    const btn = document.getElementById('playAllDlgBtn');
+    if (btn) {
+      btn.innerHTML = '<span>▶️ 播放整段對話</span>';
+      btn.classList.remove('active');
+    }
+    renderDialogueList();
+  }
+
+  function playNextDialogueLine() {
+    const u = getCurrentUnit();
+    if (!isDialoguePlaying) return;
+    if (dlgCurrentIdx >= u.dialogue.length) {
+      stopDialoguePlay();
+      return;
+    }
+
+    renderDialogueList();
+    const line = u.dialogue[dlgCurrentIdx];
+    speakText(line.en, () => {
+      dlgCurrentIdx++;
+      setTimeout(playNextDialogueLine, 500);
+    });
+  }
+
+  function render() {
+    renderHero();
+    renderUnitSelector();
+    renderSentenceList();
+    renderDialogueList();
+    renderPractice();
+  }
+
+  // 啟動執行
   render();
 </script>
 </body>
