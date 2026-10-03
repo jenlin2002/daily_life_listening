@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Values & Opinions",
   "emoji": "🎬",
   "goal": "聊童年懷舊卡通電影前的免責警告標語、政治正確（Politically Correct）與人際待人禮貌。",
+  "videos": [
+    {
+      "id": "R1vskiVDwl4",
+      "title": "10 Ways to Have a Better Conversation (Celeste Headlee, TED)"
+    },
+    {
+      "id": "l-Yy6poJ2zs",
+      "title": "How Culture Drives Behaviours (Julien S. Bourrelle, TEDx)"
+    },
+    {
+      "id": "zQvqDv4vbEg",
+      "title": "How Cultural Differences Affect Business (Erin Meyer)"
+    }
+  ],
   "speakers": {
     "Y": {
       "name": "Me",

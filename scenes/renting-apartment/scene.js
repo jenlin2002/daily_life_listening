@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Renting an Apartment",
   "emoji": "🏠",
   "goal": "學會預約看房、問清楚租金與押金、說明自己是留學生如何申請、聽懂租約重點，並在入住後報修與詢問退租規定",
+  "videos": [
+    {
+      "id": "0TBsMgwQaE8",
+      "title": "Renting an apartment（Easy English）"
+    },
+    {
+      "id": "aGR1pB4wrUs",
+      "title": "LINC 2.08 Renting an Apartment : Lesson 34 - English in Vancouver（LINC Videos - English in Vancouver）"
+    },
+    {
+      "id": "fUcU39F73R0",
+      "title": "Learn English: Apartment Rental Conversation | Landlord & Tenant Dialogue with Vocabulary（English Factory）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Leasing Agent",

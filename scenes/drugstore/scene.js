@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "At the Drugstore",
   "emoji": "🧴",
   "goal": "學會在藥妝店找藥品與日用品、請店員推薦、詢問成分與過敏、比較價格，並看懂標示與結帳時的問題",
+  "videos": [
+    {
+      "id": "e3usANOiRR8",
+      "title": "How to Buy Medicine in English | At the Pharmacy 💊（Mad English TV）"
+    },
+    {
+      "id": "ma8Yd25t1fE",
+      "title": "English Conversation at the Pharmacy 🧑🏻‍⚕️（EverydayEnglish）"
+    },
+    {
+      "id": "4DcQrU-cOuQ",
+      "title": "Learn English | Role Play at a Drug Store or Pharmacy | English Conversation Practice（Single Step English）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Store Associate",

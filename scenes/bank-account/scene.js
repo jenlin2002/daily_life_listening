@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Opening a Bank Account",
   "emoji": "🏦",
   "goal": "學會說明來意、準備開戶文件、了解支票與儲蓄帳戶的差別與手續費、申請金融卡與網路銀行，並完成第一筆存款",
+  "videos": [
+    {
+      "id": "7Lh1tMsRw3U",
+      "title": "Learn How to Speak English at the Bank | English Video with Subtitles（Learn English with Bob the Canadian）"
+    },
+    {
+      "id": "XfvI6EXom1E",
+      "title": "English conversation 7 | Opening a Bank Account | Speaking In English（NEO Spoken English Institute -Tirupati）"
+    },
+    {
+      "id": "DT3UyVwJe9U",
+      "title": "At the bank English conversation | Daily English conversation | Bank vocabulary（Sunshine English）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Banker",

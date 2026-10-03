@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Water Cooler Chit-Chat",
   "emoji": "☕",
   "goal": "聊週末帶小孩去南瓜園、看道奇隊棒球比賽、養寵物與養育孩子的甜蜜混亂。",
+  "videos": [
+    {
+      "id": "cZcwcRgKK-o",
+      "title": "English Small Talk for Fridays and Mondays at Work or School (Bob the Canadian)"
+    },
+    {
+      "id": "_Ze0Dfu7ync",
+      "title": "Conversation Starters at Work – How to Make Small Talk at Work (CareerShakers)"
+    },
+    {
+      "id": "4zXys7i8Zrc",
+      "title": "English Small Talk for Work and with Friends, Family and Strangers (Bob the Canadian)"
+    }
+  ],
   "speakers": {
     "Y": {
       "name": "Me",

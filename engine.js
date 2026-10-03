@@ -146,7 +146,7 @@ const zone = CAT.zones.find(z => z.id === me.zone);
 const dialogues = has(S.dialogues) ? S.dialogues : (has(S.dialogue) ? [{ title: '情境對話', lines: S.dialogue }] : []);
 const dictList = (has(S.phrases) ? S.phrases : (S.say || [])).filter(x => x.en.indexOf(' / ') < 0);
 const TABS = [
-  ['scene', '🎬 情境影片', dialogues.length || has(S.videos)], ['phrases', '📋 句子矩陣', has(S.phrases)],
+  ['scene', has(S.videos) ? '🎬 情境影片' : '🎬 情境對話', dialogues.length || has(S.videos)], ['phrases', '📋 句子矩陣', has(S.phrases)],
   ['hear', '👂 你會聽到的', has(S.hear)], ['say', '🗣️ 你要說的', has(S.say)],
   ['vocab', '🔤 場景單字', has(S.vocab)], ['sit', '⚡ 突發狀況', has(S.situations)], ['dict', '✍️ 聽寫練習', dictList.length > 0],
   ['listen', '🎧 聽力測驗', has(S.listening)],

@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Getting a Ride",
   "emoji": "🚗",
   "goal": "學會叫車後確認司機與車牌、說出上下車的位置、途中改路線與臨時停靠、付小費與評分，並聽懂司機的每一個問題",
+  "videos": [
+    {
+      "id": "61tey0auDIk",
+      "title": "Useful phrases when taking a taxi/Uber（English by Giovana）"
+    },
+    {
+      "id": "bYyauyH5sbQ",
+      "title": "How to Make Small Talk with An Uber or Taxi Driver（Cloud English）"
+    },
+    {
+      "id": "nCEUzm0VXvw",
+      "title": "How to Talk to a Taxi or Uber Driver in English | Everyday English Conversation Practice（JISH - Learn English Podcast）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Driver",

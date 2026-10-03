@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Renting a Car & Complaints",
   "emoji": "🚗",
   "goal": "高速公路匝道前胎壓燈亮起，緊急致電租車客服尋求拖車救援、趕航班焦慮與賠償爭取。",
+  "videos": [
+    {
+      "id": "mKci2gErqJo",
+      "title": "How to Rent a Car in English – Travel English ESL Conversations (Pocket Passport)"
+    },
+    {
+      "id": "v4qGmZUd4gk",
+      "title": "Travel English: Rental Car Role Play (Single Step English)"
+    },
+    {
+      "id": "XoPTeF2C99o",
+      "title": "Car Rental English Conversation at the Airport (Fun Time Institute)"
+    }
+  ],
   "speakers": {
     "Y": {
       "name": "Me",

@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Heart-to-Heart Talk",
   "emoji": "☕",
   "goal": "客廳深夜心靈傾訴、失戀療傷安慰、價值觀不合與「天涯何處無芳草」鼓勵。",
+  "videos": [
+    {
+      "id": "HheqvK66QPk",
+      "title": "English Conversation: Breakup & Relationship Talk (English With America)"
+    },
+    {
+      "id": "j2BaAg8jUiM",
+      "title": "How to Comfort a Friend Who Is Hurting – What to Say (How Communication Works)"
+    },
+    {
+      "id": "frSClA4GUMM",
+      "title": "6 Things to Say When Someone’s in Pain (Psych2Go)"
+    }
+  ],
   "speakers": {
     "Y": {
       "name": "Me",

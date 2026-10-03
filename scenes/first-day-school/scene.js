@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "First Day at School",
   "emoji": "🎓",
   "goal": "學會新生報到的流程、領學生證與帳號、向學術顧問說明主修與興趣、了解學分與先修課，以及加退選課程與詢問截止日期",
+  "videos": [
+    {
+      "id": "Mc7EnS3hri0",
+      "title": "Your first day at Kaplan | Studying With Kaplan（Kaplan International Languages）"
+    },
+    {
+      "id": "VmT_MBRb-oE",
+      "title": "What to Expect at College Orientation 🏫 ⏱📚（Get Schooled）"
+    },
+    {
+      "id": "NXIem0v14x4",
+      "title": "Introduce Yourself in English in School/College/University. Tips for Effective Self-Introduction（English Lessons with Ka"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Staff",

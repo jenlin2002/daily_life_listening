@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "At the DMV",
   "emoji": "🚗",
   "goal": "學會到 DMV 申請學習駕照、準備文件、通過視力與筆試，並在路考時聽懂考官的口令，最後處理通過或沒通過後的流程",
+  "videos": [
+    {
+      "id": "MhXQGKJdM2o",
+      "title": "English Conversation | How to get a driver's license in the United States.（MASTER EVERYDAY ENGLISH）"
+    },
+    {
+      "id": "BvMO4qDlycc",
+      "title": "DMV dialogue（Danny Rauda）"
+    },
+    {
+      "id": "ttd2Kyfy3zo",
+      "title": "Everyday English Ep. 03 - Going To The DMV（Everyday English）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "DMV Clerk",

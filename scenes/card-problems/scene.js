@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Card Problems",
   "emoji": "💳",
   "goal": "學會在店裡卡片刷不過時處理、打電話向銀行通報盜刷或遺失、聽懂客服的身分驗證與後續處理，並要求補發新卡與爭議交易",
+  "videos": [
+    {
+      "id": "4Oq3sqW4fI8",
+      "title": "Dealing with Credit Card Fraud: Spoken English Conversation（Englishacademy）"
+    },
+    {
+      "id": "fTkK0uEfgN4",
+      "title": "I LOST MY CREDIT CARDS | ENGLISH CONVERSATION PRACTICE | ENGLISH SPEAKING PRACTICE | LEARN ENGLISH（English Listening Hub"
+    },
+    {
+      "id": "B2VhKd8CbeU",
+      "title": "Call Center Training | Role Play for Credit Card Customer Service（Single Step English）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Cashier",

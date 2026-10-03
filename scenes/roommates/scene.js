@@ -5,6 +5,16 @@ window.SCENE = {
   "en": "Family & Roommates",
   "emoji": "🏠",
   "goal": "下課回家討論做家事分工（洗碗、倒垃圾）、煮晚餐、水電工報修與成年後的壓力。",
+  "videos": [
+    {
+      "id": "qf11eKAByJQ",
+      "title": "Cooking Dinner Together – English Conversation for Beginners (Raw English Podcast)"
+    },
+    {
+      "id": "yupA8rEwBCo",
+      "title": "Cooking Dinner Together – Daily English Conversation (English Tales & Lessons)"
+    }
+  ],
   "speakers": {
     "Y": {
       "name": "Me",

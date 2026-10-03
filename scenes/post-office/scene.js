@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "At the Post Office",
   "emoji": "📦",
   "goal": "學會在美國郵局寄包裹與信件、選擇寄送速度、填寫報關單、問價格與追蹤編號，並處理領取包裹與地址問題",
+  "videos": [
+    {
+      "id": "MkJKMCwuEYw",
+      "title": "English conversation : AT THE POST OFFICE（English Speaking Course）"
+    },
+    {
+      "id": "0a1iwjrsO5Y",
+      "title": "5-Minute English Conversation Practice: At the Post Office | Daily English Speaking for Beginners（English Together）"
+    },
+    {
+      "id": "KJIO8u8ArXE",
+      "title": "📦 English Conversation: At the Post Office – Sending a Package | Real-Life English Dialogue (A1–A2)（English Step by Step"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Postal Clerk",

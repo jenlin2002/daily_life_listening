@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Returns & Exchanges",
   "emoji": "🔄",
   "goal": "學會說明退貨或換貨的原因、回答店員關於收據與期限的問題、選擇退款方式，並在被拒絕時禮貌地協商或請主管處理",
+  "videos": [
+    {
+      "id": "E9sJp2bISxk",
+      "title": "Ep 2: Getting a refund（ABC Education）"
+    },
+    {
+      "id": "0bB-QGS3wR8",
+      "title": "Call Center English | Item Return | Role Play（Single Step English）"
+    },
+    {
+      "id": "Wkn7JHAd-fw",
+      "title": "Real English in a Clothing Store! Return & Exchange Conversations（A Little English）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Associate",

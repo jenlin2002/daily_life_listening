@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "At the Gas Station",
   "emoji": "⛽",
   "goal": "學會在美國加油站自助加油：先付款或預先授權、選油號、加油與收據，在店內買東西、問路，以及機器出狀況時求助",
+  "videos": [
+    {
+      "id": "o8AS3ErB_eg",
+      "title": "Important Daily Life English: Gas Station Vocabulary（Speak English With Vanessa）"
+    },
+    {
+      "id": "EvkosIXDsAk",
+      "title": "Let's Learn English at the Gas Station | English Video with Subtitles（Learn English with Bob the Canadian）"
+    },
+    {
+      "id": "GhTpyKJ-UDM",
+      "title": "At the Gas Station - Daily English Conversation（James Kent）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Clerk",

@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Life Updates & Invites",
   "emoji": "🗓️",
   "goal": "聊論文進度、下班搭車塞車買外帶、朋友邀約週末去海灘爬山、禮貌委婉拒絕邀約（Take a rain check）。",
+  "videos": [
+    {
+      "id": "UFnQ0gxef2A",
+      "title": "Conversational English – Invitations (American English)"
+    },
+    {
+      "id": "KwuKFEsDNE0",
+      "title": "Accepting and Declining Invitations in English (Learn Authentic English)"
+    },
+    {
+      "id": "qV3Hp7Ecpok",
+      "title": "Accepting or Rejecting Invitations in English (Learn English with Cambridge)"
+    }
+  ],
   "speakers": {
     "Y": {
       "name": "Me",

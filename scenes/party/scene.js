@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Meeting New Friends at a Party",
   "emoji": "👋",
   "goal": "跨年派對前在宿舍化妝準備，隨後到派對認識新朋友聊家鄉、科系與音樂愛好。",
+  "videos": [
+    {
+      "id": "7t6lUpPFYv4",
+      "title": "Meeting New People – English Conversation (EverydayEnglish)"
+    },
+    {
+      "id": "e0iAJA5nGfU",
+      "title": "How to Approach Strangers at a Party (The School of Life)"
+    },
+    {
+      "id": "6K9LhzyLUfY",
+      "title": "Start a Conversation with Anyone: Conversation Starters (Vanessa Van Edwards)"
+    }
+  ],
   "speakers": {
     "Y": {
       "name": "Me",

@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "At the Pharmacy",
   "emoji": "💊",
   "goal": "學會領處方藥時說明姓名與保險、聽懂藥的用法與副作用、詢問成藥與過敏問題，並在需要時請藥師再解釋一次",
+  "videos": [
+    {
+      "id": "_NXqTqZLl90",
+      "title": "Picking Up Prescriptions - Lesson 46 - English in Vancouver（LINC Videos - English in Vancouver）"
+    },
+    {
+      "id": "ChDdPCLPD48",
+      "title": "Learn English Through Dialogue: What Do You Say at the Pharmacy?（American Accent - Learn and Practice）"
+    },
+    {
+      "id": "4GUuV2fCLno",
+      "title": "Real Life Pharmacy conversation | Easy English Speaking Practice for Beginners（SpeakEasy Learn English Faster）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Pharmacist",

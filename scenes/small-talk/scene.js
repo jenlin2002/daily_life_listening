@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Small Talk & Making Friends",
   "emoji": "🚇",
   "goal": "舊金山地鐵售票機前問路、聊素食茶葉進出口生意、邀約攀岩與交換 IG 帳號。",
+  "videos": [
+    {
+      "id": "WGoIoDuf83o",
+      "title": "How to Make GREAT Small Talk – English Conversation Practice (mmmEnglish)"
+    },
+    {
+      "id": "Qe5Flg_xXvo",
+      "title": "How to Make Small Talk So Fun, It’s Hard to End the Conversation (Tom Bidgood)"
+    },
+    {
+      "id": "9X4mQFDFutc",
+      "title": "5-Minute English Conversation Practice: Small Talk with a Friend (English Together)"
+    }
+  ],
   "speakers": {
     "Y": {
       "name": "Me",

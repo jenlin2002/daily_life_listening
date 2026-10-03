@@ -5,6 +5,16 @@ window.SCENE = {
   "en": "Home Repairs & AC",
   "emoji": "🔧",
   "goal": "夏天冷氣壓縮機故障、冷媒不足、技工開出分項估價單與考慮長遠換新冷氣。",
+  "videos": [
+    {
+      "id": "kZo60WEMQG0",
+      "title": "English Practice for Intermediate Students – Air Conditioner Repair (Bare English)"
+    },
+    {
+      "id": "AlEV5-atmwY",
+      "title": "Air conditioner not working? What to do when landlords won’t take action (CBS Texas)"
+    }
+  ],
   "speakers": {
     "Y": {
       "name": "Me",

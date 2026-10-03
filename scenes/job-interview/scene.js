@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Job Interview & Career",
   "emoji": "💼",
   "goal": "外商行銷經理面試（自我介紹、Amazon 廣告活動經驗、換跑道動機、薪資期待與 401k 福利）。",
+  "videos": [
+    {
+      "id": "yBtMwyQFXwA",
+      "title": "How to Interview for a Job in American English, Part 1 (Rachel’s English)"
+    },
+    {
+      "id": "-AOQl94ZYn8",
+      "title": "Common Questions You’ll Be Asked During an English Job Interview (Bob the Canadian)"
+    },
+    {
+      "id": "0k0Uc9uAJwk",
+      "title": "Job Interview in English – Questions and Answers (Sunshine English)"
+    }
+  ],
   "speakers": {
     "Y": {
       "name": "Me",

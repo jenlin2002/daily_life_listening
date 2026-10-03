@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "A Minor Car Accident",
   "emoji": "🚗",
   "goal": "學會小車禍後確認有沒有人受傷、和對方駕駛交換資料、向警察說明經過，並打電話給保險公司理賠",
+  "videos": [
+    {
+      "id": "jmBcH4yRsEs",
+      "title": "Learn English: What to Say After a Car Accident (Conversation Practice)（TOEFL Practice AI）"
+    },
+    {
+      "id": "mS0uuFEiouw",
+      "title": "Improve English Speaking Skills Everyday (Car Accidents) English Conversation Practice（ABC Learning English）"
+    },
+    {
+      "id": "Oy2CPxRHa_k",
+      "title": "How to exchange insurance information after an accident?（Hey Delphi）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Other Driver",

@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Eating Out & Tipping",
   "emoji": "🍽️",
   "goal": "學會訂位與入座、點餐與客製（牛排熟度、醬放旁邊、過敏）、請服務生幫忙，以及結帳、分帳和算小費",
+  "videos": [
+    {
+      "id": "uUMPULuwdLI",
+      "title": "How to Order Food at a Restaurant in English（Learn English with Bob the Canadian）"
+    },
+    {
+      "id": "bgfdqVmVjfk",
+      "title": "At the Restaurant Conversation（Easy English）"
+    },
+    {
+      "id": "FdmFgL3pci0",
+      "title": "Restaurant Conversation Practice – Customer and Waiter | Order Food in English (A1-A2)（American English With Sushil）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Server",

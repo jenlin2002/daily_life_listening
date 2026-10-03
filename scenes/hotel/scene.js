@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Travel & Accommodation",
   "emoji": "✈️",
   "goal": "入境海關問答（目的、天數、住處地址、現金）、飯店櫃台辦理入住、海景套房升級與房卡。",
+  "videos": [
+    {
+      "id": "wyqfYJX23lg",
+      "title": "English for Hotel and Tourism: Checking into a Hotel (LinguaTV)"
+    },
+    {
+      "id": "qtC5Rv39IPo",
+      "title": "How to Check In at a Hotel in English (Jon Peng English)"
+    },
+    {
+      "id": "MYX7RVOf3Yc",
+      "title": "Let’s Learn English at a Hotel! (Learn English with Bob the Canadian)"
+    }
+  ],
   "speakers": {
     "Y": {
       "name": "Me",

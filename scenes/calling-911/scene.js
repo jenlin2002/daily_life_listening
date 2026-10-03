@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Calling 911",
   "emoji": "🚨",
   "goal": "學會打 911 時說清楚發生什麼事與所在地點、聽懂調度員的問題與指示，並在警察或救護人員到場後回答問題與提供資料",
+  "videos": [
+    {
+      "id": "87kzv80cAys",
+      "title": "Calling 911 - Lesson 37 - English in Vancouver（LINC Videos - English in Vancouver）"
+    },
+    {
+      "id": "spGJ9Ii5W3o",
+      "title": "What to Say When you Call 911 | Paramedic Approved | Episode 4（Paramedic Approved）"
+    },
+    {
+      "id": "vRwkXjQHM6g",
+      "title": "Calling 911 – Everyday English Dialogues（Ellii (formerly ESL Library)）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "911 Dispatcher",

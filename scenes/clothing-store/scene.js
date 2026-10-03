@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Shopping & Retail",
   "emoji": "👗",
   "goal": "進店閒逛、找試衣間試穿洋裝、詢問米色款式、無袖/長裙版型與櫃台刷卡結帳。",
+  "videos": [
+    {
+      "id": "kdQYKdbAiFs",
+      "title": "5-Minute English Conversation Practice: Shopping for Clothes (English Together)"
+    },
+    {
+      "id": "ad8a2BiXulw",
+      "title": "Shopping for Clothes – English Conversation (EverydayEnglish)"
+    },
+    {
+      "id": "aWSg7MsHYpU",
+      "title": "Shopping for Clothes: Colours & Sizes (Lina’s Classroom Story)"
+    }
+  ],
   "speakers": {
     "Y": {
       "name": "Me",

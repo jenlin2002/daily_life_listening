@@ -5,6 +5,16 @@ window.SCENE = {
   "en": "Setting Up Utilities",
   "emoji": "💡",
   "goal": "學會打電話請電力公司開通電、向網路公司申請安裝與選方案、聽懂安裝時間與費用，並處理帳單問題與停電、斷網的狀況",
+  "videos": [
+    {
+      "id": "7QCn2lYOpZQ",
+      "title": "Setting Up Utilities in English 💡 Home English Series Ep 5（drinsanityclips）"
+    },
+    {
+      "id": "LirxQOuuV2o",
+      "title": "Living in the US: Understanding Electricity, Gas, and Internet Bills（Learn American English with Maestro Sersea）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Electric Company Rep",

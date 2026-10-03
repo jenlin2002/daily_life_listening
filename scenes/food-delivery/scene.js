@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Food Delivery & Takeout",
   "emoji": "🛵",
   "goal": "學會打電話或用 App 點外帶與外送、留備註、和外送員溝通地址與放門口，並在送錯餐或漏餐時請客服處理",
+  "videos": [
+    {
+      "id": "iiqOB4T74As",
+      "title": "Ordering Takeaway - How to order Food in English| Practice Speaking（Learn English with Jessica）"
+    },
+    {
+      "id": "hIaWARrBuAc",
+      "title": "English Speaking Practice: Order Food Over The Phone 📞 || Everyday English（English with Kateryna）"
+    },
+    {
+      "id": "jkgRd8eVzLk",
+      "title": "Learn English | Wrong Food Delivery Conversation for Beginners #learnenglish #english #viralvideo（Master English Dialogu"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Restaurant Staff",

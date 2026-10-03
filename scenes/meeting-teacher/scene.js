@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Meeting a Teacher",
   "emoji": "👩‍🏫",
   "goal": "學會預約教授的辦公室時間、請教作業與考試、請求延期，並禮貌地請老師寫推薦信，同時懂得開頭與結尾的禮貌用語",
+  "videos": [
+    {
+      "id": "JsMFJ1Y_JyI",
+      "title": "How to talk to your professor, what to say to teachers and instructors（UVicLibraries）"
+    },
+    {
+      "id": "3HEIVBCr450",
+      "title": "Professor's Office Hours（mabeasley2003）"
+    },
+    {
+      "id": "5wxOQnEC9R8",
+      "title": "How To Get An Extension on an Assignment（College Conversations With Dr. Janice Fedor）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Professor",

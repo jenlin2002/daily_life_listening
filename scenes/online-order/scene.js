@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Online Order Problems",
   "emoji": "📱",
   "goal": "學會向網購客服說明包裹沒收到、送錯或破損，提供訂單編號與照片，選擇退款或換貨，並了解退貨標籤與退款時間",
+  "videos": [
+    {
+      "id": "1mYFWLTC0rY",
+      "title": "English Speaking Practice: How to Handle Problems With an Online Order | Real-Life English（English Online Practice ）"
+    },
+    {
+      "id": "SB3eOrUSUZQ",
+      "title": "American English Conversation Practice - Customer Service - Advanced English with Vocabulary Review（LearnAmericanEnglish"
+    },
+    {
+      "id": "UpEOTw6i9zo",
+      "title": "[B1] Food Delivery Problem | Customer Service English Conversation | Real-Life ESL Practice（5-Minute English Practice）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Support Agent",

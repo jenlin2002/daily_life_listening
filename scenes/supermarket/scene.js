@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "At the Supermarket",
   "emoji": "🛒",
   "goal": "學會問商品在哪一區、在熟食櫃檯買肉品和起司、結帳時回答袋子、會員卡與折價券的問題，並看懂價格與重量的說法",
+  "videos": [
+    {
+      "id": "NG-de6quWkE",
+      "title": "Let's Learn English at the Grocery Store (Supermarket) | English Video with Subtitles（Learn English with Bob the Canadia"
+    },
+    {
+      "id": "s5x-RTu8dpg",
+      "title": "How to Speak with a 🛒 Supermarket Cashier | English Conversation Practice（Single Step English）"
+    },
+    {
+      "id": "f89uk1myB_s",
+      "title": "Supermarket - Basic English Conversation（Learn English with Kevin）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Employee",

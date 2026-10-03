@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "At the Coffee Shop",
   "emoji": "☕",
   "goal": "學會在咖啡店點客製化飲料（尺寸、冰熱、奶類、糖度）、點餐點、回答店員的姓名與付款問題，並處理做錯或要換的情況",
+  "videos": [
+    {
+      "id": "jhEtBuuYNj4",
+      "title": "How To Order Coffee In English（Ariannita la Gringa）"
+    },
+    {
+      "id": "2VeQTuSSiI0",
+      "title": "English Conversation at a Café (Coffee Shop) | Useful Phrases（English Panda）"
+    },
+    {
+      "id": "SLC1Rdaxdj8",
+      "title": "How to Order Coffee in English - Spoken English Lesson（Oxford Online English）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Barista",

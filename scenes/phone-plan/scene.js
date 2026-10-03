@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Getting a Phone Plan",
   "emoji": "📱",
   "goal": "學會在手機門市詢問方案與價格、用國際學生身分辦門號、聽懂月費與合約，並處理 SIM 卡啟用、用量超過與帳單疑問",
+  "videos": [
+    {
+      "id": "nZY60ir6k24",
+      "title": "【英語對話框】買手機SIM（好想講英文 | 空中英語教室 Studio Classroom）"
+    },
+    {
+      "id": "1YGg50r0lFM",
+      "title": "Minigin - Most useful conversations in English █ 6: Buying a SIM card at a mobile shop（Minigin）"
+    },
+    {
+      "id": "nKGVc4dBzJU",
+      "title": "Buying a cell phone l Buying a phone l At the cell phone store l English Conversation（Learno - learn English with ease）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Store Rep",

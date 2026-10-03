@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Asking for Directions",
   "emoji": "🧭",
   "goal": "學會向路人和店員問路、聽懂左轉右轉、直走、過幾個路口與地標的說法，並用複述確認，迷路時也能求助",
+  "videos": [
+    {
+      "id": "SHXPpsIJTb0",
+      "title": "Asking for and giving directions: Easy English Conversations 💬 Episode 5（BBC Learning English）"
+    },
+    {
+      "id": "DPYJQSA-x50",
+      "title": "Asking for and Giving Directions（Easy English）"
+    },
+    {
+      "id": "Lms1qBpfYIM",
+      "title": "Asking for Directions – Everyday English Dialogues（Ellii (formerly ESL Library)）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Local",

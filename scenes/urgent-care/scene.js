@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Urgent Care & the ER",
   "emoji": "🚑",
   "goal": "學會判斷該去 Urgent Care 還是急診室、在櫃台報到、向護理師描述傷勢與疼痛程度、聽懂醫生的檢查與處置，並詢問費用",
+  "videos": [
+    {
+      "id": "WI8Uh3jfb9M",
+      "title": "Medical Emergency 😷 English Conversation（EverydayEnglish）"
+    },
+    {
+      "id": "nlzkXz0AeQk",
+      "title": "At the Doctors - English Conversation（EverydayEnglish）"
+    },
+    {
+      "id": "Cj9DKRWp-ek",
+      "title": "At the Doctors 🏥 English Conversation Practice（EverydayEnglish）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Front Desk",

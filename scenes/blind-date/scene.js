@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Humor & Blind Date",
   "emoji": "🍕",
   "goal": "初次相親約會聊天、彼此自嘲破冰、聊養貓（燕尾服貓）、神經科學與 AA 制分帳。",
+  "videos": [
+    {
+      "id": "GlTQyAylpJM",
+      "title": "Real English Conversations: First Date at a Restaurant (Speak Easy English)"
+    },
+    {
+      "id": "0JpcPMk9ndo",
+      "title": "Questions to Ask on the First Date (Vanessa Van Edwards)"
+    },
+    {
+      "id": "y_pGong8-68",
+      "title": "What to Talk About on a Date (The School of Life)"
+    }
+  ],
   "speakers": {
     "Y": {
       "name": "Me",

@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Taking the Bus & Subway",
   "emoji": "🚇",
   "goal": "學會在地鐵站買票和加值、問班次與轉乘、上公車付車資和請司機停靠，並聽懂月台廣播與錯過站時的處理",
+  "videos": [
+    {
+      "id": "itrrttmZ1LI",
+      "title": "At The Station - Easy Learning English Speaking Conversation（Learn English with Jessica）"
+    },
+    {
+      "id": "enpQqJkYBaY",
+      "title": "5-Minute English Conversation Practice: Buying a Train Ticket (Travel English)（English Together）"
+    },
+    {
+      "id": "sM1mWWY75n0",
+      "title": "Metro English Conversation | Buying a Ticket – Easy Subway Dialogue（Teach Easy English）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Station Agent",

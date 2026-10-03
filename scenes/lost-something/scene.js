@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Lost Something",
   "emoji": "🔍",
   "goal": "學會告訴別人你丟了什麼、在哪裡弄丟的、東西長什麼樣子，聽懂對方的問題，並完成登記、領回與報案",
+  "videos": [
+    {
+      "id": "aInDH9d1xVw",
+      "title": "Reporting Lost Items | Travel English | Lost and Found Train Station（Learn English by Pocket Passport）"
+    },
+    {
+      "id": "sdRFq8rPEyM",
+      "title": "[NEW] 16. Lost Item (English Dialogue) - Role-play conversation for Kids（English Singsing）"
+    },
+    {
+      "id": "PwXIVNtJg6g",
+      "title": "The Lost Wallet | Learn Natural\\ English Conversation（Real-Life English with Angela ）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Staff",

@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Health & Medical Care",
   "emoji": "🏥",
   "goal": "前往急診 Urgent Care 掛號填表、向醫生描述發燒脫水與疑似腸胃炎症狀、給予用藥建議。",
+  "videos": [
+    {
+      "id": "44SL8i8h0dg",
+      "title": "At the Doctor – English Conversation (Sunshine English)"
+    },
+    {
+      "id": "SV9tcFSOriA",
+      "title": "How to Describe Your Symptoms in English – Doctor & Patient Conversation (Elite English Learning)"
+    },
+    {
+      "id": "fXvCqjwPlrY",
+      "title": "Learn English at the Doctor: Describe Your Symptoms (SpeakEase English)"
+    }
+  ],
   "speakers": {
     "Y": {
       "name": "Me",

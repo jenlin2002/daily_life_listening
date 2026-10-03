@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "News & Current Affairs",
   "emoji": "📰",
   "goal": "聊物價通膨飆升（汽油加滿變貴）、選舉民調、媒體聳動報導與華爾街房市飆漲。",
+  "videos": [
+    {
+      "id": "-6Pob2fk6wY",
+      "title": "The News – English Conversation (Pocket Passport)"
+    },
+    {
+      "id": "tJ-aDpTppXA",
+      "title": "News – Good News, Bad News – Easy Conversation (LearnAmericanEnglish)"
+    },
+    {
+      "id": "CDtQuehc74I",
+      "title": "How to Talk About the News in English – Real Conversation Practice (Real Talk English)"
+    }
+  ],
   "speakers": {
     "Y": {
       "name": "Me",

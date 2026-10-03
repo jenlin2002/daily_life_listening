@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Airport & Customs",
   "emoji": "🛬",
   "goal": "學會在美國機場入境審查回答來訪目的與停留時間、通過海關申報、處理行李遺失，並在機場問路與轉機",
+  "videos": [
+    {
+      "id": "RBym5oLUM1A",
+      "title": "Airport Immigration Questions You MUST Know (with Answers)（iVisa）"
+    },
+    {
+      "id": "d_tYKBoOmHM",
+      "title": "English for most common airport customs questions（Ross IELTS Academy）"
+    },
+    {
+      "id": "RKyBoRdz78c",
+      "title": "At the airport_At immigration（Elena Adamova）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Immigration Officer",

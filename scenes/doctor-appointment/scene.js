@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "Making a Doctor Appointment",
   "emoji": "🩺",
   "goal": "學會打電話預約看診、說明保險與症狀、到診所報到填表、聽懂護理師和醫生的問題，並看懂自付額與開藥的說明",
+  "videos": [
+    {
+      "id": "kK99NlPe0-0",
+      "title": "Making a Doctor's Appointment | English Conversation（EverydayEnglish）"
+    },
+    {
+      "id": "5jP6qM3Kakc",
+      "title": "Doctor's Appointment | English Conversation（Learn English by Pocket Passport）"
+    },
+    {
+      "id": "k0NvrZFqIko",
+      "title": "5-Minute English Conversation Practice: Feeling Sick (Making a Doctor's Appointment)（English Together）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Receptionist",

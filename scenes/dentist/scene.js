@@ -5,6 +5,20 @@ window.SCENE = {
   "en": "At the Dentist",
   "emoji": "🦷",
   "goal": "學會預約牙醫與初診報到、向牙醫描述牙痛與位置、聽懂檢查與治療的說明、處理保險與費用，並聽懂治療後的叮嚀",
+  "videos": [
+    {
+      "id": "imO2q4q4pBM",
+      "title": "At the Dentist 🦷 English Conversation Practice（EverydayEnglish）"
+    },
+    {
+      "id": "OLRcbHb5bqU",
+      "title": "At the Dentist - English Conversation At the Dentist - Health English Lessons（Twominute English）"
+    },
+    {
+      "id": "Bqdna_w7Aqs",
+      "title": "Making an Appointment with Dentist | Speaking English Conversation（Delightful to Speak）"
+    }
+  ],
   "speakers": {
     "S": {
       "name": "Receptionist",
