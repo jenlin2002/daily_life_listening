@@ -35,8 +35,21 @@
 .u-exp{border:1.5px solid #2D5343;background:transparent;color:var(--paper);font-size:12px;font-weight:700;padding:5px 12px;border-radius:999px}
 .u-exp:hover{border-color:var(--chalk-yellow);color:var(--chalk-yellow)}
 .u-eyebrow{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--chalk-green);margin-bottom:4px}
-.u-zones{justify-content:flex-start;margin:0 0 12px;gap:6px}
-.u-zones .fchip{font-size:12.5px;padding:6px 12px}
+/* 冊別（第一層）與生活區（第二層）：上下兩列、標籤對齊，生活區會跟著選到的冊別變化 */
+.u-filters{background:#142820;border:1px solid #2D5343;border-radius:14px;padding:10px 12px;margin-bottom:14px;display:flex;flex-direction:column;gap:10px}
+.u-frow{display:grid;grid-template-columns:78px 1fr;gap:10px;align-items:start}
+.u-flbl{font-size:12px;font-weight:700;color:#8DA595;padding-top:8px;letter-spacing:.04em}
+.u-fchips{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
+.u-f{border:1.5px solid #2D5343;background:transparent;color:var(--paper);font-weight:700;font-size:13px;padding:6px 12px;border-radius:999px;white-space:nowrap}
+.u-f small{opacity:.7;margin-left:5px;font-weight:400;font-size:11px}
+.u-f:hover:not(.on):not(:disabled){border-color:var(--chalk-yellow)}
+.u-f.on{background:var(--chalk-yellow);border-color:var(--chalk-yellow);color:#1B3A2F}
+.u-f.on small{opacity:.8}
+.u-f:disabled{opacity:.32;cursor:default}
+.u-sub{color:#9AA89C;font-size:13px;padding:8px}
+.u-chip .bk{font-size:10px;color:var(--chalk-green);border:1px solid #2D5343;border-radius:999px;padding:0 6px}
+.u-chip.active .bk{color:#1B3A2F;border-color:rgba(27,58,47,.4)}
+@media (max-width:620px){.u-frow{grid-template-columns:1fr;gap:4px}.u-flbl{padding-top:0}}
 .u-chip.off{opacity:.45;cursor:default}
 .u-chip.off:hover{border-color:#2D5343}
 .u-chip .soon{font-size:11px;color:var(--chalk-yellow)}
@@ -87,9 +100,9 @@
 
   <div class="u-block">
     <div class="u-selhead"><span>單元目錄切換 (UNIT SELECTION) :</span><span class="cnt" id="selCnt"></span></div>
-    <div id="viewRows">
-      <div class="filters u-zones" id="bookRow"></div>
-      <div class="filters u-zones" id="zoneRow"></div>
+    <div class="u-filters">
+      <div class="u-frow"><span class="u-flbl">① 冊別</span><div class="u-fchips" id="bookRow"></div></div>
+      <div class="u-frow"><span class="u-flbl">② 生活區</span><div class="u-fchips" id="zoneRow"></div></div>
     </div>
     <div class="u-track-wrap">
       <button class="u-arrow" id="arrL" aria-label="往左">‹</button>
@@ -125,13 +138,13 @@ const UL = [];           // 攤平的全部單元：id = 全域序號，no = 在
   BOOKS.forEach(b => (b.units || []).forEach((u, i) => {
     listed.add(u.slug);
     const cs = CAT.scenes.find(s => s.slug === u.slug) || {};      // 只填 slug 時，名稱從 catalog.js 補
-    UL.push(Object.assign({ title: cs.title || u.slug, titleEn: cs.en || '' }, u, { id: ++gid, no: i + 1, book: b.id, ready: !!cs.ready }));
+    UL.push(Object.assign({ title: cs.title || u.slug, titleEn: cs.en || '' }, u, { id: ++gid, no: i + 1, book: b.id, ready: !!cs.ready, zone: cs.zone }));
   }));
   const extra = CAT.scenes.filter(s => s.ready && !listed.has(s.slug));
   if(extra.length){
     const b = { id: 'more', name: '更多場景', sub: '已完成但還沒編進冊別的場景（自動收錄，請到 units-list.js 編進冊別）' };
     BOOKS.push(b);
-    extra.forEach((s, i) => UL.push({ slug: s.slug, title: s.title, titleEn: s.en, id: ++gid, no: i + 1, book: b.id, ready: true }));
+    extra.forEach((s, i) => UL.push({ slug: s.slug, title: s.title, titleEn: s.en, id: ++gid, no: i + 1, book: b.id, ready: true, zone: s.zone }));
   }
 })();
 const DEFAULT_SYNC_URL = "https://script.google.com/macros/s/AKfycbwqd9cr_3MfXK8hzs8Y-YPQQUqOH5vKtW_vMav1nMAAt9VkBCP_5WP6Q1TDngIlr51U/exec";
@@ -236,24 +249,30 @@ function loadScene(slug){
 }
 
 // ---------- 單元列 ----------
-// 單元列有兩種看法：依「冊別」（一冊裡的 Unit 1、2、3…）或依「生活區」（catalog.js 的交通、住、吃…，沒做好的變淡）
+// 兩層連動篩選：① 冊別（含「全部」）→ ② 生活區（8 區固定排列，這一冊沒有的區會變淡不能點，數字是「已完成/總數」）。
+// 單元列顯示「選到的冊別 ∩ 選到的生活區」。換冊時，若目前的生活區在新的一冊裡沒有，就自動回到「全部」。
 const ZONES = CAT.zones.slice().sort((a, b) => (a.order || 0) - (b.order || 0));
 const bookOf = id => BOOKS.find(b => b.id === id);
-let view = { t: 'book', id: BOOKS.length ? BOOKS[0].id : null };
+let view = { book: BOOKS.length ? BOOKS[0].id : 'all', zone: 'all' };
+const inScope = (u, bk, zn) => (bk === 'all' || u.book === bk) && (zn === 'all' || u.zone === zn);
+const cnt = l => `${l.filter(u => u.ready).length}/${l.length}`;
 function renderZones(){
-  $('#bookRow').innerHTML = `<span class="u-rowlbl">冊別</span>` + BOOKS.map(b => {
-    const all = UL.filter(u => u.book === b.id), n = all.filter(u => u.ready).length;
-    return `<button class="fchip${view.t === 'book' && view.id === b.id ? ' on' : ''}" data-t="book" data-id="${esc(b.id)}">📚 ${esc(b.name)}${b.sub ? '·' + esc(b.sub) : ''} <small>${n}/${all.length}</small></button>`;
-  }).join('');
-  $('#zoneRow').innerHTML = `<span class="u-rowlbl">生活區</span>` + ZONES.map(z => {
-    const list = CAT.scenes.filter(s => s.zone === z.id), n = list.filter(s => s.ready).length;
-    return `<button class="fchip${view.t === 'zone' && view.id === z.id ? ' on' : ''}" data-t="zone" data-id="${esc(z.id)}">${z.emoji} ${esc(z.name)} <small>${n}/${list.length}</small></button>`;
+  $('#bookRow').innerHTML = [{ id: 'all', name: '全部冊別', sub: '' }].concat(BOOKS).map(b =>
+    `<button class="u-f${view.book === b.id ? ' on' : ''}" data-id="${esc(b.id)}" title="${esc(b.sub || '')}">${esc(b.name)}<small>${cnt(UL.filter(u => inScope(u, b.id, 'all')))}</small></button>`).join('');
+  $('#zoneRow').innerHTML = [{ id: 'all', emoji: '🗂', name: '全部生活區' }].concat(ZONES).map(z => {
+    const l = UL.filter(u => inScope(u, view.book, z.id)), dis = z.id !== 'all' && !l.length;
+    return `<button class="u-f${view.zone === z.id ? ' on' : ''}" data-id="${esc(z.id)}"${dis ? ' disabled' : ''}>${z.emoji} ${esc(z.name)}<small>${cnt(l)}</small></button>`;
   }).join('');
 }
-$('#viewRows').addEventListener('click', e => {
-  const b = e.target.closest('.fchip'); if(!b) return;
-  view = { t: b.dataset.t, id: b.dataset.t === 'book' ? (BOOKS.find(x => String(x.id) === b.dataset.id) || {}).id : b.dataset.id };
+$('#bookRow').addEventListener('click', e => {
+  const b = e.target.closest('.u-f'); if(!b) return;
+  view.book = b.dataset.id === 'all' ? 'all' : (BOOKS.find(x => String(x.id) === b.dataset.id) || {}).id;
+  if(view.zone !== 'all' && !UL.some(u => inScope(u, view.book, view.zone))) view.zone = 'all';
   renderZones(); renderTrack(true);
+});
+$('#zoneRow').addEventListener('click', e => {
+  const b = e.target.closest('.u-f'); if(!b || b.disabled) return;
+  view.zone = b.dataset.id; renderZones(); renderTrack(true);
 });
 let expanded = false;
 $('#expBtn').addEventListener('click', () => { expanded = !expanded; applyExpand(); });
@@ -263,24 +282,13 @@ function applyExpand(){
   $('#arrL').style.visibility = $('#arrR').style.visibility = expanded ? 'hidden' : '';
 }
 function renderTrack(fromZone){
-  const chip = (u, n) => `<button class="u-chip${u.id === unitId ? ' active' : ''}" data-id="${u.id}"><span>${u.icon || '🎧'}</span><span class="no">Unit ${u.no}</span><span class="tt">${esc(u.title)}</span>${n ? `<span class="pill">${n}</span>` : ''}</button>`;
-  const soon = u => `<span class="u-chip off"><span>🕒</span><span class="no">Unit ${u.no}</span><span class="tt">${esc(u.title)}</span><span class="soon">即將推出</span></span>`;
+  const tag = u => view.book === 'all' && bookOf(u.book) ? `<span class="bk">${esc(bookOf(u.book).name)}</span>` : '';   // 看「全部冊別」時，標出是哪一冊
+  const chip = (u, n) => `<button class="u-chip${u.id === unitId ? ' active' : ''}" data-id="${u.id}"><span>${u.icon || '🎧'}</span><span class="no">Unit ${u.no}</span>${tag(u)}<span class="tt">${esc(u.title)}</span>${n ? `<span class="pill">${n}</span>` : ''}</button>`;
+  const soon = u => `<span class="u-chip off"><span>🕒</span><span class="no">Unit ${u.no}</span>${tag(u)}<span class="tt">${esc(u.title)}</span><span class="soon">即將推出</span></span>`;
   const one = u => u.ready ? chip(u, Object.keys(readDone(u.slug)).length) : soon(u);
-  if(view.t === 'book'){
-    const b = bookOf(view.id) || BOOKS[0], list = b ? UL.filter(u => u.book === b.id) : [];
-    $('#track').innerHTML = list.map(one).join('');
-    $('#selCnt').textContent = b ? `${b.name}${b.sub ? '：' + b.sub : ''}，共 ${list.length} 單元，已完成 ${list.filter(u => u.ready).length}` : '';
-  } else {
-    const zoneSel = view.id;
-    const z = ZONES.find(x => x.id === zoneSel), list = CAT.scenes.filter(s => s.zone === zoneSel).sort((a, b) => (a.order || 0) - (b.order || 0));
-    $('#track').innerHTML = list.map(s => {
-      const u = UL.find(x => x.slug === s.slug);
-      if(s.ready && u) return one(u);
-      if(s.ready) return `<a class="u-chip" href="scenes/${esc(s.slug)}/index.html" style="text-decoration:none"><span class="tt">${esc(s.title)}</span></a>`;
-      return `<span class="u-chip off"><span class="tt">${esc(s.title)}</span><span class="soon">即將推出</span></span>`;
-    }).join('');
-    $('#selCnt').textContent = `${z.emoji} ${z.name}：${list.length} 個場景，${list.filter(s => s.ready).length} 個已完成`;
-  }
+  const list = UL.filter(u => inScope(u, view.book, view.zone)), b = bookOf(view.book), z = ZONES.find(x => x.id === view.zone);
+  $('#track').innerHTML = list.length ? list.map(one).join('') : '<span class="u-sub">這個組合還沒有單元</span>';
+  $('#selCnt').textContent = (b ? b.name + (b.sub ? '・' + b.sub : '') : '全部冊別') + (z ? ' › ' + z.emoji + z.name : '') + `：共 ${list.length} 單元，已完成 ${list.filter(u => u.ready).length}`;
   const a = $('#track .u-chip.active');
   if(a) a.scrollIntoView({ inline: 'center', block: 'nearest' }); else if(fromZone) $('#track').scrollLeft = 0;
 }
@@ -648,7 +656,8 @@ async function selectUnit(id, first){
   try{ S = await loadScene(u.slug); }
   catch(e){ c.innerHTML = '<div class="u-loading">這個單元載入失敗，請重新整理再試一次。</div>'; return; }
   dlgCur = 0;
-  if(view.t === 'book' && view.id !== u.book) view = { t: 'book', id: u.book };   // 選到別冊的單元時，單元列跟著換冊
+  if(view.book !== 'all' && view.book !== u.book) view.book = u.book;            // 選到別冊的單元時，單元列跟著換冊
+  if(view.zone !== 'all' && view.zone !== u.zone) view.zone = 'all';
   try{ history.replaceState(null, '', '#b=' + u.book + '&u=' + u.no); }catch(e){}
   renderZones(); renderTrack(); applyExpand(); renderHero(); renderTabs(); renderContent();
   if(!first) window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -657,7 +666,7 @@ async function selectUnit(id, first){
 const hs = location.hash + location.search;
 const hb = (hs.match(/[#&?]b=([\w-]+)/) || [])[1], hu = (hs.match(/[#&?](?:unit|u)=(\d+)/) || [])[1];
 const startUnit = UL.find(u => u.ready && String(u.book) === (hb || String(BOOKS[0] && BOOKS[0].id)) && u.no === parseInt(hu || '1', 10)) || UL.find(u => u.ready);
-if(startUnit){ view = { t: 'book', id: startUnit.book }; selectUnit(startUnit.id, true); }
+if(startUnit){ view = { book: startUnit.book, zone: 'all' }; selectUnit(startUnit.id, true); }
 else $('#content').innerHTML = '<div class="u-loading">還沒有單元。請先在 units-list.js 加入單元。</div>';
 })();
 </script>
