@@ -22,7 +22,7 @@ window.SCENE = {
       "name": "Bank Representative",
       "zh": "銀行客服",
       "avatar": "👩‍💼",
-      "voice": "f3"
+      "voice": "f2"
     },
     "F": {
       "name": "Fraud Specialist",

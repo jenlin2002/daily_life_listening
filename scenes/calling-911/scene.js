@@ -22,7 +22,7 @@ window.SCENE = {
       "name": "Paramedic",
       "zh": "救護人員",
       "avatar": "👩‍⚕️",
-      "voice": "f3"
+      "voice": "f"
     },
     "O": {
       "name": "Police Officer",

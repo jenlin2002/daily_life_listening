@@ -10,7 +10,7 @@ window.SCENE = {
       "name": "DMV Clerk",
       "zh": "DMV 櫃台人員",
       "avatar": "👩‍💼",
-      "voice": "f3"
+      "voice": "f"
     },
     "Y": {
       "name": "You",

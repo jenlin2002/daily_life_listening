@@ -22,7 +22,7 @@ window.SCENE = {
       "name": "Jessica",
       "zh": "新朋友 Jessica",
       "avatar": "👩",
-      "voice": "f3"
+      "voice": "f4"
     }
   },
   "dialogues": [

@@ -22,7 +22,7 @@ window.SCENE = {
       "name": "Hotel front desk",
       "zh": "櫃台經理",
       "avatar": "👩",
-      "voice": "f3"
+      "voice": "f2"
     }
   },
   "dialogues": [

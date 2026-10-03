@@ -10,7 +10,7 @@ window.SCENE = {
       "name": "Pharmacist",
       "zh": "藥師",
       "avatar": "👩‍⚕️",
-      "voice": "f3"
+      "voice": "f2"
     },
     "Y": {
       "name": "You",

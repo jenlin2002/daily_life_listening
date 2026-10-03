@@ -10,7 +10,7 @@ window.SCENE = {
       "name": "Staff",
       "zh": "報到人員",
       "avatar": "👩‍💼",
-      "voice": "f3"
+      "voice": "f"
     },
     "Y": {
       "name": "You",

@@ -22,7 +22,7 @@ window.SCENE = {
       "name": "Delivery Service",
       "zh": "快遞客服",
       "avatar": "👩‍💼",
-      "voice": "f3"
+      "voice": "f2"
     }
   },
   "answerSeconds": 8,

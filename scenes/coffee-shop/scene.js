@@ -22,7 +22,7 @@ window.SCENE = {
       "name": "Cashier",
       "zh": "收銀員",
       "avatar": "👩",
-      "voice": "f3"
+      "voice": "f2"
     }
   },
   "answerSeconds": 8,

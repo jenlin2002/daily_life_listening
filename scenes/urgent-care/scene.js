@@ -22,7 +22,7 @@ window.SCENE = {
       "name": "Triage Nurse",
       "zh": "分流護理師",
       "avatar": "👩‍⚕️",
-      "voice": "f3"
+      "voice": "f"
     },
     "D": {
       "name": "Doctor",

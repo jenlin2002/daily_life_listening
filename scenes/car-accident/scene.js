@@ -28,7 +28,7 @@ window.SCENE = {
       "name": "Insurance Agent",
       "zh": "保險客服",
       "avatar": "👩‍💼",
-      "voice": "f3"
+      "voice": "f"
     }
   },
   "answerSeconds": 8,
