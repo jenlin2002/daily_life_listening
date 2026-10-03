@@ -5,7 +5,9 @@
 //
 // 新增單元（做好新場景之後）：
 //   1. 場景照 README.md 做好（catalog.js 有登記、scenes/<slug>/ 有 scene.js，catalog 那一行 ready: true）。
-//   2. 在下面某一冊的 units 最後面加一筆 { slug: '場景資料夾名稱' }。
+//      44 個場景已經全部先排進冊別（還沒做好的會顯示「即將推出」），所以做好之後只要把 catalog 的 ready 改成 true，
+//      單元版就會自動變成可點。Unit 編號從一開始就固定，不會因為做好的順序而改變。
+//   2. 若要新增一個全新的場景：在下面某一冊的 units 最後面加一筆 { slug: '場景資料夾名稱' }。
 //      其他欄位都可以省略（title / titleEn / icon / situation / desc），省略時：
 //      標題用場景名稱、英文名用場景的 en、說明用場景的 goal。
 //      也可以填寫來覆蓋，像舊版 Unit 1–16 那樣有自己的短標題與情境說明。
@@ -145,6 +147,111 @@ window.UNIT_BOOKS = [
         "icon": "🎬",
         "situation": "跟室友聊童年老卡通與文化敏感性",
         "desc": "聊童年懷舊卡通電影前的免責警告標語、政治正確（Politically Correct）與人際待人禮貌。"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "第二冊",
+    "sub": "日常與旅遊",
+    "units": [
+      {
+        "slug": "getting-a-ride"
+      },
+      {
+        "slug": "bus-and-subway"
+      },
+      {
+        "slug": "asking-directions"
+      },
+      {
+        "slug": "gas-station"
+      },
+      {
+        "slug": "airport-customs"
+      },
+      {
+        "slug": "restaurant"
+      },
+      {
+        "slug": "supermarket"
+      },
+      {
+        "slug": "coffee-shop"
+      },
+      {
+        "slug": "food-delivery"
+      },
+      {
+        "slug": "drugstore"
+      },
+      {
+        "slug": "lost-something"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "name": "第三冊",
+    "sub": "留學生存",
+    "units": [
+      {
+        "slug": "first-day-school"
+      },
+      {
+        "slug": "meeting-teacher"
+      },
+      {
+        "slug": "renting-apartment"
+      },
+      {
+        "slug": "utilities"
+      },
+      {
+        "slug": "phone-plan"
+      },
+      {
+        "slug": "bank-account"
+      },
+      {
+        "slug": "dmv"
+      },
+      {
+        "slug": "doctor-appointment"
+      },
+      {
+        "slug": "post-office"
+      },
+      {
+        "slug": "returns"
+      },
+      {
+        "slug": "online-order"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "name": "第四冊",
+    "sub": "健康與緊急狀況",
+    "units": [
+      {
+        "slug": "pharmacy"
+      },
+      {
+        "slug": "dentist"
+      },
+      {
+        "slug": "urgent-care"
+      },
+      {
+        "slug": "calling-911"
+      },
+      {
+        "slug": "car-accident"
+      },
+      {
+        "slug": "card-problems"
       }
     ]
   }
