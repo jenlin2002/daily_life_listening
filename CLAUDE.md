@@ -60,7 +60,7 @@
 
 ## 新場景製作進度與家裡電腦（Windows）的語音工具（2026-10-03）
 
-- 已完成的新場景（2026-10-03，第 1 波共 7 個，都是完整 10 個分頁、有語音、沒有影片〔影片暫停〕）：getting-a-ride（叫 Uber，第二冊 Unit 1）、restaurant（餐廳用餐與小費，第二冊 Unit 6）、supermarket（超市購物，第二冊 Unit 7）、lost-something（遺失物品求助，第二冊 Unit 11）、bank-account（銀行開戶，第三冊 Unit 6）、returns（退換貨，第三冊 Unit 10）、pharmacy（藥局領處方藥，第四冊 Unit 1）。其餘 21 個依 `PLAN.md` 的第 2、3 波做。
+- 已完成的新場景（2026-10-03，第 1 波共 7 個，都是完整 10 個分頁、有語音、沒有影片〔影片暫停〕）：getting-a-ride（叫 Uber，第二冊 Unit 1）、restaurant（餐廳用餐與小費，第二冊 Unit 6）、supermarket（超市購物，第二冊 Unit 7）、lost-something（遺失物品求助，第二冊 Unit 11）、bank-account（銀行開戶，第三冊 Unit 6）、returns（退換貨，第三冊 Unit 10）、pharmacy（藥局領處方藥，第四冊 Unit 1）。**第 2 波 12 個也完成（2026-10-03）**：bus-and-subway（第二冊 Unit 2）、asking-directions（Unit 3）、gas-station（Unit 4）、airport-customs（Unit 5）、coffee-shop（Unit 8）、food-delivery（Unit 9）、drugstore（Unit 10）、first-day-school（第三冊 Unit 1）、meeting-teacher（Unit 2）、post-office（Unit 9）、online-order（Unit 11）、dentist（第四冊 Unit 2）。目前 35/44 完成，只剩第 3 波 9 個（看房、水電網路、辦手機、DMV、預約看診、急診、打 911、小車禍、卡片問題）依 `PLAN.md` 做。
 - 做法：寫一支 Python 產生器，用 dict 組好內容、`json.dumps(ensure_ascii=False, indent=2)` 寫成 `scenes/<slug>/scene.js`（保證語法正確），
   複製 `tools/scene_template.html` 成該場景的 `index.html`，把 `catalog.js` 該行加 `ready: true`，再跑 `check_scenes.py` 與 `make_audio.py <slug>`。
   單元版 `units-list.js` 已有全部 44 個，**做好不用再改**。內容格式與用字照 `scenes/fast-food/scene.js`（台灣用語、美國情境與文化提醒、roleplay 的 expect 要讓 model 通過）。

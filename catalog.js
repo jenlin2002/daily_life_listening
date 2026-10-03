@@ -22,12 +22,12 @@ window.LIFE_CATALOG = {
     { id: 'social',    order: 80, emoji: '💬', name: '社交與緊急狀況' }
   ],
   scenes: [
-    { slug: 'airport-customs',   zone: 'transport', order: 10, title: '機場入境與海關', en: 'Airport & Customs', tags: ['旅遊', '留學'], level: 2 },
+    { slug: 'airport-customs',   zone: 'transport', order: 10, title: '機場入境與海關', en: 'Airport & Customs', tags: ['旅遊', '留學'], level: 2, ready: true },
     { slug: 'renting-a-car', zone: 'transport', order: 20, title: '租車與客訴：輪胎壞了', en: 'Renting a Car & Complaints', tags: ['旅遊', '大學生活'], season: 1, level: 3, ready: true },
     { slug: 'getting-a-ride', zone: 'transport', order: 30, title: '叫 Uber', en: 'Getting a Ride', tags: ['日常', '旅遊'], season: 1, level: 1, ready: true },
-    { slug: 'gas-station',       zone: 'transport', order: 40, title: '加油站自助加油', en: 'At the Gas Station', tags: ['旅遊'], level: 2 },
-    { slug: 'bus-and-subway',    zone: 'transport', order: 50, title: '搭公車與地鐵', en: 'Taking the Bus & Subway', tags: ['日常', '旅遊'], level: 1 },
-    { slug: 'asking-directions', zone: 'transport', order: 60, title: '問路', en: 'Asking for Directions', tags: ['日常', '旅遊'], level: 1 },
+    { slug: 'gas-station',       zone: 'transport', order: 40, title: '加油站自助加油', en: 'At the Gas Station', tags: ['旅遊'], level: 2, ready: true },
+    { slug: 'bus-and-subway',    zone: 'transport', order: 50, title: '搭公車與地鐵', en: 'Taking the Bus & Subway', tags: ['日常', '旅遊'], level: 1, ready: true },
+    { slug: 'asking-directions', zone: 'transport', order: 60, title: '問路', en: 'Asking for Directions', tags: ['日常', '旅遊'], level: 1, ready: true },
 
     { slug: 'hotel', zone: 'housing', order: 10, title: '機場入境與飯店入住', en: 'Travel & Accommodation', tags: ['旅遊', '大學生活'], season: 1, level: 2, ready: true },
     { slug: 'renting-apartment', zone: 'housing', order: 20, title: '看房與租約', en: 'Renting an Apartment', tags: ['留學'], level: 3 },
@@ -38,28 +38,28 @@ window.LIFE_CATALOG = {
     { slug: 'fast-food',         zone: 'food', order: 10, title: '速食點餐', en: 'Ordering Fast Food', tags: ['日常', '旅遊', '大學生活'], season: 1, level: 1, ready: true },
     { slug: 'restaurant',        zone: 'food', order: 20, title: '餐廳用餐與小費', en: 'Eating Out & Tipping', tags: ['日常', '旅遊'], season: 1, level: 2, ready: true },
     { slug: 'supermarket',       zone: 'food', order: 30, title: '超市購物', en: 'At the Supermarket', tags: ['日常'], season: 1, level: 1, ready: true },
-    { slug: 'coffee-shop',       zone: 'food', order: 40, title: '咖啡店點飲料', en: 'At the Coffee Shop', tags: ['日常', '旅遊'], level: 1 },
-    { slug: 'food-delivery',     zone: 'food', order: 50, title: '外送 App 與外帶', en: 'Food Delivery & Takeout', tags: ['日常'], level: 2 },
+    { slug: 'coffee-shop',       zone: 'food', order: 40, title: '咖啡店點飲料', en: 'At the Coffee Shop', tags: ['日常', '旅遊'], level: 1, ready: true },
+    { slug: 'food-delivery',     zone: 'food', order: 50, title: '外送 App 與外帶', en: 'Food Delivery & Takeout', tags: ['日常'], level: 2, ready: true },
 
     { slug: 'returns',           zone: 'shopping', order: 10, title: '退換貨', en: 'Returns & Exchanges', tags: ['日常'], season: 1, level: 2, ready: true },
     { slug: 'clothing-store', zone: 'shopping', order: 20, title: '服飾店購物與結帳', en: 'Shopping & Retail', tags: ['日常', '旅遊', '大學生活'], level: 1, ready: true },
     { slug: 'phone-plan',        zone: 'shopping', order: 30, title: '辦手機門號', en: 'Getting a Phone Plan', tags: ['留學'], level: 3 },
-    { slug: 'online-order',      zone: 'shopping', order: 40, title: '網購包裹出問題', en: 'Online Order Problems', tags: ['日常'], level: 2 },
-    { slug: 'drugstore',         zone: 'shopping', order: 50, title: '藥妝店買東西', en: 'At the Drugstore', tags: ['日常', '旅遊'], level: 1 },
+    { slug: 'online-order',      zone: 'shopping', order: 40, title: '網購包裹出問題', en: 'Online Order Problems', tags: ['日常'], level: 2, ready: true },
+    { slug: 'drugstore',         zone: 'shopping', order: 50, title: '藥妝店買東西', en: 'At the Drugstore', tags: ['日常', '旅遊'], level: 1, ready: true },
 
     { slug: 'bank-account',      zone: 'money', order: 10, title: '銀行開戶', en: 'Opening a Bank Account', tags: ['留學'], season: 1, level: 3, ready: true },
     { slug: 'card-problems',     zone: 'money', order: 20, title: '卡片被盜刷或刷不過', en: 'Card Problems', tags: ['日常', '旅遊'], level: 3 },
-    { slug: 'post-office',       zone: 'money', order: 30, title: '郵局寄包裹', en: 'At the Post Office', tags: ['日常'], level: 2 },
+    { slug: 'post-office',       zone: 'money', order: 30, title: '郵局寄包裹', en: 'At the Post Office', tags: ['日常'], level: 2, ready: true },
     { slug: 'dmv',               zone: 'money', order: 40, title: 'DMV 考駕照', en: 'At the DMV', tags: ['留學'], level: 3 },
 
     { slug: 'seeing-a-doctor', zone: 'health', order: 10, title: '看醫生：描述症狀', en: 'Health & Medical Care', tags: ['日常', '旅遊', '留學', '大學生活'], season: 1, level: 2, ready: true },
     { slug: 'pharmacy',          zone: 'health', order: 20, title: '藥局領處方藥', en: 'At the Pharmacy', tags: ['日常'], season: 1, level: 2, ready: true },
     { slug: 'doctor-appointment',zone: 'health', order: 30, title: '預約看診與保險', en: 'Making an Appointment', tags: ['留學'], level: 3 },
     { slug: 'urgent-care',       zone: 'health', order: 40, title: '急診與 Urgent Care', en: 'Urgent Care & the ER', tags: ['旅遊', '留學'], level: 3 },
-    { slug: 'dentist',           zone: 'health', order: 50, title: '看牙醫', en: 'At the Dentist', tags: ['日常'], level: 2 },
+    { slug: 'dentist',           zone: 'health', order: 50, title: '看牙醫', en: 'At the Dentist', tags: ['日常'], level: 2, ready: true },
 
-    { slug: 'first-day-school',  zone: 'school', order: 10, title: '新生報到與選課', en: 'First Day at School', tags: ['留學'], level: 2 },
-    { slug: 'meeting-teacher',   zone: 'school', order: 20, title: '和老師約時間', en: 'Meeting a Teacher', tags: ['留學'], level: 2 },
+    { slug: 'first-day-school',  zone: 'school', order: 10, title: '新生報到與選課', en: 'First Day at School', tags: ['留學'], level: 2, ready: true },
+    { slug: 'meeting-teacher',   zone: 'school', order: 20, title: '和老師約時間', en: 'Meeting a Teacher', tags: ['留學'], level: 2, ready: true },
     { slug: 'job-interview', zone: 'school', order: 30, title: '工作面試', en: 'Job Interview & Career', tags: ['工作', '大學生活'], level: 3, ready: true },
     { slug: 'coworkers', zone: 'school', order: 40, title: '和同事閒聊', en: 'Water Cooler Chit-Chat', tags: ['工作', '大學生活'], level: 2, ready: true },
 
