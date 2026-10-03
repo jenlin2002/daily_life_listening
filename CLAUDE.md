@@ -67,6 +67,10 @@
 - **這台家裡電腦已裝好語音工具（2026-10-03）**：pip 的 kokoro-onnx、soundfile、imageio-ffmpeg；Node.js LTS（winget，新開的終端機才找得到 node，
   舊的視窗要先重新載入 PATH）；模型檔在 `tools/models/`（已被 git 忽略）。`make_audio.py` 找不到系統 ffmpeg 時會自動用 imageio-ffmpeg 附的，
   `common.py` 讀 node 輸出已指定 UTF-8（Windows 預設編碼會壞掉）。
+- **角色圖像與聲音的性別要一致（使用者要求，2026-10-03）**：`speakers` 裡 avatar 要用明確的男生或女生圖像（👨、👩、🙋‍♂️、🙋‍♀️、👨‍💼、👩‍💼…），
+  不要用中性的（🧑‍💼、🙋），voice 代碼要同性別：女聲 f、f2、f3，男聲 m、m2、m3。舊版 16 單元的「我」都是 🙋‍♀️ 配女聲 f；
+  新單元的「你」（Y）男女交替安排：男聲 m 系列——餐廳、銀行開戶、退換貨、藥局、速食點餐；女聲 f 系列——叫 Uber、超市、遺失物品。
+  只改 avatar 不必重錄語音；改 voice 代碼會改變語音檔名（要重跑 `make_audio.py --prune`）。想讓某個舊單元的「我」換成男聲，要先確認再重錄。
 - 下載提醒：這台電腦從 GitHub 下載單一連線很慢（約 25 KB/s），要用多連線（分段 Range）才快（約 500 KB/s）；跑 `make_audio.py` 時不要把輸出接 `Select-Object -First N`，會把程式中途砍掉。
 
 ## 待辦事項
