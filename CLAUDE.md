@@ -42,7 +42,7 @@
 
 ## 目前內容
 
-- 8 大生活區、44 個場景，16 個已完成。
+- 8 大生活區、44 個場景，**全部完成**（第一冊舊版 16 個；新場景 28 個都是完整 10 個分頁、有語音、沒有影片）。
 - **速食點餐（fast-food）**：完整示範場景，10 個分頁都有內容，3 段情境對話（櫃台點餐、得來速、Chipotle）。
 - 舊版的 16 個單元已全部搬進來（254 句實用句、107 句對話，一句不少），標籤 **#大學生活**；
   這 15 個場景目前只有「情境對話、句子矩陣、聽寫練習」三個分頁。
@@ -60,7 +60,7 @@
 
 ## 新場景製作進度與家裡電腦（Windows）的語音工具（2026-10-03）
 
-- 已完成的新場景（2026-10-03，第 1 波共 7 個，都是完整 10 個分頁、有語音、沒有影片〔影片暫停〕）：getting-a-ride（叫 Uber，第二冊 Unit 1）、restaurant（餐廳用餐與小費，第二冊 Unit 6）、supermarket（超市購物，第二冊 Unit 7）、lost-something（遺失物品求助，第二冊 Unit 11）、bank-account（銀行開戶，第三冊 Unit 6）、returns（退換貨，第三冊 Unit 10）、pharmacy（藥局領處方藥，第四冊 Unit 1）。**第 2 波 12 個也完成（2026-10-03）**：bus-and-subway（第二冊 Unit 2）、asking-directions（Unit 3）、gas-station（Unit 4）、airport-customs（Unit 5）、coffee-shop（Unit 8）、food-delivery（Unit 9）、drugstore（Unit 10）、first-day-school（第三冊 Unit 1）、meeting-teacher（Unit 2）、post-office（Unit 9）、online-order（Unit 11）、dentist（第四冊 Unit 2）。目前 35/44 完成，只剩第 3 波 9 個（看房、水電網路、辦手機、DMV、預約看診、急診、打 911、小車禍、卡片問題）依 `PLAN.md` 做。
+- 已完成的新場景（2026-10-03，第 1 波共 7 個，都是完整 10 個分頁、有語音、沒有影片〔影片暫停〕）：getting-a-ride（叫 Uber，第二冊 Unit 1）、restaurant（餐廳用餐與小費，第二冊 Unit 6）、supermarket（超市購物，第二冊 Unit 7）、lost-something（遺失物品求助，第二冊 Unit 11）、bank-account（銀行開戶，第三冊 Unit 6）、returns（退換貨，第三冊 Unit 10）、pharmacy（藥局領處方藥，第四冊 Unit 1）。**第 2 波 12 個也完成（2026-10-03）**：bus-and-subway（第二冊 Unit 2）、asking-directions（Unit 3）、gas-station（Unit 4）、airport-customs（Unit 5）、coffee-shop（Unit 8）、food-delivery（Unit 9）、drugstore（Unit 10）、first-day-school（第三冊 Unit 1）、meeting-teacher（Unit 2）、post-office（Unit 9）、online-order（Unit 11）、dentist（第四冊 Unit 2）。**第 3 波 9 個也完成（2026-10-03）**：renting-apartment（第三冊 Unit 3）、utilities（Unit 4）、phone-plan（Unit 5）、dmv（Unit 7）、doctor-appointment（Unit 8）、urgent-care（第四冊 Unit 3）、calling-911（Unit 4）、car-accident（Unit 5）、card-problems（Unit 6）。**44 個場景全部完成。**多於三個角色的場景（utilities、doctor-appointment、urgent-care、calling-911、car-accident、card-problems 有 4 個角色）的聽力題，用 `speaker` 指定由對的角色念。
 - 做法：寫一支 Python 產生器，用 dict 組好內容、`json.dumps(ensure_ascii=False, indent=2)` 寫成 `scenes/<slug>/scene.js`（保證語法正確），
   複製 `tools/scene_template.html` 成該場景的 `index.html`，把 `catalog.js` 該行加 `ready: true`，再跑 `check_scenes.py` 與 `make_audio.py <slug>`。
   單元版 `units-list.js` 已有全部 44 個，**做好不用再改**。內容格式與用字照 `scenes/fast-food/scene.js`（台灣用語、美國情境與文化提醒、roleplay 的 expect 要讓 model 通過）。
@@ -75,8 +75,7 @@
 
 ## 待辦事項
 
-1. **第一季其餘場景**（catalog.js 裡 `season: 1` 且還沒 ready 的），下一個是「餐廳用餐與小費（restaurant）」，
-   照速食點餐的完整格式做。
+1. **新增更多場景或下一季**：44 個場景已全部完成。要擴充就照 README 的四步驟加場景，並在 `units-list.js` 排進冊別。
 2. **補強舊版 15 個單元**：加上你會聽到的／你要說的、單字、突發狀況、聽力測驗、即時回應、文化小提醒。
 3. **學習點數存摺**：前端已接好（2026-10-03）。`points.js` 在根目錄；`engine.js` 會自動載入它，`index.html` 直接載入，
    兩邊的 `sync()` 開頭都呼叫 `Points.earn()`（label 是「Life｜場景名」）。`POINTS_URL` 空白時不啟用；

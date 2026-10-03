@@ -30,9 +30,9 @@ window.LIFE_CATALOG = {
     { slug: 'asking-directions', zone: 'transport', order: 60, title: '問路', en: 'Asking for Directions', tags: ['日常', '旅遊'], level: 1, ready: true },
 
     { slug: 'hotel', zone: 'housing', order: 10, title: '機場入境與飯店入住', en: 'Travel & Accommodation', tags: ['旅遊', '大學生活'], season: 1, level: 2, ready: true },
-    { slug: 'renting-apartment', zone: 'housing', order: 20, title: '看房與租約', en: 'Renting an Apartment', tags: ['留學'], level: 3 },
+    { slug: 'renting-apartment', zone: 'housing', order: 20, title: '看房與租約', en: 'Renting an Apartment', tags: ['留學'], level: 3, ready: true },
     { slug: 'repair-request', zone: 'housing', order: 30, title: '報修：冷氣壞了', en: 'Home Repairs & AC', tags: ['留學', '日常', '大學生活'], level: 2, ready: true },
-    { slug: 'utilities',         zone: 'housing', order: 40, title: '開通水電與網路', en: 'Setting Up Utilities', tags: ['留學'], level: 3 },
+    { slug: 'utilities',         zone: 'housing', order: 40, title: '開通水電與網路', en: 'Setting Up Utilities', tags: ['留學'], level: 3, ready: true },
     { slug: 'roommates', zone: 'housing', order: 50, title: '和室友相處：一起煮晚餐', en: 'Family & Roommates', tags: ['日常', '留學', '大學生活'], level: 2, ready: true },
 
     { slug: 'fast-food',         zone: 'food', order: 10, title: '速食點餐', en: 'Ordering Fast Food', tags: ['日常', '旅遊', '大學生活'], season: 1, level: 1, ready: true },
@@ -43,19 +43,19 @@ window.LIFE_CATALOG = {
 
     { slug: 'returns',           zone: 'shopping', order: 10, title: '退換貨', en: 'Returns & Exchanges', tags: ['日常'], season: 1, level: 2, ready: true },
     { slug: 'clothing-store', zone: 'shopping', order: 20, title: '服飾店購物與結帳', en: 'Shopping & Retail', tags: ['日常', '旅遊', '大學生活'], level: 1, ready: true },
-    { slug: 'phone-plan',        zone: 'shopping', order: 30, title: '辦手機門號', en: 'Getting a Phone Plan', tags: ['留學'], level: 3 },
+    { slug: 'phone-plan',        zone: 'shopping', order: 30, title: '辦手機門號', en: 'Getting a Phone Plan', tags: ['留學'], level: 3, ready: true },
     { slug: 'online-order',      zone: 'shopping', order: 40, title: '網購包裹出問題', en: 'Online Order Problems', tags: ['日常'], level: 2, ready: true },
     { slug: 'drugstore',         zone: 'shopping', order: 50, title: '藥妝店買東西', en: 'At the Drugstore', tags: ['日常', '旅遊'], level: 1, ready: true },
 
     { slug: 'bank-account',      zone: 'money', order: 10, title: '銀行開戶', en: 'Opening a Bank Account', tags: ['留學'], season: 1, level: 3, ready: true },
-    { slug: 'card-problems',     zone: 'money', order: 20, title: '卡片被盜刷或刷不過', en: 'Card Problems', tags: ['日常', '旅遊'], level: 3 },
+    { slug: 'card-problems',     zone: 'money', order: 20, title: '卡片被盜刷或刷不過', en: 'Card Problems', tags: ['日常', '旅遊'], level: 3, ready: true },
     { slug: 'post-office',       zone: 'money', order: 30, title: '郵局寄包裹', en: 'At the Post Office', tags: ['日常'], level: 2, ready: true },
-    { slug: 'dmv',               zone: 'money', order: 40, title: 'DMV 考駕照', en: 'At the DMV', tags: ['留學'], level: 3 },
+    { slug: 'dmv',               zone: 'money', order: 40, title: 'DMV 考駕照', en: 'At the DMV', tags: ['留學'], level: 3, ready: true },
 
     { slug: 'seeing-a-doctor', zone: 'health', order: 10, title: '看醫生：描述症狀', en: 'Health & Medical Care', tags: ['日常', '旅遊', '留學', '大學生活'], season: 1, level: 2, ready: true },
     { slug: 'pharmacy',          zone: 'health', order: 20, title: '藥局領處方藥', en: 'At the Pharmacy', tags: ['日常'], season: 1, level: 2, ready: true },
-    { slug: 'doctor-appointment',zone: 'health', order: 30, title: '預約看診與保險', en: 'Making an Appointment', tags: ['留學'], level: 3 },
-    { slug: 'urgent-care',       zone: 'health', order: 40, title: '急診與 Urgent Care', en: 'Urgent Care & the ER', tags: ['旅遊', '留學'], level: 3 },
+    { slug: 'doctor-appointment',zone: 'health', order: 30, title: '預約看診與保險', en: 'Making an Appointment', tags: ['留學'], level: 3, ready: true },
+    { slug: 'urgent-care',       zone: 'health', order: 40, title: '急診與 Urgent Care', en: 'Urgent Care & the ER', tags: ['旅遊', '留學'], level: 3, ready: true },
     { slug: 'dentist',           zone: 'health', order: 50, title: '看牙醫', en: 'At the Dentist', tags: ['日常'], level: 2, ready: true },
 
     { slug: 'first-day-school',  zone: 'school', order: 10, title: '新生報到與選課', en: 'First Day at School', tags: ['留學'], level: 2, ready: true },
@@ -67,8 +67,8 @@ window.LIFE_CATALOG = {
     { slug: 'lost-something',    zone: 'social', order: 20, title: '遺失物品求助', en: 'Lost Something', tags: ['旅遊', '日常'], season: 1, level: 2, ready: true },
     { slug: 'invitations', zone: 'social', order: 30, title: '生活分享與邀約', en: 'Life Updates & Invites', tags: ['日常', '大學生活'], level: 1, ready: true },
     { slug: 'party', zone: 'social', order: 40, title: '參加派對：認識新朋友', en: 'Meeting New Friends at a Party', tags: ['日常', '大學生活'], level: 2, ready: true },
-    { slug: 'calling-911',       zone: 'social', order: 50, title: '打 911 求救', en: 'Calling 911', tags: ['旅遊', '日常'], level: 3 },
-    { slug: 'car-accident',      zone: 'social', order: 60, title: '小車禍處理', en: 'A Minor Car Accident', tags: ['旅遊'], level: 3 },
+    { slug: 'calling-911',       zone: 'social', order: 50, title: '打 911 求救', en: 'Calling 911', tags: ['旅遊', '日常'], level: 3, ready: true },
+    { slug: 'car-accident',      zone: 'social', order: 60, title: '小車禍處理', en: 'A Minor Car Accident', tags: ['旅遊'], level: 3, ready: true },
     { slug: 'heart-to-heart', zone: 'social', order: 70, title: '心靈對話：陪室友聊心事', en: 'Heart-to-Heart Talk', tags: ['成人', '大學生活'], level: 3, ready: true },
     { slug: 'blind-date', zone: 'social', order: 80, title: '開玩笑與幽默：網路約會', en: 'Humor & Blind Date', tags: ['成人', '大學生活'], level: 3, ready: true },
     { slug: 'news-chat', zone: 'social', order: 90, title: '聊新聞與時事', en: 'News & Current Affairs', tags: ['大學生活'], level: 3, ready: true },
