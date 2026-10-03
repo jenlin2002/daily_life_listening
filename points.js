@@ -10,7 +10,7 @@
  */
 (function () {
   'use strict';
-  var POINTS_URL = '';   // ← 部署 Code.gs 之後，把「網頁應用程式網址」貼在這裡（結尾是 /exec）
+  var POINTS_URL = 'https://script.google.com/macros/s/AKfycbzo8HEUud9tA6tFYHIk6q2gaV3M8AhiApuylOip2ADfFeLKs8yXBmEq6-f-5KWBxG1wUA/exec';   // ← 部署 Code.gs 之後，把「網頁應用程式網址」貼在這裡（結尾是 /exec）
 
   var mem = {};
   function get(k) { try { return localStorage.getItem(k); } catch (e) { return (k in mem) ? mem[k] : null; } }
