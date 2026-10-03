@@ -665,7 +665,9 @@ async function selectUnit(id, first){
 // 網址：#b=冊別&u=第幾單元（#u=3 等於第一冊的 Unit 3；也支援 ?u=3）
 const hs = location.hash + location.search;
 const hb = (hs.match(/[#&?]b=([\w-]+)/) || [])[1], hu = (hs.match(/[#&?](?:unit|u)=(\d+)/) || [])[1];
-const startUnit = UL.find(u => u.ready && String(u.book) === (hb || String(BOOKS[0] && BOOKS[0].id)) && u.no === parseInt(hu || '1', 10)) || UL.find(u => u.ready);
+const hslug = (hs.match(/[#&?]s=([a-z0-9-]+)/) || [])[1];     // #s=場景名稱：從場景頁「返回單元列表」回到同一個單元
+const startUnit = (hslug && UL.find(u => u.ready && u.slug === hslug))
+  || UL.find(u => u.ready && String(u.book) === (hb || String(BOOKS[0] && BOOKS[0].id)) && u.no === parseInt(hu || '1', 10)) || UL.find(u => u.ready);
 if(startUnit){ view = { book: startUnit.book, zone: 'all' }; selectUnit(startUnit.id, true); }
 else $('#content').innerHTML = '<div class="u-loading">還沒有單元。請先在 units-list.js 加入單元。</div>';
 })();

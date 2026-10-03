@@ -145,7 +145,7 @@ const TABS = [
 ].filter(t => t[2]);
 document.title = '美式生活館｜' + S.title;
 document.body.innerHTML = `<div class="wrap">
-  <div class="top-links"><a class="home-link" href="../../index.html">🏠 美式生活館（冊別・單元）</a><a class="home-link" href="https://jenlin2002.github.io/">← 網站首頁</a></div>
+  <div class="top-links"><a class="home-link" href="../../index.html#s=${esc(S.slug)}">⬅ 返回單元列表</a><a class="home-link" href="../../catalog.html">🔎 全部場景卡片</a><a class="home-link" href="https://jenlin2002.github.io/">← 網站首頁</a></div>
   <div class="eyebrow">AMERICAN LIFE LAB${zone ? ' · ' + esc(zone.name) : ''}</div>
   <h1 class="title">${S.emoji || ''} ${esc(S.title)}</h1>
   <div class="subtitle">${esc(S.en)}${S.goal ? '<br>' + esc(S.goal) : ''}</div>
@@ -154,6 +154,7 @@ document.body.innerHTML = `<div class="wrap">
   <div class="tabs">${TABS.map(([k, t], i) => `<button class="tab${i ? '' : ' active'}" data-tab="${k}">${t}</button>`).join('')}</div>
   <div class="card">${TABS.map(([k], i) => `<div class="panel${i ? '' : ' active'}" id="p-${k}"></div>`).join('')}</div>
   <div class="scene-nav"><span>${prev ? `<a href="../${esc(prev.slug)}/index.html">← ${esc(prev.title)}</a>` : ''}</span><span>${next ? `<a href="../${esc(next.slug)}/index.html">${esc(next.title)} →</a>` : ''}</span></div>
+  <div style="text-align:center;margin-top:18px"><a class="home-link" href="../../index.html#s=${esc(S.slug)}">⬅ 返回單元列表</a></div>
   <div class="footer-note">練習結果會自動同步到 Google 試算表。沒有錄好語音的句子，會改用裝置內建的英文語音播放。</div>
 </div>`;
 renderWho();
