@@ -10,7 +10,7 @@ def load_js_object(path, var):
     code = ('const fs=require("fs"),vm=require("vm");const w={};'
             'vm.runInNewContext(fs.readFileSync(process.argv[1],"utf8"),{window:w});'
             'process.stdout.write(JSON.stringify(w[process.argv[2]]===undefined?null:w[process.argv[2]]));')
-    out = subprocess.run(['node', '-e', code, path, var], capture_output=True, text=True)
+    out = subprocess.run(['node', '-e', code, path, var], capture_output=True, text=True, encoding='utf-8')   # Windows 預設編碼不是 UTF-8，要明確指定
     if out.returncode != 0:
         raise ValueError('%s 有語法錯誤：%s' % (path, out.stderr.strip().splitlines()[-1] if out.stderr.strip() else '未知'))
     data = json.loads(out.stdout)

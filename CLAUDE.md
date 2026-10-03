@@ -58,6 +58,17 @@
   `tools/videos_draft_candidates.json`、`tools/videos_draft_apply.py`、`tools/videos_draft_search.py`（oEmbed 已確認存在且可嵌入，
   但沒有人看過內容）。要恢復時再執行；目前線上只有 Unit 3 速食點餐有影片。
 
+## 新場景製作進度與家裡電腦（Windows）的語音工具（2026-10-03）
+
+- 已完成的新場景：**getting-a-ride（叫 Uber，第二冊 Unit 1）**——完整 10 個分頁、110 句語音、沒有影片（影片暫停）。其餘 27 個依 `PLAN.md` 的波次做。
+- 做法：寫一支 Python 產生器，用 dict 組好內容、`json.dumps(ensure_ascii=False, indent=2)` 寫成 `scenes/<slug>/scene.js`（保證語法正確），
+  複製 `tools/scene_template.html` 成該場景的 `index.html`，把 `catalog.js` 該行加 `ready: true`，再跑 `check_scenes.py` 與 `make_audio.py <slug>`。
+  單元版 `units-list.js` 已有全部 44 個，**做好不用再改**。內容格式與用字照 `scenes/fast-food/scene.js`（台灣用語、美國情境與文化提醒、roleplay 的 expect 要讓 model 通過）。
+- **這台家裡電腦已裝好語音工具（2026-10-03）**：pip 的 kokoro-onnx、soundfile、imageio-ffmpeg；Node.js LTS（winget，新開的終端機才找得到 node，
+  舊的視窗要先重新載入 PATH）；模型檔在 `tools/models/`（已被 git 忽略）。`make_audio.py` 找不到系統 ffmpeg 時會自動用 imageio-ffmpeg 附的，
+  `common.py` 讀 node 輸出已指定 UTF-8（Windows 預設編碼會壞掉）。
+- 下載提醒：這台電腦從 GitHub 下載單一連線很慢（約 25 KB/s），要用多連線（分段 Range）才快（約 500 KB/s）；跑 `make_audio.py` 時不要把輸出接 `Select-Object -First N`，會把程式中途砍掉。
+
 ## 待辦事項
 
 1. **第一季其餘場景**（catalog.js 裡 `season: 1` 且還沒 ready 的），下一個是「餐廳用餐與小費（restaurant）」，

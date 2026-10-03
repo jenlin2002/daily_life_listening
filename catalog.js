@@ -24,7 +24,7 @@ window.LIFE_CATALOG = {
   scenes: [
     { slug: 'airport-customs',   zone: 'transport', order: 10, title: '機場入境與海關', en: 'Airport & Customs', tags: ['旅遊', '留學'], level: 2 },
     { slug: 'renting-a-car', zone: 'transport', order: 20, title: '租車與客訴：輪胎壞了', en: 'Renting a Car & Complaints', tags: ['旅遊', '大學生活'], season: 1, level: 3, ready: true },
-    { slug: 'getting-a-ride',    zone: 'transport', order: 30, title: '叫 Uber', en: 'Getting a Ride', tags: ['日常', '旅遊'], season: 1, level: 1 },
+    { slug: 'getting-a-ride', zone: 'transport', order: 30, title: '叫 Uber', en: 'Getting a Ride', tags: ['日常', '旅遊'], season: 1, level: 1, ready: true },
     { slug: 'gas-station',       zone: 'transport', order: 40, title: '加油站自助加油', en: 'At the Gas Station', tags: ['旅遊'], level: 2 },
     { slug: 'bus-and-subway',    zone: 'transport', order: 50, title: '搭公車與地鐵', en: 'Taking the Bus & Subway', tags: ['日常', '旅遊'], level: 1 },
     { slug: 'asking-directions', zone: 'transport', order: 60, title: '問路', en: 'Asking for Directions', tags: ['日常', '旅遊'], level: 1 },
