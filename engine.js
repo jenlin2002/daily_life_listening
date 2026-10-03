@@ -114,7 +114,16 @@ document.addEventListener('click', e => {
   student = n; set('quizStudentName', n); renderWho();
 });
 const SYNC_LABEL = 'Life｜' + S.title;
+// 學習點數存摺：points.js 放在網站根目錄，和 engine.js 同一層；沒設定後端網址時它什麼都不做
+(function(){
+  const cs = document.currentScript;
+  if(!cs || !cs.src || window.Points) return;
+  const sc = document.createElement('script'); sc.src = new URL('points.js', cs.src).href;
+  sc.onload = () => { if(window.Points && Points.setNameGetter) Points.setNameGetter(() => student); };
+  document.head.appendChild(sc);
+})();
 async function sync(mode, score, total, details, el){
+  if(window.Points) Points.earn({ name: student, label: SYNC_LABEL, mode, correct: score, total });
   const url = get('quizSyncUrl') || DEFAULT_SYNC_URL;
   if(!student){ el.textContent = '☁️ 尚未選擇是誰在練習，成績未回傳（請點上方名字）'; return; }
   el.textContent = '☁️ 同步中...';

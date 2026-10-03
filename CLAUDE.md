@@ -78,6 +78,8 @@
 1. **第一季其餘場景**（catalog.js 裡 `season: 1` 且還沒 ready 的），下一個是「餐廳用餐與小費（restaurant）」，
    照速食點餐的完整格式做。
 2. **補強舊版 15 個單元**：加上你會聽到的／你要說的、單字、突發狀況、聽力測驗、即時回應、文化小提醒。
-3. **學習點數換電腦時間／零用錢**：等使用者決定兌換比例、兌換項目、每日上限，並提供 Google Apps Script 程式碼。
-   詳細規劃寫在 english-quiz repo 的 CLAUDE.md。
+3. **學習點數存摺**：前端已接好（2026-10-03）。`points.js` 在根目錄；`engine.js` 會自動載入它，`index.html` 直接載入，
+   兩邊的 `sync()` 開頭都呼叫 `Points.earn()`（label 是「Life｜場景名」）。`POINTS_URL` 空白時不啟用；
+   等使用者部署後端、給 `/exec` 網址再填。規則與部署步驟見 english-quiz 的 CLAUDE.md 與 plan repo 的 `points/README-點數存摺.md`。
+   `points.js` 各專案的副本內容要一樣（主檔在 plan repo 的 `points/points.js`）。
 4. 刪掉多餘的 `claude-push-test` 分支（測試權限時建的，內容和 main 一樣；在 GitHub 的 Branches 頁面刪除即可）。

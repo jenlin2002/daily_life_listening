@@ -127,6 +127,7 @@
 
 <script src="catalog.js"></script>
 <script src="units-list.js"></script>
+<script src="points.js"></script>
 <script>
 (function(){
 // 冊別與單元：資料在 units-list.js（冊 → 單元，數量不限）。沒編進任何一冊、但 catalog.js 標了 ready 的場景，會自動收進最後一冊「更多場景」。
@@ -571,6 +572,7 @@ function drawDialogue(c){
 
 // 🎧 聽力默寫（聽一句、打出來，大小寫和標點不計；成績同步到試算表）
 let student = get('quizStudentName') || '';
+if(window.Points) Points.setNameGetter(() => student);
 function whoHtml(){
   const isOther = student && student !== 'BRANDEN' && student !== 'MELISSA';
   return `<div class="id-row" style="justify-content:flex-start;margin-bottom:12px"><span class="lbl" style="color:var(--ink-soft)">目前是誰在練習：</span>
@@ -586,6 +588,7 @@ document.addEventListener('click', e => {
   document.querySelectorAll('.id-row').forEach(r => { r.outerHTML = whoHtml(); });
 });
 async function sync(mode, score, total, details, el){
+  if(window.Points) Points.earn({ name: student, label: 'Life｜' + S.title, mode, correct: score, total });
   const url = get('quizSyncUrl') || DEFAULT_SYNC_URL;
   if(!student){ el.textContent = '☁️ 尚未選擇是誰在練習，成績未回傳（請點上方名字）'; return; }
   el.textContent = '☁️ 同步中...';
