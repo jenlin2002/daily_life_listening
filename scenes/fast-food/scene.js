@@ -9,13 +9,13 @@ window.SCENE = {
     "S": {
       "name": "Cashier",
       "zh": "店員",
-      "avatar": "🧑‍💼",
+      "avatar": "👩‍💼",
       "voice": "f"
     },
     "Y": {
       "name": "You",
       "zh": "你",
-      "avatar": "🙋",
+      "avatar": "🙋‍♂️",
       "voice": "m"
     },
     "C": {

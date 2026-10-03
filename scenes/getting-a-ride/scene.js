@@ -15,7 +15,7 @@ window.SCENE = {
     "Y": {
       "name": "You",
       "zh": "你",
-      "avatar": "🙋",
+      "avatar": "🙋‍♀️",
       "voice": "f"
     }
   },
