@@ -4,7 +4,10 @@
 
 ```
 (repo 根目錄)
-├── index.html          目錄頁（自動讀 catalog.js 產生，不用手動改）
+├── index.html          主畫面：分冊單元版（讀 units-list.js 與 catalog.js；新增單元要在 units-list.js 加一筆 { slug }）
+├── catalog.html        44 張場景卡片目錄（自動讀 catalog.js 產生，不用手動改）
+├── units-list.js       ★ 冊別與單元清單（44 個場景已全部排進 4 本冊）
+├── units.html          舊網址轉址（轉到 index.html）
 ├── catalog.js          ★ 目錄：生活區與場景清單，新增場景從這裡開始
 ├── engine.js           所有場景共用的頁面程式
 ├── life.css            共用樣式

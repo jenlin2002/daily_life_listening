@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美式生活館｜生活實況英語</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="life.css">
+</head>
+<body>
+<div class="wrap" style="max-width:1000px">
+  <div class="top-links"><a class="home-link" href="https://jenlin2002.github.io/">🏠 回網站首頁</a><a class="home-link" href="https://jenlin2002.github.io/english-quiz/">📝 英文測驗系統</a><a class="home-link" href="index.html">📖 回美式生活館（冊別・Unit）</a><a class="home-link" href="classic.html">📜 舊版美式生活館</a></div>
+  <div class="eyebrow">AMERICAN LIFE LAB</div>
+  <h1 class="title">美式生活館．生活實況英語</h1>
+  <div class="subtitle" id="summary"></div>
+  <div class="legend">每個場景都有：🎬 情境影片．👂 你會聽到的．🗣️ 你要說的．🔤 場景單字．⚡ 突發狀況．🎧 聽力測驗．🎤 即時回應．💡 文化小提醒</div>
+  <div class="filters" id="filters"></div>
+  <div id="zones"></div>
+  <div class="footer-note">練習結果會自動同步到 Google 試算表。變淡的卡片是還沒做好的場景。</div>
+</div>
+<script src="catalog.js"></script>
+<script>
+(function(){
+  const C = window.LIFE_CATALOG;
+  const LEVEL = { 1: '入門', 2: '基礎', 3: '進階' };
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const byOrder = (a, b) => (a.order || 0) - (b.order || 0);
+  const ready = C.scenes.filter(s => s.ready).length;
+  document.getElementById('summary').textContent =
+    `在美國生活會遇到的 ${C.scenes.length} 個場景，分成 ${C.zones.length} 大生活區：聽得懂對方說什麼，也能馬上開口回應。目前完成 ${ready} 個。`;
+
+  // 篩選按鈕：依目錄裡出現的季別與標籤自動產生
+  const seasons = [...new Set(C.scenes.map(s => s.season).filter(Boolean))].sort((a, b) => a - b);
+  const tags = [...new Set(C.scenes.flatMap(s => s.tags || []))];
+  const F = [{ k: 'all', t: '全部' }, { k: 'ready', t: '已完成' }]
+    .concat(seasons.map(n => ({ k: 's' + n, t: '第' + '一二三四五六七八九十'[n - 1] + '季' })))
+    .concat(tags.map(t => ({ k: 't:' + t, t: '#' + t })));
+  let cur = 'all';
+  try{ cur = localStorage.getItem('lifeFilter') || 'all'; }catch(e){}
+  if(!F.some(f => f.k === cur)) cur = 'all';
+  const match = s => cur === 'all' || (cur === 'ready' && s.ready) || (cur[0] === 's' && cur[1] !== ':' && s.season === +cur.slice(1)) ||
+    (cur.startsWith('t:') && (s.tags || []).includes(cur.slice(2)));
+
+  function render(){
+    document.getElementById('filters').innerHTML = F.map(f => `<button class="fchip${f.k === cur ? ' on' : ''}" data-k="${esc(f.k)}">${esc(f.t)}</button>`).join('');
+    document.getElementById('zones').innerHTML = C.zones.slice().sort(byOrder).map(z => {
+      const list = C.scenes.filter(s => s.zone === z.id && match(s)).sort(byOrder);
+      if(!list.length) return '';
+      return `<div class="zone"><div class="zone-title">${z.emoji} ${esc(z.name)}</div><div class="zgrid">${list.map(s => {
+        const meta = `${s.level ? `<span class="lv">${LEVEL[s.level] || ''}</span>` : ''}${s.season ? `<span class="s1">第${'一二三四五六七八九十'[s.season - 1]}季</span>` : ''}${(s.tags || []).map(t => `<span class="tg">#${esc(t)}</span>`).join('')}`;
+        const inner = `<div class="no">${s.ready ? 'READY' : '即將推出'}</div><div class="t">${esc(s.title)}</div><div class="e">${esc(s.en)}</div><div class="meta">${meta}</div>`;
+        return s.ready ? `<a class="scard" href="scenes/${esc(s.slug)}/index.html">${inner}</a>` : `<div class="scard off">${inner}</div>`;
+      }).join('')}</div></div>`;
+    }).join('') || '<p class="legend">這個分類目前還沒有場景。</p>';
+    document.querySelectorAll('.fchip').forEach(b => b.addEventListener('click', () => {
+      cur = b.dataset.k; try{ localStorage.setItem('lifeFilter', cur); }catch(e){} render();
+    }));
+  }
+  render();
+})();
+</script>
+</body>
+</html>

@@ -145,7 +145,7 @@ const TABS = [
 ].filter(t => t[2]);
 document.title = '美式生活館｜' + S.title;
 document.body.innerHTML = `<div class="wrap">
-  <div class="top-links"><a class="home-link" href="../../index.html">🏠 美式生活館目錄</a><a class="home-link" href="https://jenlin2002.github.io/">← 網站首頁</a></div>
+  <div class="top-links"><a class="home-link" href="../../index.html">🏠 美式生活館（冊別・單元）</a><a class="home-link" href="https://jenlin2002.github.io/">← 網站首頁</a></div>
   <div class="eyebrow">AMERICAN LIFE LAB${zone ? ' · ' + esc(zone.name) : ''}</div>
   <h1 class="title">${S.emoji || ''} ${esc(S.title)}</h1>
   <div class="subtitle">${esc(S.en)}${S.goal ? '<br>' + esc(S.goal) : ''}</div>

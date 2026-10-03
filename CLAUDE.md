@@ -11,7 +11,8 @@
 
 ## 架構（2026-10-03 改版，PR #1 已合併）
 
-- `index.html`：目錄頁，自動讀 `catalog.js` 產生；可依標籤、季別、已完成篩選。
+- **`index.html`：美式生活館的主畫面（2026-10-03 起）**＝分冊的單元版：冊別、生活區、單元列、各分頁；網站首頁的「美式生活館」卡片直接連到這裡。
+  資料來自 `units-list.js`（冊別→單元）和 `catalog.js`。舊的 44 張卡片目錄改名為 `catalog.html`（主畫面上有連結）；`units.html` 只是轉址到 `index.html`。
 - `catalog.js`：**所有生活區與場景的清單**。新增場景、生活區、標籤、季別都改這裡。
 - `scenes/<slug>/`：一個場景一個資料夾（`index.html` 固定內容、`scene.js` 場景內容、`audio/` 語音）。
 - `engine.js`、`life.css`：所有場景共用的頁面程式與樣式。分頁依場景內容自動出現：
@@ -23,14 +24,14 @@
   新增單元：場景照 README.md 做好後，在 `units-list.js` 某一冊的 `units` 最後加 `{ slug: '場景資料夾名稱' }`，其他欄位可省略
   （標題、英文名、說明會用 catalog.js／scene.js 的）。新增一冊：複製整個冊別區塊、換 `id` 與 `name`。畫面會自動出現冊別按鈕，
   Unit 編號是該冊的順序；單元太多可按「展開全部單元」。忘了編進冊別的 ready 場景會自動出現在最後一冊「更多場景」。
-  網址 `units.html#b=冊別&u=第幾單元`。已用 10 冊（每冊 22–30 單元）測試過。
-- `units.html` ＋ `units-list.js`：**單元版（試作，2026-10-03 家裡電腦做）**。版面沿用舊版（標題區、Unit 1–16 橫向捲動列、
+  網址 `index.html#b=冊別&u=第幾單元`（舊的 `units.html#...` 會自動轉過來）。已用 10 冊（每冊 22–30 單元）測試過。
+- `index.html` ＋ `units-list.js`：**單元版（原本叫 units.html，2026-10-03 家裡電腦做，現在是主畫面）**。版面沿用舊版（標題區、Unit 1–16 橫向捲動列、
   高頻句矩陣／真實情境課文／聽力默寫三個分頁、語速與遮蔽英文／中文按鈕），內容區改用新版的奶油底卡片（life.css）。
   點單元只換內容不換頁；網址可用 `units.html#u=3` 直達。資料不重複存：`units-list.js` 對應單元到場景，
   句子、對話、語音都讀 `scenes/<slug>/`。練習進度（背完標記）和聽寫成績與場景頁共用同一份紀錄。
   單元對應：1 party、2 roommates、3 fast-food、4 clothing-store、5 repair-request、6 hotel、7 seeing-a-doctor、
   8 renting-a-car、9 small-talk、10 heart-to-heart、11 blind-date、12 invitations、13 job-interview、14 coworkers、
-  15 news-chat、16 values-talk。目前沒有放進目錄頁（index.html）的入口，等使用者看過再決定。
+  15 news-chat、16 values-talk。
   前三個分頁固定；場景的 scene.js 有影片、你會聽到的、你要說的、單字、突發狀況、聽力測驗、即時回應、文化小提醒時，
   會自動多出對應分頁（目前只有 Unit 3 速食點餐有這些）。生活區按鈕（交通、住、吃…）讀 catalog.js，
   選一區就列出那一區的場景，沒做好的顯示「即將推出」。以後替其他單元補內容，單元版不用改。
