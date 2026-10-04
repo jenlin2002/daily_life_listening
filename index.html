@@ -458,21 +458,28 @@ function drawRole(c){
     }
     const r = R[i];
     c.innerHTML = `<div class="qtop"><div class="qnum">第 ${i + 1} 句 / ${R.length}</div><div class="qtag">角色扮演</div></div>${whoHtml()}
-      <p class="lead">${esc(oth.zh)}會先說一句話，聽完後<b>馬上</b>回答。按麥克風開始說，有 ${secs} 秒。</p>
+      <p class="lead">${esc(oth.zh)}會先說一句話，聽完後<b>馬上</b>回答。按「🎤 開始錄音」開始說，說完按「⏹ 結束」，最多 ${secs} 秒。</p>
       <div class="rp-stage">
         <div class="rp-staff"><span class="avatar">${oth.avatar || ''}</span>${sayBtn(r.prompt, V('S'))}<span class="en hidden" id="rStaff">${esc(r.prompt)}</span></div>
         <div class="rp-hint">提示：${esc(r.hint)}　<a href="#" id="rShow" style="color:var(--deep)">看${esc(oth.zh)}說了什麼</a></div>
-        ${SR ? `<button class="mic" id="rMic">🎤 按這裡開始說</button><span class="timer" id="rTimer"></span>` : `<div class="rp-hint">這個瀏覽器不支援語音辨識，請把你要說的話打在下面（建議用 Chrome 或 Safari）。</div>`}
+        ${SR ? `<div class="btnrow rp-ctl"><button class="mic" id="rStart" type="button">🎤 開始錄音</button><button class="mic stop" id="rStop" type="button" disabled>⏹ 結束</button><span class="timer" id="rTimer"></span></div>` : `<div class="rp-hint">這個瀏覽器不支援語音辨識，請把你要說的話打在下面（建議用 Chrome 或 Safari）。</div>`}
         <div class="heard"><div class="lbl">你說的是</div><div id="rHeard"></div></div>
         ${SR ? '' : '<input class="typed" id="rTyped" placeholder="輸入你的回答" autocomplete="off">'}
-        <div class="btnrow">${SR ? '' : '<button class="ghost" id="rSubmit">送出</button>'}<button class="ghost" id="rSkip">我說完了 / 看示範</button></div>
+        <div class="btnrow">${SR ? '' : '<button class="ghost" id="rSubmit">送出</button>'}<button class="ghost" id="rSkip">看示範（不錄音）</button></div>
         <div class="fb" id="rFb"></div>
       </div>
       <button class="next" id="rNext" disabled>下一句 →</button>`;
     $('#rShow').addEventListener('click', e => { e.preventDefault(); $('#rStaff').classList.remove('hidden'); });
     let said = '', judged = false;
+    // 兩顆按鈕：開始錄音／結束。錄音中「開始」鎖住、「結束」可按；沒在錄音時相反
+    const setBtns = recording => {
+      const a = $('#rStart'), b = $('#rStop'); if(!a || !b) return;
+      a.disabled = recording || judged; b.disabled = !recording || judged;
+      a.classList.toggle('rec', recording); a.textContent = recording ? '🔴 錄音中…' : '🎤 開始錄音';
+    };
     const judge = () => {
-      if(judged) return; judged = true; stopRec();
+      if(judged) return; judged = true; stopRec(); setBtns(false);
+      const tm = $('#rTimer'); if(tm) tm.textContent = '';
       const ok = new RegExp(r.expect, 'i').test(said);
       if(ok) score++;
       hist.push({ q: r.prompt, picked: said, correct: r.model, isCorrect: ok });
@@ -489,20 +496,23 @@ function drawRole(c){
       $('#rSubmit').addEventListener('click', submit);
       t.addEventListener('keydown', e => { if(e.key === 'Enter') submit(); });
     } else {
-      const mic = $('#rMic');
-      mic.addEventListener('click', () => {
-        if(roleRec){ judge(); return; }
+      $('#rStart').addEventListener('click', () => {
+        if(roleRec || judged) return;
         stopAll();
         try{
           roleRec = new SR(); roleRec.lang = 'en-US'; roleRec.interimResults = true; roleRec.continuous = true;
           roleRec.onresult = ev => { said = Array.prototype.map.call(ev.results, x => x[0].transcript).join(' ').trim(); $('#rHeard').textContent = said; };
-          roleRec.onerror = ev => { if(ev.error === 'not-allowed') $('#rHeard').textContent = '（麥克風沒有開啟權限）'; };
+          roleRec.onerror = ev => {
+            if(ev.error === 'not-allowed'){ $('#rHeard').textContent = '（麥克風沒有開啟權限）'; stopRec(); setBtns(false); $('#rTimer').textContent = ''; }
+          };
           roleRec.start();
-        }catch(e){ roleRec = null; $('#rHeard').textContent = '（無法啟動麥克風）'; return; }
-        mic.classList.add('rec'); mic.textContent = '■ 說完了';
+        }catch(e){ roleRec = null; $('#rHeard').textContent = '（無法啟動麥克風）'; setBtns(false); return; }
+        said = ''; $('#rHeard').textContent = '';
+        setBtns(true);
         let left = secs; $('#rTimer').textContent = left;
         roleTimer = setInterval(() => { left--; $('#rTimer').textContent = left > 0 ? left : ''; if(left <= 0) judge(); }, 1000);
       });
+      $('#rStop').addEventListener('click', () => { if(roleRec) judge(); });
     }
     $('#rNext').addEventListener('click', () => { stopAll(); i++; render(); });
   };
