@@ -7,7 +7,7 @@
 
 美式生活館：生活實況英語。網址 jenlin2002.github.io/daily_life_listening/ ，從網站首頁（jenlin2002.github.io）進入。
 英文測驗系統（english-quiz repo）裡**不要**放美式生活館的連結（使用者要求）。
-學習者主要是 Branden 和 Melissa（國高中生），也開放其他人使用（「其他」可以輸入自己的名字）。
+學習者主要是 Branden 和 Melissa（國高中生）。每個頁面先過 points.js 的 PIN 關卡；訪客模式目前關閉。
 
 ## 架構（2026-10-03 改版，PR #1 已合併）
 
@@ -79,6 +79,6 @@
    兩邊的 `sync()` 開頭都呼叫 `Points.earn()`（label 是「Life｜場景名」）。`POINTS_URL` 空白時不啟用；
    等使用者部署後端、給 `/exec` 網址再填。規則與部署步驟見 english-quiz 的 CLAUDE.md 與 plan repo 的 `points/README-點數存摺.md`。
    `points.js` 各專案的副本內容要一樣（主檔在 plan repo 的 `points/points.js`）。
-   2026-10-04 加了訪客模式（關卡上「我是訪客」，不計點數）與手機版橫幅修正，三個 repo 的副本已同步，plan repo 主檔要回家電腦補同步。
+   2026-10-04 加了訪客模式（關卡上「我是訪客」，不計點數；同一天使用者決定先關閉，`GUEST_ENABLED = false`）與手機版橫幅修正，三個 repo 的副本已同步，plan repo 主檔要回家電腦補同步。
    手機入口 App 在網站首頁 repo 的 `/app/`（英文測驗系統＋美式生活館）。
 4. 刪掉多餘的 `claude-push-test` 分支（測試權限時建的，內容和 main 一樣；在 GitHub 的 Branches 頁面刪除即可）。
