@@ -152,6 +152,10 @@ const TABS = [
   ['listen', '🎧 聽力測驗', has(S.listening)],
   ['role', '🎤 即時回應', has(S.roleplay)], ['culture', '💡 文化小提醒', has(S.culture)]
 ].filter(t => t[2]);
+// 分頁分兩個框：「情境練習」（看、聽、學）和「測驗」（聽寫、聽力測驗、即時回應）
+const TEST_KEYS = ['dict', 'listen', 'role'];
+const tabBtn = ([k, t]) => `<button class="tab${k === TABS[0][0] ? ' active' : ''}" data-tab="${k}">${t}</button>`;
+const tabGroup = (name, list) => list.length ? `<div class="tabgrp"><div class="tabgrp-l">${name}</div><div class="tabs">${list.map(tabBtn).join('')}</div></div>` : '';
 document.title = '美式生活館｜' + S.title;
 document.body.innerHTML = `<div class="wrap">
   <div class="top-links"><a class="home-link" href="../../index.html#s=${esc(S.slug)}">⬅ 返回單元列表</a><a class="home-link" href="../../catalog.html">🔎 全部場景卡片</a><a class="home-link" href="https://jenlin2002.github.io/">← 網站首頁</a></div>
@@ -160,7 +164,7 @@ document.body.innerHTML = `<div class="wrap">
   <div class="subtitle">${esc(S.en)}${S.goal ? '<br>' + esc(S.goal) : ''}</div>
   <div class="scene-meta">${me.level ? `<span>難度：${LEVEL[me.level]}</span>` : ''}${(me.tags || []).map(t => `<span>#${esc(t)}</span>`).join('')}</div>
   <div class="id-row" id="idRow"></div>
-  <div class="tabs">${TABS.map(([k, t], i) => `<button class="tab${i ? '' : ' active'}" data-tab="${k}">${t}</button>`).join('')}</div>
+  ${tabGroup('情境練習', TABS.filter(t => TEST_KEYS.indexOf(t[0]) < 0))}${tabGroup('測驗', TABS.filter(t => TEST_KEYS.indexOf(t[0]) >= 0))}
   <div class="card">${TABS.map(([k], i) => `<div class="panel${i ? '' : ' active'}" id="p-${k}"></div>`).join('')}</div>
   <div class="scene-nav"><span>${prev ? `<a href="../${esc(prev.slug)}/index.html">← ${esc(prev.title)}</a>` : ''}</span><span>${next ? `<a href="../${esc(next.slug)}/index.html">${esc(next.title)} →</a>` : ''}</span></div>
   <div style="text-align:center;margin-top:18px"><a class="home-link" href="../../index.html#s=${esc(S.slug)}">⬅ 返回單元列表</a></div>

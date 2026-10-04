@@ -67,7 +67,10 @@
 .u-chip.active{background:var(--chalk-yellow);border-color:var(--chalk-yellow);color:#1B3A2F;font-weight:700}
 .u-chip .pill{font-size:11px;font-weight:700;background:var(--chalk-green);color:#10261C;border-radius:999px;padding:1px 7px}
 .u-ctrl{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.u-tabs{display:flex;gap:4px;flex-wrap:wrap;background:#142820;border:1px solid #2D5343;border-radius:24px;padding:5px;flex:1 1 380px}
+.u-tabwrap{display:flex;flex-direction:column;gap:10px;flex:1 1 380px}
+.u-tabgrp{background:#142820;border:1px solid #2D5343;border-radius:24px;padding:8px 8px 6px}
+.u-grplbl{font-family:'Space Mono','Noto Sans TC',monospace;font-size:12px;font-weight:700;letter-spacing:.18em;color:var(--chalk-yellow);margin:0 0 4px 12px}
+.u-grpbtns{display:flex;gap:4px;flex-wrap:wrap}
 .u-tab{border:none;background:transparent;color:rgba(247,243,232,.85);font-weight:700;font-size:14px;padding:10px 16px;border-radius:999px}
 .u-tab.active{background:var(--chalk-yellow);color:#1B3A2F}
 .u-aux{display:flex;gap:8px;flex-wrap:wrap}
@@ -113,7 +116,7 @@
   </div>
 
   <div class="u-block u-ctrl">
-    <div class="u-tabs" id="tabs"></div>
+    <div class="u-tabwrap" id="tabs"></div>
     <div class="u-aux">
       <button class="u-aux-btn" id="bSpeed">語速：<span id="lSpeed">1x</span></button>
       <button class="u-aux-btn" id="bHideEn">👁 遮蔽英文</button>
@@ -346,10 +349,14 @@ function tabList(){
     ['role', '🎤 即時回應', has(S.roleplay)], ['culture', '💡 文化小提醒', has(S.culture)]
   ].filter(t => t[2]);
 }
+// 分頁分兩個框：「情境練習」（看、聽、學）和「測驗」（聽力默寫、聽力測驗、即時回應）
+const TEST_TABS = ['dict', 'listen', 'role'];
 function renderTabs(){
   const L = tabList();
   if(!L.some(t => t[0] === tab)) tab = 'matrix';
-  $('#tabs').innerHTML = L.map(([k, t]) => `<button class="u-tab${k === tab ? ' active' : ''}" data-tab="${k}">${t}</button>`).join('');
+  const btn = ([k, t]) => `<button class="u-tab${k === tab ? ' active' : ''}" data-tab="${k}">${t}</button>`;
+  const grp = (name, list) => list.length ? `<div class="u-tabgrp"><div class="u-grplbl">${name}</div><div class="u-grpbtns">${list.map(btn).join('')}</div></div>` : '';
+  $('#tabs').innerHTML = grp('情境練習', L.filter(t => TEST_TABS.indexOf(t[0]) < 0)) + grp('測驗', L.filter(t => TEST_TABS.indexOf(t[0]) >= 0));
 }
 function setTab(t){
   stopAll(); tab = t;
