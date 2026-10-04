@@ -36,9 +36,9 @@
 .u-exp:hover{border-color:var(--chalk-yellow);color:var(--chalk-yellow)}
 .u-eyebrow{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--chalk-green);margin-bottom:4px}
 /* 冊別（第一層）與生活區（第二層）：上下兩列、標籤對齊，生活區會跟著選到的冊別變化 */
-.u-filters{background:#142820;border:1px solid #2D5343;border-radius:14px;padding:10px 12px;margin-bottom:14px;display:flex;flex-direction:column;gap:10px}
-.u-frow{display:grid;grid-template-columns:78px 1fr;gap:10px;align-items:start}
-.u-flbl{font-size:12px;font-weight:700;color:#8DA595;padding-top:8px;letter-spacing:.04em}
+.u-filters{margin-bottom:14px;display:flex;flex-direction:column;gap:10px}
+.u-fbox{background:#142820;border:1px solid #2D5343;border-radius:24px;padding:10px 14px 12px}
+.u-fbox .u-grplbl{margin:0 0 8px 2px}
 .u-fchips{display:flex;flex-wrap:wrap;gap:6px;min-width:0}
 .u-f{border:1.5px solid #2D5343;background:transparent;color:var(--paper);font-weight:700;font-size:13px;padding:6px 12px;border-radius:999px;white-space:nowrap}
 .u-f small{opacity:.7;margin-left:5px;font-weight:400;font-size:11px}
@@ -49,7 +49,6 @@
 .u-sub{color:#9AA89C;font-size:13px;padding:8px}
 .u-chip .bk{font-size:10px;color:var(--chalk-green);border:1px solid #2D5343;border-radius:999px;padding:0 6px}
 .u-chip.active .bk{color:#1B3A2F;border-color:rgba(27,58,47,.4)}
-@media (max-width:620px){.u-frow{grid-template-columns:1fr;gap:4px}.u-flbl{padding-top:0}}
 .u-chip.off{opacity:.45;cursor:default}
 .u-chip.off:hover{border-color:#2D5343}
 .u-chip .soon{font-size:11px;color:var(--chalk-yellow)}
@@ -104,8 +103,8 @@
   <div class="u-block">
     <div class="u-selhead"><span>單元目錄切換 (UNIT SELECTION) :</span><span class="cnt" id="selCnt"></span></div>
     <div class="u-filters">
-      <div class="u-frow"><span class="u-flbl">① 冊別</span><div class="u-fchips" id="bookRow"></div></div>
-      <div class="u-frow"><span class="u-flbl">② 生活區</span><div class="u-fchips" id="zoneRow"></div></div>
+      <div class="u-fbox"><div class="u-grplbl">① 冊別</div><div class="u-fchips" id="bookRow"></div></div>
+      <div class="u-fbox"><div class="u-grplbl">② 生活區</div><div class="u-fchips" id="zoneRow"></div></div>
     </div>
     <div class="u-track-wrap">
       <button class="u-arrow" id="arrL" aria-label="往左">‹</button>
