@@ -82,3 +82,5 @@
    2026-10-04 加了訪客模式（關卡上「我是訪客」，不計點數；同一天使用者決定先關閉，`GUEST_ENABLED = false`）與手機版橫幅修正，三個 repo 的副本已同步，plan repo 主檔要回家電腦補同步。
    手機入口 App 在網站首頁 repo 的 `/app/`（英文測驗系統＋美式生活館）。
 4. 刪掉多餘的 `claude-push-test` 分支（測試權限時建的，內容和 main 一樣；在 GitHub 的 Branches 頁面刪除即可）。
+
+- **其他人＝家長開帳號（2026-10-04）**：除了 BRANDEN、MELISSA、家長，其他人要由家長在「家長管理 → 帳號管理」建立帳號（學生＝有存摺可賺點；只能練習＝不計點數），PIN 由家長設定；本人在關卡按「其他帳號登入」。訪客模式關閉（`GUEST_ENABLED = false`）。**要先更新 Apps Script 後端（貼新版 Code.gs → 部署新版本）才能用**，步驟在 plan repo `points/README-點數存摺.md` 最後一節。points.js 主檔與三個網站的副本已同步一致。
