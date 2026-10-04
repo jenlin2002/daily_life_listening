@@ -24,7 +24,7 @@ window.SCENE = {
       "name": "Pharmacist",
       "zh": "藥師",
       "avatar": "👩‍⚕️",
-      "voice": "f2"
+      "voice": "f"
     },
     "Y": {
       "name": "You",
@@ -36,7 +36,7 @@ window.SCENE = {
       "name": "Technician",
       "zh": "藥局人員",
       "avatar": "👩‍⚕️",
-      "voice": "f"
+      "voice": "f5"
     }
   },
   "answerSeconds": 8,

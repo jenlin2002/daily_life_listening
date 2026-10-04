@@ -24,7 +24,7 @@ window.SCENE = {
       "name": "Me",
       "zh": "我",
       "avatar": "🙋‍♀️",
-      "voice": "f"
+      "voice": "f5"
     },
     "S": {
       "name": "Custom",
@@ -36,7 +36,7 @@ window.SCENE = {
       "name": "Hotel front desk",
       "zh": "櫃台經理",
       "avatar": "👩",
-      "voice": "f2"
+      "voice": "f"
     }
   },
   "dialogues": [

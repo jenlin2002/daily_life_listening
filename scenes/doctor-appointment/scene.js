@@ -24,19 +24,19 @@ window.SCENE = {
       "name": "Receptionist",
       "zh": "櫃台人員",
       "avatar": "👩",
-      "voice": "f4"
+      "voice": "f"
     },
     "Y": {
       "name": "You",
       "zh": "你",
       "avatar": "🙋‍♀️",
-      "voice": "f"
+      "voice": "f5"
     },
     "N": {
       "name": "Nurse",
       "zh": "護理師",
       "avatar": "👩‍⚕️",
-      "voice": "f2"
+      "voice": "f4"
     },
     "D": {
       "name": "Doctor",

@@ -24,7 +24,7 @@ window.SCENE = {
       "name": "Banker",
       "zh": "銀行行員",
       "avatar": "👩‍💼",
-      "voice": "f2"
+      "voice": "f"
     },
     "Y": {
       "name": "You",
@@ -36,7 +36,7 @@ window.SCENE = {
       "name": "Teller",
       "zh": "櫃檯行員",
       "avatar": "👩‍💼",
-      "voice": "f"
+      "voice": "f5"
     }
   },
   "answerSeconds": 10,

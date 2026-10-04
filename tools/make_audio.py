@@ -30,7 +30,8 @@ from common import load_js_object, scene_dirs, audio_items, audio_key
 # 角色聲音代碼 → Kokoro 聲音。要新增角色聲音就在這裡加一行，場景裡的 speakers.voice 填左邊的代碼。
 # f3（af_nicole）音高低、氣音重，聽起來低沉不清楚（使用者 2026-10-04 反應），已經從所有場景換掉，新場景請不要再用。
 # 女聲要三個以上時用 f4（af_jessica，音高高、氣音少）。
-VOICES = {'f': 'af_heart', 'm': 'am_michael', 'f2': 'af_bella', 'm2': 'am_adam', 'f3': 'af_nicole', 'f4': 'af_jessica', 'm3': 'am_eric'}
+# f5（af_sarah）是使用者 2026-10-04 試聽後選的「學習者女聲」，新單元裡對方用 f、學習者是女生就用 f5。
+VOICES = {'f': 'af_heart', 'm': 'am_michael', 'f2': 'af_bella', 'm2': 'am_adam', 'f3': 'af_nicole', 'f4': 'af_jessica', 'f5': 'af_sarah', 'm3': 'am_eric'}
 SPEED = {False: 0.95, True: 1.25}
 
 

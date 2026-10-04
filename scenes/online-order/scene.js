@@ -30,13 +30,13 @@ window.SCENE = {
       "name": "You",
       "zh": "你",
       "avatar": "🙋‍♀️",
-      "voice": "f"
+      "voice": "f5"
     },
     "C": {
       "name": "Delivery Service",
       "zh": "快遞客服",
       "avatar": "👩‍💼",
-      "voice": "f2"
+      "voice": "f"
     }
   },
   "answerSeconds": 8,

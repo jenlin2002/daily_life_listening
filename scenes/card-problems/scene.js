@@ -30,13 +30,13 @@ window.SCENE = {
       "name": "You",
       "zh": "你",
       "avatar": "🙋‍♀️",
-      "voice": "f"
+      "voice": "f5"
     },
     "B": {
       "name": "Bank Representative",
       "zh": "銀行客服",
       "avatar": "👩‍💼",
-      "voice": "f2"
+      "voice": "f"
     },
     "F": {
       "name": "Fraud Specialist",
