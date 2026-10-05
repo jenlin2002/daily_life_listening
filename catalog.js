@@ -39,6 +39,7 @@ window.LIFE_CATALOG = {
     { slug: 'restaurant',        zone: 'food', order: 20, title: '餐廳用餐與小費', en: 'Eating Out & Tipping', tags: ['日常', '旅遊'], level: 2, ready: true },
     { slug: 'supermarket',       zone: 'food', order: 30, title: '超市購物', en: 'At the Supermarket', tags: ['日常'], level: 1, ready: true },
     { slug: 'coffee-shop',       zone: 'food', order: 40, title: '咖啡店點飲料', en: 'At the Coffee Shop', tags: ['日常', '旅遊'], level: 1, ready: true },
+    { slug: 'starbucks',         zone: 'food', order: 45, title: '星巴克點餐：菜單與客製化', en: 'Ordering at Starbucks', tags: ['日常', '旅遊'], level: 2, ready: true },
     { slug: 'food-delivery',     zone: 'food', order: 50, title: '外送 App 與外帶', en: 'Food Delivery & Takeout', tags: ['日常'], level: 2, ready: true },
 
     { slug: 'returns',           zone: 'shopping', order: 10, title: '退換貨', en: 'Returns & Exchanges', tags: ['日常'], level: 2, ready: true },

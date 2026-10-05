@@ -5,7 +5,7 @@
 //
 // 新增單元（做好新場景之後）：
 //   1. 場景照 README.md 做好（catalog.js 有登記、scenes/<slug>/ 有 scene.js，catalog 那一行 ready: true）。
-//      44 個場景已經全部先排進冊別（還沒做好的會顯示「即將推出」），所以做好之後只要把 catalog 的 ready 改成 true，
+//      44 個場景（之後新增的也一樣）已經排進冊別（還沒做好的會顯示「即將推出」），所以做好之後只要把 catalog 的 ready 改成 true，
 //      單元版就會自動變成可點。Unit 編號從一開始就固定，不會因為做好的順序而改變。
 //   2. 若要新增一個全新的場景：在下面某一冊的 units 最後面加一筆 { slug: '場景資料夾名稱' }。
 //      其他欄位都可以省略（title / titleEn / icon / situation / desc），省略時：
@@ -187,6 +187,9 @@ window.UNIT_BOOKS = [
       },
       {
         "slug": "lost-something"
+      },
+      {
+        "slug": "starbucks"
       }
     ]
   },
