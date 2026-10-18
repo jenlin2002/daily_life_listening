@@ -122,8 +122,8 @@ const SYNC_LABEL = 'Life｜' + S.title;
   sc.onload = () => { if(window.Points && Points.setNameGetter) Points.setNameGetter(() => student); };
   document.head.appendChild(sc);
 })();
-async function sync(mode, score, total, details, el){
-  if(window.Points) Points.earn({ name: student, label: SYNC_LABEL, mode, correct: score, total });
+async function sync(mode, score, total, details, el, noPoints){
+  if(window.Points && !noPoints) Points.earn({ name: student, label: SYNC_LABEL, mode, correct: score, total });
   const url = get('quizSyncUrl') || DEFAULT_SYNC_URL;
   if(!student){ el.textContent = '☁️ 尚未選擇是誰在練習，成績未回傳（請點上方名字）'; return; }
   el.textContent = '☁️ 同步中...';
@@ -297,21 +297,27 @@ if(panel('dict')){
   const p = panel('dict'), D = dictList;
   const norm = t => t.toLowerCase().replace(/[‘’`]/g, "'").replace(/[“”]/g, '"').replace(/[^a-z0-9' ]+/g, ' ').replace(/\s+/g, ' ').trim();
   let i = 0, score = 0, tries = 0, hist = [];
+  // 訂正規則統一以段考題庫為準（lifefix.js）
+  const fx = LifeFix.make({ id: 'dict', name: '聽寫練習', list: D, slug: S.slug, sync, label: () => SYNC_LABEL });
+  const d0 = fx.load(); if(d0){ i = d0.i; score = d0.s; hist = d0.h; } let resumed = !!d0;
   const render = () => {
-    if(i >= D.length){
-      p.innerHTML = `<div class="result"><h2>聽寫練習完成</h2><div class="score">${score} / ${D.length}</div>
+    if(i >= fx.total()){
+      p.innerHTML = `<div class="result"><h2>聽寫練習完成</h2><div class="score">${score} / ${fx.total()}</div>
         <div class="msg">第一次就寫對的句子有 ${score} 句。</div><button class="next" id="dAgain">再練一次</button><div class="sync" id="dSync"></div></div>`;
-      $('#dAgain').addEventListener('click', () => { i = 0; score = 0; hist = []; render(); });
-      sync('聽寫練習', score, D.length, hist, $('#dSync'));
+      $('#dAgain').addEventListener('click', () => { fx.reset(); i = 0; score = 0; hist = []; render(); });
+      fx.done(hist, score, $('#dSync'));
+      p.querySelector('.result').insertAdjacentHTML('afterbegin', fx.bar());
+      fx.bind(p, () => { i = 0; score = 0; hist = []; render(); }, $('#dAgain'));
       return;
     }
-    const x = D[i], voice = V(x.s || 'Y'); tries = 0;
-    p.innerHTML = `<div class="qtop"><div class="qnum">第 ${i + 1} 句 / ${D.length}</div><div class="qtag">聽寫</div></div>
+    const x = D[fx.idx(i)], voice = V(x.s || 'Y'); tries = 0;
+    p.innerHTML = `${fx.tag()}${fx.draftHtml(i, resumed)}<div class="qtop"><div class="qnum">第 ${i + 1} 句 / ${fx.total()}</div><div class="qtag">聽寫</div></div>
       <div class="btnrow"><button class="bigplay" id="dPlay">🔊 播放</button><button class="ghost" id="dSlow">🐢 慢速</button><button class="ghost" id="dHint">看中文提示</button></div>
       <div class="rp-hint" id="dZh" hidden style="margin-top:10px">${esc(x.zh)}</div>
       <input class="typed" id="dIn" placeholder="把聽到的句子打出來" autocomplete="off" autocapitalize="off" spellcheck="false">
       <div class="btnrow"><button class="ghost" id="dCheck">檢查</button><button class="ghost" id="dShow">看答案</button></div>
       <div class="fb" id="dFb"></div><button class="next" id="dNext" disabled>下一句 →</button>`;
+    fx.bindDraft(p, i, score, hist); resumed = false;
     const pb = $('#dPlay');
     pb.addEventListener('click', () => play(x.en, voice, pb, { rate: 1 }));
     $('#dSlow').addEventListener('click', e => play(x.en, voice, e.currentTarget, { rate: 0.7 }));
@@ -321,6 +327,7 @@ if(panel('dict')){
       if(finished) return; finished = true;
       if(ok && tries === 1) score++;
       hist.push({ q: x.en, picked: $('#dIn').value, correct: x.en, isCorrect: ok && tries === 1 });
+      fx.save(i + 1, score, hist);
       $('#dNext').disabled = false;
     };
     const check = () => {
@@ -349,21 +356,26 @@ if(panel('dict')){
 if(panel('listen')){
   const p = panel('listen'); const Q = S.listening;
   let i = 0, score = 0, hist = [];
+  const fx = LifeFix.make({ id: 'listen', name: '聽力測驗', list: Q, slug: S.slug, sync, label: () => SYNC_LABEL });
+  const d0 = fx.load(); if(d0){ i = d0.i; score = d0.s; hist = d0.h; } let resumed = !!d0;
   const render = () => {
-    if(i >= Q.length){
-      p.innerHTML = `<div class="result"><h2>聽力測驗完成</h2><div class="score">${score} / ${Q.length}</div>
-        <div class="msg">${score === Q.length ? '全對！你已經聽得懂這個場景了。' : '把答錯的句子回到「你會聽到的」再多聽幾次。'}</div>
+    if(i >= fx.total()){
+      p.innerHTML = `<div class="result"><h2>聽力測驗完成</h2><div class="score">${score} / ${fx.total()}</div>
+        <div class="msg">${score === fx.total() ? '全對！你已經聽得懂這個場景了。' : '把答錯的句子回到「你會聽到的」再多聽幾次。'}</div>
         <button class="next" id="lAgain">再做一次</button><div class="sync" id="lSync"></div></div>`;
-      $('#lAgain').addEventListener('click', () => { i = 0; score = 0; hist = []; render(); });
-      sync('聽力測驗', score, Q.length, hist, $('#lSync'));
+      $('#lAgain').addEventListener('click', () => { fx.reset(); i = 0; score = 0; hist = []; render(); });
+      fx.done(hist, score, $('#lSync'));
+      p.querySelector('.result').insertAdjacentHTML('afterbegin', fx.bar());
+      fx.bind(p, () => { i = 0; score = 0; hist = []; render(); }, $('#lAgain'));
       return;
     }
-    const q = Q[i], voice = V(q.speaker || 'S');
-    p.innerHTML = `<div class="qtop"><div class="qnum">第 ${i + 1} 題 / ${Q.length}</div><div class="qtag">${esc(q.type)}</div></div>
+    const q = Q[fx.idx(i)], voice = V(q.speaker || 'S');
+    p.innerHTML = `${fx.tag()}${fx.draftHtml(i, resumed)}<div class="qtop"><div class="qnum">第 ${i + 1} 題 / ${fx.total()}</div><div class="qtag">${esc(q.type)}</div></div>
       <button class="bigplay" id="qPlay">🔊 播放</button> <span style="font-size:13px;color:var(--ink-soft)">（正常語速，可以重複聽）</span>
       <div class="qprompt">${esc(q.prompt)}</div>
       <div class="opts">${q.options.map((o, k) => `<button class="opt" data-k="${k}">(${String.fromCharCode(65 + k)}) ${esc(o)}</button>`).join('')}</div>
       <div class="fb" id="qFb"></div><button class="next" id="qNext" disabled>下一題 →</button>`;
+    fx.bindDraft(p, i, score, hist); resumed = false;
     const pb = $('#qPlay');
     pb.addEventListener('click', () => play(q.audio, voice, pb, { rate: 1, fast: q.fast }));
     p.querySelectorAll('.opt').forEach(b => b.addEventListener('click', () => {
@@ -371,6 +383,7 @@ if(panel('listen')){
       p.querySelectorAll('.opt').forEach(x => { x.disabled = true; if(+x.dataset.k === q.answer) x.classList.add('correct'); });
       if(ok) score++; else b.classList.add('wrong');
       hist.push({ q: q.audio, picked: q.options[k], correct: q.options[q.answer], isCorrect: ok });
+      fx.save(i + 1, score, hist);
       const fb = $('#qFb'); fb.className = 'fb show ' + (ok ? 'ok' : 'no');
       fb.innerHTML = (ok ? '✓ 答對了！' : '✕ 再聽一次看看。') + `<br>原句：<b>${esc(q.audio)}</b><br>${esc(q.note)}`;
       $('#qNext').disabled = false;
@@ -386,21 +399,25 @@ if(panel('role')){
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   const secs = S.answerSeconds || 8;
   let i = 0, score = 0, hist = [], rec = null, timerId = null, results = [];
+  const fx = LifeFix.make({ id: 'role', name: '即時回應', list: R, slug: S.slug, sync, label: () => SYNC_LABEL });
+  const d0 = fx.load(); if(d0){ i = d0.i; score = d0.s; hist = d0.h; results = d0.h.map(h => ({ prompt: h.zh || h.q, said: h.picked, ok: h.isCorrect, model: h.correct })); } let resumed = !!d0;
   const stopRec = () => { if(timerId){ clearInterval(timerId); timerId = null; } if(rec){ try{ rec.abort(); }catch(e){} rec = null; } };
   const render = () => {
     stopRec();
-    if(i >= R.length){
-      p.innerHTML = `<div class="result"><h2>即時回應完成</h2><div class="score">${score} / ${R.length}</div>
-        <div class="msg">${score === R.length ? '太棒了！每一句都接得上。' : '沒通過的句子，先聽示範再練一次。'}</div>
+    if(i >= fx.total()){
+      p.innerHTML = `<div class="result"><h2>即時回應完成</h2><div class="score">${score} / ${fx.total()}</div>
+        <div class="msg">${score === fx.total() ? '太棒了！每一句都接得上。' : '沒通過的句子，先聽示範再練一次。'}</div>
         <div class="rows" style="text-align:left">${results.map(x => `<div class="row"><div class="txt"><div class="zh">${esc(x.prompt)}</div>
           <div class="en">${x.ok ? '✓' : '✕'} ${esc(x.said || '（沒有回答）')}</div><div class="reply">示範：<b>${esc(x.model)}</b></div></div></div>`).join('')}</div>
         <button class="next" id="rAgain">再演一次</button><div class="sync" id="rSync"></div></div>`;
-      $('#rAgain').addEventListener('click', () => { i = 0; score = 0; hist = []; results = []; render(); });
-      sync('即時回應', score, R.length, hist, $('#rSync'));
+      $('#rAgain').addEventListener('click', () => { fx.reset(); i = 0; score = 0; hist = []; results = []; render(); });
+      fx.done(hist, score, $('#rSync'));
+      p.querySelector('.result').insertAdjacentHTML('afterbegin', fx.bar());
+      fx.bind(p, () => { i = 0; score = 0; hist = []; results = []; render(); }, $('#rAgain'));
       return;
     }
-    const r = R[i];
-    p.innerHTML = `<div class="qtop"><div class="qnum">第 ${i + 1} 句 / ${R.length}</div><div class="qtag">角色扮演</div></div>
+    const r = R[fx.idx(i)];
+    p.innerHTML = `${fx.tag()}${fx.draftHtml(i, resumed)}<div class="qtop"><div class="qnum">第 ${i + 1} 句 / ${fx.total()}</div><div class="qtag">角色扮演</div></div>
       <p class="lead">${esc(other.zh)}會先說一句話，聽完後<b>馬上</b>回答。按「🎤 開始錄音」開始說，說完按「⏹ 結束」，最多 ${secs} 秒。</p>
       <div class="rp-stage">
         <div class="rp-staff"><span class="avatar">${other.avatar || ''}</span>${sayBtn(r.prompt, V('S'))}<span class="en hidden" id="rStaff">${esc(r.prompt)}</span></div>
@@ -412,6 +429,7 @@ if(panel('role')){
         <div class="fb" id="rFb"></div>
       </div>
       <button class="next" id="rNext" disabled>下一句 →</button>`;
+    fx.bindDraft(p, i, score, hist); resumed = false;
     $('#rShow').addEventListener('click', e => { e.preventDefault(); $('#rStaff').classList.remove('hidden'); });
     let said = '', judged = false;
     // 兩顆按鈕：開始錄音／結束。錄音中「開始」鎖住、「結束」可按；沒在錄音時相反
@@ -425,8 +443,9 @@ if(panel('role')){
       const tm = $('#rTimer'); if(tm) tm.textContent = '';
       const ok = new RegExp(r.expect, 'i').test(said);
       if(ok) score++;
-      hist.push({ q: r.prompt, picked: said, correct: r.model, isCorrect: ok });
+      hist.push({ q: r.prompt, picked: said, correct: r.model, isCorrect: ok, zh: r.promptZh });
       results.push({ prompt: r.promptZh, said, ok, model: r.model });
+      fx.save(i + 1, score, hist);
       const fb = $('#rFb'); fb.className = 'fb show ' + (ok ? 'ok' : 'no');
       fb.innerHTML = (ok ? '✓ 很好，這樣回答對方聽得懂！' : (said ? '✕ 好像還少了關鍵說法，' : '✕ 沒有收到回答，') + '聽聽看示範：') +
         `<br>示範：<b>${esc(r.model)}</b> ${sayBtn(r.model, V('Y'), true)}<br><span class="zh">${esc(r.modelZh)}</span>`;
