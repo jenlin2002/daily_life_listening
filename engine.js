@@ -158,7 +158,7 @@ const tabBtn = ([k, t]) => `<button class="tab${k === TABS[0][0] ? ' active' : '
 const tabGroup = (name, list) => list.length ? `<div class="tabgrp"><div class="tabgrp-l">${name}</div><div class="tabs">${list.map(tabBtn).join('')}</div></div>` : '';
 document.title = '美式生活館｜' + S.title;
 document.body.innerHTML = `<div class="wrap">
-  <div class="top-links"><a class="home-link" href="../../index.html#s=${esc(S.slug)}">⬅ 返回單元列表</a><a class="home-link" href="../../catalog.html">🔎 全部場景卡片</a><a class="home-link" href="https://jenlin2002.github.io/">← 網站首頁</a></div>
+  <div class="top-links"><a class="home-link" href="../../index.html">⬅ 返回場景目錄</a><a class="home-link" href="../../units.html#s=${esc(S.slug)}">📖 單元切換（冊別・Unit）</a><a class="home-link" href="https://jenlin2002.github.io/">← 網站首頁</a></div>
   <div class="eyebrow">AMERICAN LIFE LAB${zone ? ' · ' + esc(zone.name) : ''}</div>
   <h1 class="title">${S.emoji || ''} ${esc(S.title)}</h1>
   <div class="subtitle">${esc(S.en)}${S.goal ? '<br>' + esc(S.goal) : ''}</div>
@@ -167,7 +167,7 @@ document.body.innerHTML = `<div class="wrap">
   ${tabGroup('情境練習', TABS.filter(t => TEST_KEYS.indexOf(t[0]) < 0))}${tabGroup('測驗', TABS.filter(t => TEST_KEYS.indexOf(t[0]) >= 0))}
   <div class="card">${TABS.map(([k], i) => `<div class="panel${i ? '' : ' active'}" id="p-${k}"></div>`).join('')}</div>
   <div class="scene-nav"><span>${prev ? `<a href="../${esc(prev.slug)}/index.html">← ${esc(prev.title)}</a>` : ''}</span><span>${next ? `<a href="../${esc(next.slug)}/index.html">${esc(next.title)} →</a>` : ''}</span></div>
-  <div style="text-align:center;margin-top:18px"><a class="home-link" href="../../index.html#s=${esc(S.slug)}">⬅ 返回單元列表</a></div>
+  <div style="text-align:center;margin-top:18px"><a class="home-link" href="../../index.html">⬅ 返回場景目錄</a></div>
   <div class="footer-note">練習結果會自動同步到 Google 試算表。沒有錄好語音的句子，會改用裝置內建的英文語音播放。</div>
 </div>`;
 renderWho();
