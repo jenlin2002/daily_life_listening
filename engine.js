@@ -114,6 +114,10 @@ document.addEventListener('click', e => {
   student = n; set('quizStudentName', n); renderWho();
 });
 const SYNC_LABEL = 'Life｜' + S.title;
+// 我的字卡（2026-11-17）：場景單字、你要說的／你會聽到的句子旁邊「☆」存成字卡（/cards/cards.js 處理點擊；按鈕先畫好，cards.js 載入後就能用）
+const cardStar = (o) => `<button type="button" class="ck-star" title="存成字卡" data-card="${esc(JSON.stringify(Object.assign({ src: 'Life｜' + S.title, url: '/daily_life_listening/scenes/' + S.slug + '/' }, o)))}">☆</button>`;
+if(!window.Cards){ const ck = document.createElement('script'); ck.src = '/cards/cards.js?v=20261117a'; document.head.appendChild(ck); }
+
 // 學習點數存摺：points.js 放在網站根目錄，和 engine.js 同一層；沒設定後端網址時它什麼都不做
 (function(){
   const cs = document.currentScript;
@@ -271,14 +275,14 @@ if(panel('phrases')){
 
 // ---------- 👂 你會聽到的 / 🗣️ 你要說的 ----------
 if(panel('hear')) panel('hear').innerHTML = `<h2>你會聽到的句子</h2><p class="lead">這些是${esc(other.zh)}常說的話。先聽懂意思，再看下面綠色的「你可以這樣回」。</p>
-  <div class="rows">${S.hear.map(h => `<div class="row">${sayBtn(h.en, V('S'))}<div class="txt"><div class="en">${esc(h.en)}</div><div class="zh">${esc(h.zh)}</div>
+  <div class="rows">${S.hear.map(h => `<div class="row">${sayBtn(h.en, V('S'))}<div class="txt"><div class="en">${esc(h.en)} ${cardStar({ en: h.en, zh: h.zh })}</div><div class="zh">${esc(h.zh)}</div>
     ${h.reply ? `<div class="reply">↳ 你可以這樣回：<b>${esc(h.reply)}</b>${sayBtn(h.reply, V('Y'), true)}<br><span class="zh">${esc(h.replyZh)}</span></div>` : ''}</div></div>`).join('')}</div>`;
 if(panel('say')) panel('say').innerHTML = `<h2>你要說的句子</h2><p class="lead">按 🔊 聽，跟著大聲念三次，直到不用看也說得出來。</p>
-  <div class="rows">${S.say.map(h => `<div class="row">${sayBtn(h.en, V('Y'))}<div class="txt"><div class="en">${esc(h.en)}</div><div class="zh">${esc(h.zh)}</div></div></div>`).join('')}</div>`;
+  <div class="rows">${S.say.map(h => `<div class="row">${sayBtn(h.en, V('Y'))}<div class="txt"><div class="en">${esc(h.en)} ${cardStar({ en: h.en, zh: h.zh })}</div><div class="zh">${esc(h.zh)}</div></div></div>`).join('')}</div>`;
 
 // ---------- 🔤 單字 ----------
 if(panel('vocab')) panel('vocab').innerHTML = `<h2>場景單字</h2><p class="lead">在這個場合一定會看到或聽到的字。</p>
-  <div class="vgrid">${S.vocab.map(v => `<div class="vcard"><div class="w"><span>${esc(v.w)}</span>${sayBtn(v.w + '. ' + v.ex, 'f', true)}</div>
+  <div class="vgrid">${S.vocab.map(v => `<div class="vcard"><div class="w"><span>${esc(v.w)}</span>${sayBtn(v.w + '. ' + v.ex, 'f', true)}${cardStar({ en: v.w, zh: v.zh, pos: v.pos, ex: v.ex, exzh: v.exzh })}</div>
     <div class="m">${esc(v.pos)} ${esc(v.zh)}</div><div class="ex">${esc(v.ex)}</div><div class="exzh">${esc(v.exzh)}</div></div>`).join('')}</div>`;
 
 // ---------- ⚡ 突發狀況 ----------
